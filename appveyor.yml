@@ -18,10 +18,6 @@ configuration:
 build:
   project: ./projects/$(TOOLSET)/fts_console.sln
 
-artifacts:
-  - path: projects/$(TOOLSET)/bin/x32_debug/example_game/example_game.exe
-    name: test32
-
 notifications:
 
   # Email
