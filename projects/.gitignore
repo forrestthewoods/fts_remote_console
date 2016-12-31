@@ -1,0 +1,17 @@
+# visual studio
+.vs
+bin
+build
+*.opensdf
+*.filters
+*.sdf
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.VC.db
+*.VC.opendb
+
+
+#imgui
+imgui.ini

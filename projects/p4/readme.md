@@ -1,0 +1,1 @@
+This folder contains scripts to help generate Perforce branch specs. If you're viewing this on GitHub then you probably don't care about this folder.
