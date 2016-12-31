@@ -18,6 +18,10 @@ configuration:
 build:
   project: ./projects/$(TOOLSET)/fts_console.sln
 
+artifacts:
+  - path: ./projects/$(TOOLSET)/$(platform)_$(configuration)/**/*.exe
+    name: test
+
 notifications:
 
   # Email
