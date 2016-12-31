@@ -19,11 +19,8 @@ build:
   project: ./projects/$(TOOLSET)/fts_console.sln
 
 artifacts:
-  - path: ./projects/$(TOOLSET)/bin/x32_$(configuration)/**/*.exe
+  - path: projects/$(TOOLSET)/bin/x32_debug/example_game/example_game.exe
     name: test32
-
-  - path: ./projects/$(TOOLSET)/bin/x64_$(configuration)/**/*.exe
-    name: test64
 
 notifications:
 
