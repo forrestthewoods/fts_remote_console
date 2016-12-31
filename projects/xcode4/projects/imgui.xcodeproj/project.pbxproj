@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13C0643468E24FAC77FE7766 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B3723F72B437734D8E7A29 /* imgui.cpp */; };
+		12A75D9D416702770AB11DB1 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 272F26067ACB30913B307EEB /* imgui_demo.cpp */; };
+		2A7207C94801520F19750186 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77D32D7C08056ECC5C875D90 /* imgui_draw.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C78643C52752D2B0B154CA6 /* imconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "imconfig.h"; path = "../../../code/thirdparty/imgui/imconfig.h"; sourceTree = "<group>"; };
+		45B3723F72B437734D8E7A29 /* imgui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "imgui.cpp"; path = "../../../code/thirdparty/imgui/imgui.cpp"; sourceTree = "<group>"; };
+		24C51BD0736547F744037F88 /* imgui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "imgui.h"; path = "../../../code/thirdparty/imgui/imgui.h"; sourceTree = "<group>"; };
+		272F26067ACB30913B307EEB /* imgui_demo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "imgui_demo.cpp"; path = "../../../code/thirdparty/imgui/imgui_demo.cpp"; sourceTree = "<group>"; };
+		77D32D7C08056ECC5C875D90 /* imgui_draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "imgui_draw.cpp"; path = "../../../code/thirdparty/imgui/imgui_draw.cpp"; sourceTree = "<group>"; };
+		01B83E5F5D671B4602F45178 /* imgui_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "imgui_internal.h"; path = "../../../code/thirdparty/imgui/imgui_internal.h"; sourceTree = "<group>"; };
+		58F51E545BE256A376D124EA /* stb_rect_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "stb_rect_pack.h"; path = "../../../code/thirdparty/imgui/stb_rect_pack.h"; sourceTree = "<group>"; };
+		6EE853815FA7485076364750 /* stb_textedit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "stb_textedit.h"; path = "../../../code/thirdparty/imgui/stb_textedit.h"; sourceTree = "<group>"; };
+		4C537A48079E6F6A48510DAA /* stb_truetype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "stb_truetype.h"; path = "../../../code/thirdparty/imgui/stb_truetype.h"; sourceTree = "<group>"; };
+		03E3493E73C971C476B4442E /* libimgui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libimgui.a"; path = "libimgui.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		560E014F4BC145B8521E6B77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15044B2D286215A4736E0CCA /* imgui */ = {
+			isa = PBXGroup;
+			children = (
+				7E3B304E0A11634740D55687 /* code */,
+				0AA5350E7874324C54DA2863 /* Products */,
+			);
+			name = "imgui";
+			sourceTree = "<group>";
+		};
+		7E3B304E0A11634740D55687 /* code */ = {
+			isa = PBXGroup;
+			children = (
+				0C8F3E89401779E942323486 /* thirdparty */,
+			);
+			name = "code";
+			sourceTree = "<group>";
+		};
+		0C8F3E89401779E942323486 /* thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				36B034B83D3C2B495C07640A /* imgui */,
+			);
+			name = "thirdparty";
+			sourceTree = "<group>";
+		};
+		36B034B83D3C2B495C07640A /* imgui */ = {
+			isa = PBXGroup;
+			children = (
+				1C78643C52752D2B0B154CA6 /* imconfig.h */,
+				45B3723F72B437734D8E7A29 /* imgui.cpp */,
+				24C51BD0736547F744037F88 /* imgui.h */,
+				272F26067ACB30913B307EEB /* imgui_demo.cpp */,
+				77D32D7C08056ECC5C875D90 /* imgui_draw.cpp */,
+				01B83E5F5D671B4602F45178 /* imgui_internal.h */,
+				58F51E545BE256A376D124EA /* stb_rect_pack.h */,
+				6EE853815FA7485076364750 /* stb_textedit.h */,
+				4C537A48079E6F6A48510DAA /* stb_truetype.h */,
+			);
+			name = "imgui";
+			sourceTree = "<group>";
+		};
+		0AA5350E7874324C54DA2863 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03E3493E73C971C476B4442E /* libimgui.a */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7C0E13F56C5A26D100A51AEB /* imgui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39DB682460662CBA2D222DB1 /* Build configuration list for PBXNativeTarget "imgui" */;
+			buildPhases = (
+				50E53A1401D56D963A7457E4 /* Resources */,
+				162A6F895F0B35163EEF506B /* Sources */,
+				560E014F4BC145B8521E6B77 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "imgui";
+			productName = "imgui";
+			productReference = 03E3493E73C971C476B4442E /* libimgui.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "imgui" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 15044B2D286215A4736E0CCA /* imgui */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C0E13F56C5A26D100A51AEB /* libimgui.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50E53A1401D56D963A7457E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		162A6F895F0B35163EEF506B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13C0643468E24FAC77FE7766 /* imgui.cpp in Sources */,
+				12A75D9D416702770AB11DB1 /* imgui_demo.cpp in Sources */,
+				2A7207C94801520F19750186 /* imgui_draw.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		52BD4CBA1C9B53625BFE1AC6 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x32_debug/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "imgui";
+			};
+			name = "debug Native 32-bit";
+		};
+		50230E201B5D3EFC4F4E5538 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x64_debug/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "imgui";
+			};
+			name = "debug Native 64-bit";
+		};
+		42C8417B532D46A33CCB4A27 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x32_release/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "imgui";
+			};
+			name = "release Native 32-bit";
+		};
+		7263409563E0434E30425217 /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x64_release/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "imgui";
+			};
+			name = "release Native 64-bit";
+		};
+		76487723699D6581208D2931 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/debug/imgui";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x32_debug/imgui";
+			};
+			name = "debug Native 32-bit";
+		};
+		65843A7226656DC953981523 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/debug/imgui";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x64_debug/imgui";
+			};
+			name = "debug Native 64-bit";
+		};
+		6E490A3016C4249923182795 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/release/imgui";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x32_release/imgui";
+			};
+			name = "release Native 32-bit";
+		};
+		533679ED2DBD67DF10734ABD /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/release/imgui";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x64_release/imgui";
+			};
+			name = "release Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39DB682460662CBA2D222DB1 /* Build configuration list for PBXNativeTarget "libimgui.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52BD4CBA1C9B53625BFE1AC6 /* debug Native 32-bit */,
+				50230E201B5D3EFC4F4E5538 /* debug Native 64-bit */,
+				42C8417B532D46A33CCB4A27 /* release Native 32-bit */,
+				7263409563E0434E30425217 /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "imgui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76487723699D6581208D2931 /* debug Native 32-bit */,
+				65843A7226656DC953981523 /* debug Native 64-bit */,
+				6E490A3016C4249923182795 /* release Native 32-bit */,
+				533679ED2DBD67DF10734ABD /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

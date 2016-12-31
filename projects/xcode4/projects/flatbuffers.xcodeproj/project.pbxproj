@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6DAE54BD4F6F5A2A6A370743 /* flatc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 641F2B2123B9490A03FC09E3 /* flatc.cpp */; };
+		59101AD67BE412085E5F5D00 /* idl_gen_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506903D7645D3C474A491874 /* idl_gen_cpp.cpp */; };
+		50E5003406F35A2679EB1F6E /* idl_gen_fbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 465B6A0271940E3B3D5C0329 /* idl_gen_fbs.cpp */; };
+		04DE048F1ECD1291047D4903 /* idl_gen_general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6DA21F436C567B2B58B31D72 /* idl_gen_general.cpp */; };
+		730A632C3157528F55733C12 /* idl_gen_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66C65CEC17DB2BD80AB82204 /* idl_gen_text.cpp */; };
+		37DC651D480C0F9C16881CDE /* idl_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11812FBF0A1069ED141735C7 /* idl_parser.cpp */; };
+		3132368863073A7326203337 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66C2789C291F255807961B90 /* util.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0C4A0C326817688076297EF0 /* code_generators.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "code_generators.h"; path = "../../../code/thirdparty/flatbuffers/code_generators.h"; sourceTree = "<group>"; };
+		740738704A5E58877DE30B3A /* flatbuffers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "flatbuffers.h"; path = "../../../code/thirdparty/flatbuffers/flatbuffers.h"; sourceTree = "<group>"; };
+		641F2B2123B9490A03FC09E3 /* flatc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "flatc.cpp"; path = "../../../code/thirdparty/flatbuffers/flatc.cpp"; sourceTree = "<group>"; };
+		6EB44A145A8C7A483CDA1043 /* hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "hash.h"; path = "../../../code/thirdparty/flatbuffers/hash.h"; sourceTree = "<group>"; };
+		035A66133E1B58DD75B816AE /* idl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "idl.h"; path = "../../../code/thirdparty/flatbuffers/idl.h"; sourceTree = "<group>"; };
+		506903D7645D3C474A491874 /* idl_gen_cpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "idl_gen_cpp.cpp"; path = "../../../code/thirdparty/flatbuffers/idl_gen_cpp.cpp"; sourceTree = "<group>"; };
+		465B6A0271940E3B3D5C0329 /* idl_gen_fbs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "idl_gen_fbs.cpp"; path = "../../../code/thirdparty/flatbuffers/idl_gen_fbs.cpp"; sourceTree = "<group>"; };
+		6DA21F436C567B2B58B31D72 /* idl_gen_general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "idl_gen_general.cpp"; path = "../../../code/thirdparty/flatbuffers/idl_gen_general.cpp"; sourceTree = "<group>"; };
+		66C65CEC17DB2BD80AB82204 /* idl_gen_text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "idl_gen_text.cpp"; path = "../../../code/thirdparty/flatbuffers/idl_gen_text.cpp"; sourceTree = "<group>"; };
+		11812FBF0A1069ED141735C7 /* idl_parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "idl_parser.cpp"; path = "../../../code/thirdparty/flatbuffers/idl_parser.cpp"; sourceTree = "<group>"; };
+		5CBB77F85B70006C167E2BA5 /* reflection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "reflection.h"; path = "../../../code/thirdparty/flatbuffers/reflection.h"; sourceTree = "<group>"; };
+		72CD236C717C50F8592C0187 /* reflection_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "reflection_generated.h"; path = "../../../code/thirdparty/flatbuffers/reflection_generated.h"; sourceTree = "<group>"; };
+		66C2789C291F255807961B90 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "util.cpp"; path = "../../../code/thirdparty/flatbuffers/util.cpp"; sourceTree = "<group>"; };
+		69C902004547589E444018D5 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "util.h"; path = "../../../code/thirdparty/flatbuffers/util.h"; sourceTree = "<group>"; };
+		2A316A8273F163E86CE90E27 /* flatc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "flatc"; path = "flatc"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		197D1EDA5FB157D877141B3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		195C661D0B6C4DBC314103C6 /* flatbuffers */ = {
+			isa = PBXGroup;
+			children = (
+				5FAD31842B904E2955D74B4E /* code */,
+				7B5A7EF34EDB7A7863566C8D /* Products */,
+			);
+			name = "flatbuffers";
+			sourceTree = "<group>";
+		};
+		5FAD31842B904E2955D74B4E /* code */ = {
+			isa = PBXGroup;
+			children = (
+				74920E39299E64537BB2548A /* thirdparty */,
+			);
+			name = "code";
+			sourceTree = "<group>";
+		};
+		74920E39299E64537BB2548A /* thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				4CD77C64018E5F13462E7DCE /* flatbuffers */,
+			);
+			name = "thirdparty";
+			sourceTree = "<group>";
+		};
+		4CD77C64018E5F13462E7DCE /* flatbuffers */ = {
+			isa = PBXGroup;
+			children = (
+				0C4A0C326817688076297EF0 /* code_generators.h */,
+				740738704A5E58877DE30B3A /* flatbuffers.h */,
+				641F2B2123B9490A03FC09E3 /* flatc.cpp */,
+				6EB44A145A8C7A483CDA1043 /* hash.h */,
+				035A66133E1B58DD75B816AE /* idl.h */,
+				506903D7645D3C474A491874 /* idl_gen_cpp.cpp */,
+				465B6A0271940E3B3D5C0329 /* idl_gen_fbs.cpp */,
+				6DA21F436C567B2B58B31D72 /* idl_gen_general.cpp */,
+				66C65CEC17DB2BD80AB82204 /* idl_gen_text.cpp */,
+				11812FBF0A1069ED141735C7 /* idl_parser.cpp */,
+				5CBB77F85B70006C167E2BA5 /* reflection.h */,
+				72CD236C717C50F8592C0187 /* reflection_generated.h */,
+				66C2789C291F255807961B90 /* util.cpp */,
+				69C902004547589E444018D5 /* util.h */,
+			);
+			name = "flatbuffers";
+			sourceTree = "<group>";
+		};
+		7B5A7EF34EDB7A7863566C8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A316A8273F163E86CE90E27 /* flatc */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60DB43E84DF408263AC100CA /* flatbuffers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A3039B31B764494014139F /* Build configuration list for PBXNativeTarget "flatbuffers" */;
+			buildPhases = (
+				5FEB732C2A2B67582C07414A /* Resources */,
+				0FC0111040B969E60D1631CE /* Sources */,
+				197D1EDA5FB157D877141B3A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "flatbuffers";
+			productInstallPath = "$(HOME)/bin";
+			productName = "flatbuffers";
+			productReference = 2A316A8273F163E86CE90E27 /* flatc */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "flatbuffers" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 195C661D0B6C4DBC314103C6 /* flatbuffers */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60DB43E84DF408263AC100CA /* flatc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FEB732C2A2B67582C07414A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0FC0111040B969E60D1631CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DAE54BD4F6F5A2A6A370743 /* flatc.cpp in Sources */,
+				59101AD67BE412085E5F5D00 /* idl_gen_cpp.cpp in Sources */,
+				50E5003406F35A2679EB1F6E /* idl_gen_fbs.cpp in Sources */,
+				04DE048F1ECD1291047D4903 /* idl_gen_general.cpp in Sources */,
+				730A632C3157528F55733C12 /* idl_gen_text.cpp in Sources */,
+				37DC651D480C0F9C16881CDE /* idl_parser.cpp in Sources */,
+				3132368863073A7326203337 /* util.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5AC838EB66CC75426EC40C04 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x32_debug/flatbuffers;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "flatc";
+			};
+			name = "debug Native 32-bit";
+		};
+		1D7714781D155C506D9C7E2E /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x64_debug/flatbuffers;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "flatc";
+			};
+			name = "debug Native 64-bit";
+		};
+		026F46CC5A2841A71D9E2CCE /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x32_release/flatbuffers;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "flatc";
+			};
+			name = "release Native 32-bit";
+		};
+		4B933C2B0368369346980D67 /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x64_release/flatbuffers;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "flatc";
+			};
+			name = "release Native 64-bit";
+		};
+		6DA2589C745E26766DC07620 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE",
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/debug/flatbuffers";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x32_debug/flatbuffers";
+			};
+			name = "debug Native 32-bit";
+		};
+		2AC347141521667012D474A4 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE",
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/debug/flatbuffers";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x64_debug/flatbuffers";
+			};
+			name = "debug Native 64-bit";
+		};
+		46B2509D62473C7E67E5407A /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE",
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/release/flatbuffers";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x32_release/flatbuffers";
+			};
+			name = "release Native 32-bit";
+		};
+		3A113FBE1EE6375379114CB5 /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"FLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE",
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/release/flatbuffers";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x64_release/flatbuffers";
+			};
+			name = "release Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30A3039B31B764494014139F /* Build configuration list for PBXNativeTarget "flatc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AC838EB66CC75426EC40C04 /* debug Native 32-bit */,
+				1D7714781D155C506D9C7E2E /* debug Native 64-bit */,
+				026F46CC5A2841A71D9E2CCE /* release Native 32-bit */,
+				4B933C2B0368369346980D67 /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "flatbuffers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA2589C745E26766DC07620 /* debug Native 32-bit */,
+				2AC347141521667012D474A4 /* debug Native 64-bit */,
+				46B2509D62473C7E67E5407A /* release Native 32-bit */,
+				3A113FBE1EE6375379114CB5 /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

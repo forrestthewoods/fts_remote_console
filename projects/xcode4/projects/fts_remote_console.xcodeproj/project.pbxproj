@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B0F637667A8694F46592331 /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 606A76AA70E57F2E0192461B /* console.cpp */; };
+		4C82112B0880787F74B970D8 /* game_browser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F00671B781548BA4DBE14CC /* game_browser.cpp */; };
+		6F8B0934561C632E5C465D04 /* game_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A35DC8176E562C020E0482 /* game_info.cpp */; };
+		7A711B3D11EB3B9C0A871A3E /* high_dpi_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE56FF5E12160307662587 /* high_dpi_handler.cpp */; };
+		1AF4571C093B4B87155E7597 /* imgui_ext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A912B9F223F4AF30D4E2A46 /* imgui_ext.cpp */; };
+		226A70ED2F5272467B2B46AD /* imgui_impl_glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28823430028848C911DC140E /* imgui_impl_glfw.cpp */; };
+		620D78B4110A7A960FF55CBD /* remote_console_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 663266896B60483A38BA3681 /* remote_console_main.cpp */; };
+		467E4AAA2B0F53940B9A62B9 /* tab_bar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 06EB7145683A4F422CA33A85 /* tab_bar.cpp */; };
+		72A1232F0BF16DD71152324B /* libimgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6D257730BA7CB86C9F09BB /* libimgui.a */; };
+		6F3253DC5CEE4F7975C65380 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 211370A736E359B113753792 /* libglfw.a */; };
+		52FD22E3797F7233642E44EB /* libnet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F976CA550290A871DDE08F8 /* libnet.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3FA120166A26529F6A6D7FC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B7D5CD7288468BF26F77584 /* imgui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03E3493E73C971C476B4442E;
+			remoteInfo = "libimgui.a";
+		};
+		782239D038AB63D650CD4D74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B7D5CD7288468BF26F77584 /* imgui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C0E13F56C5A26D100A51AEB;
+			remoteInfo = "libimgui.a";
+		};
+		1C4B6A9E547F733F31095BFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 385609C64F70626E07AF1EB0 /* glfw.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50CF0755093407B1629E6698;
+			remoteInfo = "libglfw.a";
+		};
+		56DA3908085E2E2E60F17CFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 385609C64F70626E07AF1EB0 /* glfw.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 14993439122055037DC459B8;
+			remoteInfo = "libglfw.a";
+		};
+		352219E254DA553E395B3197 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 292279BF798B32A975795B7F /* flatbuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A316A8273F163E86CE90E27;
+			remoteInfo = "flatc";
+		};
+		1DDF51FE22E81FC5740E0982 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 292279BF798B32A975795B7F /* flatbuffers.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60DB43E84DF408263AC100CA;
+			remoteInfo = "flatc";
+		};
+		1C9072262BE60E0E3C916887 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 196D370C3CDB05DD783862F1 /* net.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 15C1662E0C1927337805051D;
+			remoteInfo = "libnet.a";
+		};
+		5AD60B42661E4A9C51A0240F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 196D370C3CDB05DD783862F1 /* net.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D5D1B795C3F798C7FFB1A19;
+			remoteInfo = "libnet.a";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E36317E003F6C235A2C0C61 /* fts_fuzzy_match.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "fts_fuzzy_match.h"; path = "../../../code/lib_fts/fts_fuzzy_match.h"; sourceTree = "<group>"; };
+		0C8364C63B351EB37282242A /* fts_sleep.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "fts_sleep.h"; path = "../../../code/lib_fts/fts_sleep.h"; sourceTree = "<group>"; };
+		502570CB2AC64C0151FB3D7A /* fts_timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "fts_timer.h"; path = "../../../code/lib_fts/fts_timer.h"; sourceTree = "<group>"; };
+		606A76AA70E57F2E0192461B /* console.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "console.cpp"; path = "../../../code/remote_console/console.cpp"; sourceTree = "<group>"; };
+		22F34A3A646E1AAA0AA15F28 /* console.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "console.h"; path = "../../../code/remote_console/console.h"; sourceTree = "<group>"; };
+		1F00671B781548BA4DBE14CC /* game_browser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "game_browser.cpp"; path = "../../../code/remote_console/game_browser.cpp"; sourceTree = "<group>"; };
+		69C5380C5F3F3C0055604649 /* game_browser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "game_browser.h"; path = "../../../code/remote_console/game_browser.h"; sourceTree = "<group>"; };
+		18A35DC8176E562C020E0482 /* game_info.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "game_info.cpp"; path = "../../../code/remote_console/game_info.cpp"; sourceTree = "<group>"; };
+		6FEA2C413AD21C52087129A6 /* game_info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "game_info.h"; path = "../../../code/remote_console/game_info.h"; sourceTree = "<group>"; };
+		0EFE56FF5E12160307662587 /* high_dpi_handler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "high_dpi_handler.cpp"; path = "../../../code/remote_console/high_dpi_handler.cpp"; sourceTree = "<group>"; };
+		14620E0E7CF31FF61D890FEE /* high_dpi_handler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "high_dpi_handler.h"; path = "../../../code/remote_console/high_dpi_handler.h"; sourceTree = "<group>"; };
+		5A912B9F223F4AF30D4E2A46 /* imgui_ext.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "imgui_ext.cpp"; path = "../../../code/remote_console/imgui_ext.cpp"; sourceTree = "<group>"; };
+		0BE013980E6D52E265D24E89 /* imgui_ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "imgui_ext.h"; path = "../../../code/remote_console/imgui_ext.h"; sourceTree = "<group>"; };
+		28823430028848C911DC140E /* imgui_impl_glfw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "imgui_impl_glfw.cpp"; path = "../../../code/remote_console/imgui_impl_glfw.cpp"; sourceTree = "<group>"; };
+		5F485B0432593B2F68DC6937 /* imgui_impl_glfw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "imgui_impl_glfw.h"; path = "../../../code/remote_console/imgui_impl_glfw.h"; sourceTree = "<group>"; };
+		663266896B60483A38BA3681 /* remote_console_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "remote_console_main.cpp"; path = "../../../code/remote_console/remote_console_main.cpp"; sourceTree = "<group>"; };
+		06EB7145683A4F422CA33A85 /* tab_bar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "tab_bar.cpp"; path = "../../../code/remote_console/tab_bar.cpp"; sourceTree = "<group>"; };
+		63F27FF5729315B50E8D43BA /* tab_bar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "tab_bar.h"; path = "../../../code/remote_console/tab_bar.h"; sourceTree = "<group>"; };
+		658010DE69077933486A3E81 /* fts_remote_console.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "fts_remote_console.app"; path = "fts_remote_console.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B7D5CD7288468BF26F77584 /* imgui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "imgui.xcodeproj"; path = "imgui.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		385609C64F70626E07AF1EB0 /* glfw.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "glfw.xcodeproj"; path = "glfw.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		292279BF798B32A975795B7F /* flatbuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "flatbuffers.xcodeproj"; path = "flatbuffers.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		196D370C3CDB05DD783862F1 /* net.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "net.xcodeproj"; path = "net.xcodeproj"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46890B1877D153E5249D608C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72A1232F0BF16DD71152324B /* libimgui.a in Frameworks */,
+				6F3253DC5CEE4F7975C65380 /* libglfw.a in Frameworks */,
+				nil /* flatc in Frameworks */,
+				52FD22E3797F7233642E44EB /* libnet.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A2E505653544C6773B33C32 /* fts_remote_console */ = {
+			isa = PBXGroup;
+			children = (
+				05C0656561376E7111DF1EB4 /* code */,
+				31CA38C8027052FF3C7203A6 /* Products */,
+				248F1AB738477F6F2A9846AB /* Projects */,
+			);
+			name = "fts_remote_console";
+			sourceTree = "<group>";
+		};
+		05C0656561376E7111DF1EB4 /* code */ = {
+			isa = PBXGroup;
+			children = (
+				498A70F66F1912E81A840184 /* lib_fts */,
+				1367565055B67C9360811416 /* remote_console */,
+			);
+			name = "code";
+			sourceTree = "<group>";
+		};
+		498A70F66F1912E81A840184 /* lib_fts */ = {
+			isa = PBXGroup;
+			children = (
+				0E36317E003F6C235A2C0C61 /* fts_fuzzy_match.h */,
+				0C8364C63B351EB37282242A /* fts_sleep.h */,
+				502570CB2AC64C0151FB3D7A /* fts_timer.h */,
+			);
+			name = "lib_fts";
+			sourceTree = "<group>";
+		};
+		1367565055B67C9360811416 /* remote_console */ = {
+			isa = PBXGroup;
+			children = (
+				606A76AA70E57F2E0192461B /* console.cpp */,
+				22F34A3A646E1AAA0AA15F28 /* console.h */,
+				1F00671B781548BA4DBE14CC /* game_browser.cpp */,
+				69C5380C5F3F3C0055604649 /* game_browser.h */,
+				18A35DC8176E562C020E0482 /* game_info.cpp */,
+				6FEA2C413AD21C52087129A6 /* game_info.h */,
+				0EFE56FF5E12160307662587 /* high_dpi_handler.cpp */,
+				14620E0E7CF31FF61D890FEE /* high_dpi_handler.h */,
+				5A912B9F223F4AF30D4E2A46 /* imgui_ext.cpp */,
+				0BE013980E6D52E265D24E89 /* imgui_ext.h */,
+				28823430028848C911DC140E /* imgui_impl_glfw.cpp */,
+				5F485B0432593B2F68DC6937 /* imgui_impl_glfw.h */,
+				663266896B60483A38BA3681 /* remote_console_main.cpp */,
+				06EB7145683A4F422CA33A85 /* tab_bar.cpp */,
+				63F27FF5729315B50E8D43BA /* tab_bar.h */,
+			);
+			name = "remote_console";
+			sourceTree = "<group>";
+		};
+		31CA38C8027052FF3C7203A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				658010DE69077933486A3E81 /* fts_remote_console.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		248F1AB738477F6F2A9846AB /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				7B7D5CD7288468BF26F77584 /* imgui.xcodeproj */,
+				385609C64F70626E07AF1EB0 /* glfw.xcodeproj */,
+				292279BF798B32A975795B7F /* flatbuffers.xcodeproj */,
+				196D370C3CDB05DD783862F1 /* net.xcodeproj */,
+			);
+			name = "Projects";
+			sourceTree = "<group>";
+		};
+		3B971D432B14439564E56E6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C6D257730BA7CB86C9F09BB /* libimgui.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B4A090B1E9B7DDF4AEA0333 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				211370A736E359B113753792 /* libglfw.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		094B7ACB7D904DE377B77BC6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73410EEA11CF4B704BD0265A /* flatc */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AFF79D73B763C9725E527D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F976CA550290A871DDE08F8 /* libnet.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4836619442B565940066630E /* fts_remote_console */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DD9040F172102BB6FA87F23 /* Build configuration list for PBXNativeTarget "fts_remote_console" */;
+			buildPhases = (
+				5DA12C480F1E12AA7A8C4743 /* Resources */,
+				003633870CCC3E416D456486 /* Sources */,
+				46890B1877D153E5249D608C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				200C55085C790CE73990032B /* PBXTargetDependency */,
+				69080CCA3090040F494E05CD /* PBXTargetDependency */,
+				7966236B58FC7B5C71314646 /* PBXTargetDependency */,
+				2781595B49EF75B909F915D1 /* PBXTargetDependency */,
+			);
+			name = "fts_remote_console";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "fts_remote_console";
+			productReference = 658010DE69077933486A3E81 /* fts_remote_console.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "fts_remote_console" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 2A2E505653544C6773B33C32 /* fts_remote_console */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3B971D432B14439564E56E6C /* Products */;
+					ProjectRef = 7B7D5CD7288468BF26F77584 /* imgui.xcodeproj */;
+				},
+				{
+					ProductGroup = 5B4A090B1E9B7DDF4AEA0333 /* Products */;
+					ProjectRef = 385609C64F70626E07AF1EB0 /* glfw.xcodeproj */;
+				},
+				{
+					ProductGroup = 094B7ACB7D904DE377B77BC6 /* Products */;
+					ProjectRef = 292279BF798B32A975795B7F /* flatbuffers.xcodeproj */;
+				},
+				{
+					ProductGroup = 7AFF79D73B763C9725E527D9 /* Products */;
+					ProjectRef = 196D370C3CDB05DD783862F1 /* net.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				4836619442B565940066630E /* fts_remote_console.app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1C6D257730BA7CB86C9F09BB /* libimgui.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../genie/libimgui.a";
+			remoteRef = 3FA120166A26529F6A6D7FC5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		211370A736E359B113753792 /* libglfw.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../genie/libglfw.a";
+			remoteRef = 1C4B6A9E547F733F31095BFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		73410EEA11CF4B704BD0265A /* flatc */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "../../genie/flatc";
+			remoteRef = 352219E254DA553E395B3197 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F976CA550290A871DDE08F8 /* libnet.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../genie/libnet.a";
+			remoteRef = 1C9072262BE60E0E3C916887 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5DA12C480F1E12AA7A8C4743 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		003633870CCC3E416D456486 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B0F637667A8694F46592331 /* console.cpp in Sources */,
+				4C82112B0880787F74B970D8 /* game_browser.cpp in Sources */,
+				6F8B0934561C632E5C465D04 /* game_info.cpp in Sources */,
+				7A711B3D11EB3B9C0A871A3E /* high_dpi_handler.cpp in Sources */,
+				1AF4571C093B4B87155E7597 /* imgui_ext.cpp in Sources */,
+				226A70ED2F5272467B2B46AD /* imgui_impl_glfw.cpp in Sources */,
+				620D78B4110A7A960FF55CBD /* remote_console_main.cpp in Sources */,
+				467E4AAA2B0F53940B9A62B9 /* tab_bar.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin PBXTargetDependency section */
+		200C55085C790CE73990032B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libimgui.a";
+			targetProxy = 782239D038AB63D650CD4D74 /* PBXContainerItemProxy */;
+		};
+		69080CCA3090040F494E05CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libglfw.a";
+			targetProxy = 56DA3908085E2E2E60F17CFE /* PBXContainerItemProxy */;
+		};
+		7966236B58FC7B5C71314646 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "flatc";
+			targetProxy = 1DDF51FE22E81FC5740E0982 /* PBXContainerItemProxy */;
+		};
+		2781595B49EF75B909F915D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libnet.a";
+			targetProxy = 5AD60B42661E4A9C51A0240F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4A841F6A18D91A9307FF71DF /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x32_debug/fts_remote_console;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "fts_remote_console";
+			};
+			name = "debug Native 32-bit";
+		};
+		16B2314749CB76E03D702B47 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x64_debug/fts_remote_console;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "fts_remote_console";
+			};
+			name = "debug Native 64-bit";
+		};
+		11B46971537D3A016F325153 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x32_release/fts_remote_console;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "fts_remote_console";
+			};
+			name = "release Native 32-bit";
+		};
+		72B361DC69BF036F4E08642E /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x64_release/fts_remote_console;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "fts_remote_console";
+			};
+			name = "release Native 64-bit";
+		};
+		40070BA73A2C1F5F6EB05074 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"ASIO_STANDALONE",
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+					"../../../code/thirdparty/imgui",
+					"../../../code/thirdparty/glfw/include",
+					"../../../code",
+				);
+				OBJROOT = "../build/x32/debug/fts_remote_console";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lopengl32",
+				);
+				SYMROOT = "../bin/x32_debug/fts_remote_console";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = "debug Native 32-bit";
+		};
+		5C605BAB5EB668C10F5212F5 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"ASIO_STANDALONE",
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+					"../../../code/thirdparty/imgui",
+					"../../../code/thirdparty/glfw/include",
+					"../../../code",
+				);
+				OBJROOT = "../build/x64/debug/fts_remote_console";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lopengl32",
+				);
+				SYMROOT = "../bin/x64_debug/fts_remote_console";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = "debug Native 64-bit";
+		};
+		3200163844821FC136DC2571 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"ASIO_STANDALONE",
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+					"../../../code/thirdparty/imgui",
+					"../../../code/thirdparty/glfw/include",
+					"../../../code",
+				);
+				OBJROOT = "../build/x32/release/fts_remote_console";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-lopengl32",
+				);
+				SYMROOT = "../bin/x32_release/fts_remote_console";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = "release Native 32-bit";
+		};
+		491A48AB11A8278E7B794654 /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"ASIO_STANDALONE",
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+					"../../../code/thirdparty/imgui",
+					"../../../code/thirdparty/glfw/include",
+					"../../../code",
+				);
+				OBJROOT = "../build/x64/release/fts_remote_console";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-lopengl32",
+				);
+				SYMROOT = "../bin/x64_release/fts_remote_console";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = "release Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5DD9040F172102BB6FA87F23 /* Build configuration list for PBXNativeTarget "fts_remote_console.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A841F6A18D91A9307FF71DF /* debug Native 32-bit */,
+				16B2314749CB76E03D702B47 /* debug Native 64-bit */,
+				11B46971537D3A016F325153 /* release Native 32-bit */,
+				72B361DC69BF036F4E08642E /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "fts_remote_console" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40070BA73A2C1F5F6EB05074 /* debug Native 32-bit */,
+				5C605BAB5EB668C10F5212F5 /* debug Native 64-bit */,
+				3200163844821FC136DC2571 /* release Native 32-bit */,
+				491A48AB11A8278E7B794654 /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

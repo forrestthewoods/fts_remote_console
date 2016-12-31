@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		69D13F00274276FC6E77137B /* dummy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0182695C097B0B8A61C67EC7 /* dummy.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A1869F14F771E2349180541 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23C026BF5244669E078562E0 /* flatbuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2A316A8273F163E86CE90E27;
+			remoteInfo = "flatc";
+		};
+		53DB703C0E3B77C659BD5C86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23C026BF5244669E078562E0 /* flatbuffers.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60DB43E84DF408263AC100CA;
+			remoteInfo = "flatc";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0182695C097B0B8A61C67EC7 /* dummy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "dummy.cpp"; path = "../../../code/protocol/dummy.cpp"; sourceTree = "<group>"; };
+		03C34FE523C111D8134351E0 /* protocol.fbs */ = {isa = PBXFileReference; lastKnownFileType = text; name = "protocol.fbs"; path = "../../../code/protocol/protocol.fbs"; sourceTree = "<group>"; };
+		1B9D03133E5F386803B47E0A /* protocol_generated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "protocol_generated.h"; path = "../../../code/protocol/protocol_generated.h"; sourceTree = "<group>"; };
+		5A2A43EA5C453BD067077CCA /* libprotocol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libprotocol.a"; path = "libprotocol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23C026BF5244669E078562E0 /* flatbuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "flatbuffers.xcodeproj"; path = "flatbuffers.xcodeproj"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D0818003B0F5AF4713D58E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				nil /* flatc in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DF03C02509814645A815118 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5A3A61146AF5226F2B5F3669 /* code */,
+				210B4DF161B2028349847F13 /* Products */,
+				69E14571638628EB23FD1273 /* Projects */,
+			);
+			name = "protocol";
+			sourceTree = "<group>";
+		};
+		5A3A61146AF5226F2B5F3669 /* code */ = {
+			isa = PBXGroup;
+			children = (
+				47E84F024CA409E022F24BD9 /* protocol */,
+			);
+			name = "code";
+			sourceTree = "<group>";
+		};
+		47E84F024CA409E022F24BD9 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0182695C097B0B8A61C67EC7 /* dummy.cpp */,
+				03C34FE523C111D8134351E0 /* protocol.fbs */,
+				1B9D03133E5F386803B47E0A /* protocol_generated.h */,
+			);
+			name = "protocol";
+			sourceTree = "<group>";
+		};
+		210B4DF161B2028349847F13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A43EA5C453BD067077CCA /* libprotocol.a */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		69E14571638628EB23FD1273 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				23C026BF5244669E078562E0 /* flatbuffers.xcodeproj */,
+			);
+			name = "Projects";
+			sourceTree = "<group>";
+		};
+		25014CB4295234451D364079 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4ECC287C3CC46ED553192154 /* flatc */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		567E14DB620561B86D3A2A57 /* protocol */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 463A66B55DEF1BAC2FE623D5 /* Build configuration list for PBXNativeTarget "protocol" */;
+			buildPhases = (
+				9607AE1010C857E500CD1376 /* Prebuild */,
+				2B654B0D67BD02A3733B6106 /* Resources */,
+				0EA03FD2616D7373558B30B8 /* Sources */,
+				7D0818003B0F5AF4713D58E8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CD379DF010F67F7478A0EDD /* PBXTargetDependency */,
+			);
+			name = "protocol";
+			productName = "protocol";
+			productReference = 5A2A43EA5C453BD067077CCA /* libprotocol.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "protocol" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 5DF03C02509814645A815118 /* protocol */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 25014CB4295234451D364079 /* Products */;
+					ProjectRef = 23C026BF5244669E078562E0 /* flatbuffers.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				567E14DB620561B86D3A2A57 /* libprotocol.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4ECC287C3CC46ED553192154 /* flatc */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "../../genie/flatc";
+			remoteRef = 0A1869F14F771E2349180541 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B654B0D67BD02A3733B6106 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9607AE1010C857E500CD1376 /* Prebuild */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Prebuild;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"debug Native 32-bit\" ]; then\n$(SolutionDir)bin/x32_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs\nfi\nif [ \"${CONFIGURATION}\" = \"debug Native 64-bit\" ]; then\n$(SolutionDir)bin/x64_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs\nfi\nif [ \"${CONFIGURATION}\" = \"release Native 32-bit\" ]; then\n$(SolutionDir)bin/x32_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs\nfi\nif [ \"${CONFIGURATION}\" = \"release Native 64-bit\" ]; then\n$(SolutionDir)bin/x64_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+/* Begin PBXSourcesBuildPhase section */
+		0EA03FD2616D7373558B30B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69D13F00274276FC6E77137B /* dummy.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin PBXTargetDependency section */
+		0CD379DF010F67F7478A0EDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "flatc";
+			targetProxy = 53DB703C0E3B77C659BD5C86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E1054DF5FCE28D968601147 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x32_debug/protocol;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "protocol";
+			};
+			name = "debug Native 32-bit";
+		};
+		014A30E10A767D9B39B04552 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x64_debug/protocol;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "protocol";
+			};
+			name = "debug Native 64-bit";
+		};
+		764907C737DE63D32D742182 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x32_release/protocol;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "protocol";
+			};
+			name = "release Native 32-bit";
+		};
+		3FE959E84C313F742681114A /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x64_release/protocol;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "protocol";
+			};
+			name = "release Native 64-bit";
+		};
+		79D10964664A37282E8B6856 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/debug/protocol";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x32_debug/protocol";
+			};
+			name = "debug Native 32-bit";
+		};
+		217D13BB5CF444E317F83CFE /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/debug/protocol";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x64_debug/protocol";
+			};
+			name = "debug Native 64-bit";
+		};
+		66363A7207DF6DA80CCF4DC1 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/release/protocol";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x32_release/protocol";
+			};
+			name = "release Native 32-bit";
+		};
+		09D36B7942F36CB52E8F7C93 /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/release/protocol";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x64_release/protocol";
+			};
+			name = "release Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		463A66B55DEF1BAC2FE623D5 /* Build configuration list for PBXNativeTarget "libprotocol.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E1054DF5FCE28D968601147 /* debug Native 32-bit */,
+				014A30E10A767D9B39B04552 /* debug Native 64-bit */,
+				764907C737DE63D32D742182 /* release Native 32-bit */,
+				3FE959E84C313F742681114A /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "protocol" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79D10964664A37282E8B6856 /* debug Native 32-bit */,
+				217D13BB5CF444E317F83CFE /* debug Native 64-bit */,
+				66363A7207DF6DA80CCF4DC1 /* release Native 32-bit */,
+				09D36B7942F36CB52E8F7C93 /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

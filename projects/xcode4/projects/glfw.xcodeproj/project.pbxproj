@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E6278ED57545EFB18A00E53 /* context.c in Sources */ = {isa = PBXBuildFile; fileRef = 2256695834E60EEC2F7853F0 /* context.c */; };
+		15C60C571415587E5E876010 /* egl_context.c in Sources */ = {isa = PBXBuildFile; fileRef = 4806027634BD70921EC5220C /* egl_context.c */; };
+		353958BD02261A02665A14FB /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = 517704CD113A721510D135A6 /* init.c */; };
+		2452397C058D0F9C33D91851 /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC06291DD818E93A0B5595 /* input.c */; };
+		152D57F66A22687B41882205 /* monitor.c in Sources */ = {isa = PBXBuildFile; fileRef = 19D351B2067F14D05DE37808 /* monitor.c */; };
+		25BF69B56C4336B868AE47BA /* vulkan.c in Sources */ = {isa = PBXBuildFile; fileRef = 45D13213300B50DE35622D51 /* vulkan.c */; };
+		47F0507F358930B80CF868BF /* wgl_context.c in Sources */ = {isa = PBXBuildFile; fileRef = 10F8728C049B1DF9476C7DDA /* wgl_context.c */; };
+		138D4418079723A62A011CCB /* win32_init.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D96044735CD3FDF076A7A72 /* win32_init.c */; };
+		31E829441F1770DF4CF342E1 /* win32_joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = 328A67EA612171E731052B46 /* win32_joystick.c */; };
+		01D20F2F33800BC573FD662F /* win32_monitor.c in Sources */ = {isa = PBXBuildFile; fileRef = 397E021451B67E8F1CF42A69 /* win32_monitor.c */; };
+		3D3910B47BDD1384635808F5 /* win32_time.c in Sources */ = {isa = PBXBuildFile; fileRef = 70B60EFC686402EF34B97A0A /* win32_time.c */; };
+		65EE51B81F292F5B546466E0 /* win32_tls.c in Sources */ = {isa = PBXBuildFile; fileRef = 0C8449990C4122FF1D5222A6 /* win32_tls.c */; };
+		0F32421F251744E6178724E4 /* win32_window.c in Sources */ = {isa = PBXBuildFile; fileRef = 6358681A69877B97720F799F /* win32_window.c */; };
+		2FD738651967435067F4375E /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF1649278456B9551A57EA /* window.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		525540CD190E403F2A064113 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "glfw3.h"; path = "../../../code/thirdparty/glfw/include/GLFW/glfw3.h"; sourceTree = "<group>"; };
+		677337A82B39596B53D83676 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "glfw3native.h"; path = "../../../code/thirdparty/glfw/include/GLFW/glfw3native.h"; sourceTree = "<group>"; };
+		2256695834E60EEC2F7853F0 /* context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "context.c"; path = "../../../code/thirdparty/glfw/src/context.c"; sourceTree = "<group>"; };
+		4806027634BD70921EC5220C /* egl_context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "egl_context.c"; path = "../../../code/thirdparty/glfw/src/egl_context.c"; sourceTree = "<group>"; };
+		383D1248319D0BAE53FC3B82 /* egl_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "egl_context.h"; path = "../../../code/thirdparty/glfw/src/egl_context.h"; sourceTree = "<group>"; };
+		37D30DA94178050460AB5145 /* glfw_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "glfw_config.h"; path = "../../../code/thirdparty/glfw/src/glfw_config.h"; sourceTree = "<group>"; };
+		517704CD113A721510D135A6 /* init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "init.c"; path = "../../../code/thirdparty/glfw/src/init.c"; sourceTree = "<group>"; };
+		1FCC06291DD818E93A0B5595 /* input.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "input.c"; path = "../../../code/thirdparty/glfw/src/input.c"; sourceTree = "<group>"; };
+		6E103F5000485AA9015E02A4 /* internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "internal.h"; path = "../../../code/thirdparty/glfw/src/internal.h"; sourceTree = "<group>"; };
+		19D351B2067F14D05DE37808 /* monitor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "monitor.c"; path = "../../../code/thirdparty/glfw/src/monitor.c"; sourceTree = "<group>"; };
+		45D13213300B50DE35622D51 /* vulkan.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "vulkan.c"; path = "../../../code/thirdparty/glfw/src/vulkan.c"; sourceTree = "<group>"; };
+		10F8728C049B1DF9476C7DDA /* wgl_context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "wgl_context.c"; path = "../../../code/thirdparty/glfw/src/wgl_context.c"; sourceTree = "<group>"; };
+		360655CE234E29342D807B15 /* wgl_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "wgl_context.h"; path = "../../../code/thirdparty/glfw/src/wgl_context.h"; sourceTree = "<group>"; };
+		6D96044735CD3FDF076A7A72 /* win32_init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "win32_init.c"; path = "../../../code/thirdparty/glfw/src/win32_init.c"; sourceTree = "<group>"; };
+		328A67EA612171E731052B46 /* win32_joystick.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "win32_joystick.c"; path = "../../../code/thirdparty/glfw/src/win32_joystick.c"; sourceTree = "<group>"; };
+		074A39630F4A4A701E1E20A7 /* win32_joystick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "win32_joystick.h"; path = "../../../code/thirdparty/glfw/src/win32_joystick.h"; sourceTree = "<group>"; };
+		397E021451B67E8F1CF42A69 /* win32_monitor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "win32_monitor.c"; path = "../../../code/thirdparty/glfw/src/win32_monitor.c"; sourceTree = "<group>"; };
+		553524BD58083174007C21EB /* win32_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "win32_platform.h"; path = "../../../code/thirdparty/glfw/src/win32_platform.h"; sourceTree = "<group>"; };
+		70B60EFC686402EF34B97A0A /* win32_time.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "win32_time.c"; path = "../../../code/thirdparty/glfw/src/win32_time.c"; sourceTree = "<group>"; };
+		0C8449990C4122FF1D5222A6 /* win32_tls.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "win32_tls.c"; path = "../../../code/thirdparty/glfw/src/win32_tls.c"; sourceTree = "<group>"; };
+		6358681A69877B97720F799F /* win32_window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "win32_window.c"; path = "../../../code/thirdparty/glfw/src/win32_window.c"; sourceTree = "<group>"; };
+		5ABF1649278456B9551A57EA /* window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "window.c"; path = "../../../code/thirdparty/glfw/src/window.c"; sourceTree = "<group>"; };
+		50CF0755093407B1629E6698 /* libglfw.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libglfw.a"; path = "libglfw.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61673B5C767073C813B14115 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23B8575D39F021A2647875A6 /* glfw */ = {
+			isa = PBXGroup;
+			children = (
+				1EBF10792B6D24964BBF0C4B /* code */,
+				63D156557F6409D403590F3F /* Products */,
+			);
+			name = "glfw";
+			sourceTree = "<group>";
+		};
+		1EBF10792B6D24964BBF0C4B /* code */ = {
+			isa = PBXGroup;
+			children = (
+				1EC048854F7576DD312D0111 /* thirdparty */,
+			);
+			name = "code";
+			sourceTree = "<group>";
+		};
+		1EC048854F7576DD312D0111 /* thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				239919552457721E62105557 /* glfw */,
+			);
+			name = "thirdparty";
+			sourceTree = "<group>";
+		};
+		239919552457721E62105557 /* glfw */ = {
+			isa = PBXGroup;
+			children = (
+				055F1E1C461A716F57B43589 /* include */,
+				361C291C00F712C64D6558D3 /* src */,
+			);
+			name = "glfw";
+			sourceTree = "<group>";
+		};
+		055F1E1C461A716F57B43589 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				4DCD04AF622D7FB60FC24599 /* GLFW */,
+			);
+			name = "include";
+			sourceTree = "<group>";
+		};
+		4DCD04AF622D7FB60FC24599 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				525540CD190E403F2A064113 /* glfw3.h */,
+				677337A82B39596B53D83676 /* glfw3native.h */,
+			);
+			name = "GLFW";
+			sourceTree = "<group>";
+		};
+		361C291C00F712C64D6558D3 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				2256695834E60EEC2F7853F0 /* context.c */,
+				4806027634BD70921EC5220C /* egl_context.c */,
+				383D1248319D0BAE53FC3B82 /* egl_context.h */,
+				37D30DA94178050460AB5145 /* glfw_config.h */,
+				517704CD113A721510D135A6 /* init.c */,
+				1FCC06291DD818E93A0B5595 /* input.c */,
+				6E103F5000485AA9015E02A4 /* internal.h */,
+				19D351B2067F14D05DE37808 /* monitor.c */,
+				45D13213300B50DE35622D51 /* vulkan.c */,
+				10F8728C049B1DF9476C7DDA /* wgl_context.c */,
+				360655CE234E29342D807B15 /* wgl_context.h */,
+				6D96044735CD3FDF076A7A72 /* win32_init.c */,
+				328A67EA612171E731052B46 /* win32_joystick.c */,
+				074A39630F4A4A701E1E20A7 /* win32_joystick.h */,
+				397E021451B67E8F1CF42A69 /* win32_monitor.c */,
+				553524BD58083174007C21EB /* win32_platform.h */,
+				70B60EFC686402EF34B97A0A /* win32_time.c */,
+				0C8449990C4122FF1D5222A6 /* win32_tls.c */,
+				6358681A69877B97720F799F /* win32_window.c */,
+				5ABF1649278456B9551A57EA /* window.c */,
+			);
+			name = "src";
+			sourceTree = "<group>";
+		};
+		63D156557F6409D403590F3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50CF0755093407B1629E6698 /* libglfw.a */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14993439122055037DC459B8 /* glfw */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79606BF13210342D669E4260 /* Build configuration list for PBXNativeTarget "glfw" */;
+			buildPhases = (
+				3D8929B5716B460C138E1CCB /* Resources */,
+				6FFA1D2A071203E470FC0579 /* Sources */,
+				61673B5C767073C813B14115 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glfw";
+			productName = "glfw";
+			productReference = 50CF0755093407B1629E6698 /* libglfw.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glfw" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 23B8575D39F021A2647875A6 /* glfw */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14993439122055037DC459B8 /* libglfw.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D8929B5716B460C138E1CCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FFA1D2A071203E470FC0579 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E6278ED57545EFB18A00E53 /* context.c in Sources */,
+				15C60C571415587E5E876010 /* egl_context.c in Sources */,
+				353958BD02261A02665A14FB /* init.c in Sources */,
+				2452397C058D0F9C33D91851 /* input.c in Sources */,
+				152D57F66A22687B41882205 /* monitor.c in Sources */,
+				25BF69B56C4336B868AE47BA /* vulkan.c in Sources */,
+				47F0507F358930B80CF868BF /* wgl_context.c in Sources */,
+				138D4418079723A62A011CCB /* win32_init.c in Sources */,
+				31E829441F1770DF4CF342E1 /* win32_joystick.c in Sources */,
+				01D20F2F33800BC573FD662F /* win32_monitor.c in Sources */,
+				3D3910B47BDD1384635808F5 /* win32_time.c in Sources */,
+				65EE51B81F292F5B546466E0 /* win32_tls.c in Sources */,
+				0F32421F251744E6178724E4 /* win32_window.c in Sources */,
+				2FD738651967435067F4375E /* window.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1E6726767833293437BA2AF9 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x32_debug/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "glfw";
+			};
+			name = "debug Native 32-bit";
+		};
+		2C3537EA13006C0F331A73C0 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../bin/x64_debug/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "glfw";
+			};
+			name = "debug Native 64-bit";
+		};
+		2ED558573C90439E51764457 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x32_release/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "glfw";
+			};
+			name = "release Native 32-bit";
+		};
+		2401038362BE02BB04EC464F /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../bin/x64_release/imgui;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "glfw";
+			};
+			name = "release Native 64-bit";
+		};
+		2A783F3A2A6502FC27A17864 /* debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"win32_init.c",
+					"win32_joystick.c",
+					"win32_joystick.h",
+					"win32_monitor.c",
+					"win32_platform.h",
+					"win32_time.c",
+					"win32_tls.c",
+					"win32_window.c",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/debug/glfw";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x32_debug/imgui";
+			};
+			name = "debug Native 32-bit";
+		};
+		0B2A28CB147E731463F05674 /* debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"win32_init.c",
+					"win32_joystick.c",
+					"win32_joystick.h",
+					"win32_monitor.c",
+					"win32_platform.h",
+					"win32_time.c",
+					"win32_tls.c",
+					"win32_window.c",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/debug/glfw";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = "../bin/x64_debug/imgui";
+			};
+			name = "debug Native 64-bit";
+		};
+		462C623656A958074E7A7767 /* release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "i386";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"win32_init.c",
+					"win32_joystick.c",
+					"win32_joystick.h",
+					"win32_monitor.c",
+					"win32_platform.h",
+					"win32_time.c",
+					"win32_tls.c",
+					"win32_window.c",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x32/release/glfw";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x32_release/imgui";
+			};
+			name = "release Native 32-bit";
+		};
+		1EF52083138844DF7D536B78 /* release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				SDKROOT = "macosx";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"win32_init.c",
+					"win32_joystick.c",
+					"win32_joystick.h",
+					"win32_monitor.c",
+					"win32_platform.h",
+					"win32_time.c",
+					"win32_tls.c",
+					"win32_window.c",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../code/thirdparty",
+				);
+				OBJROOT = "../build/x64/release/glfw";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = "../bin/x64_release/imgui";
+			};
+			name = "release Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79606BF13210342D669E4260 /* Build configuration list for PBXNativeTarget "libglfw.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E6726767833293437BA2AF9 /* debug Native 32-bit */,
+				2C3537EA13006C0F331A73C0 /* debug Native 64-bit */,
+				2ED558573C90439E51764457 /* release Native 32-bit */,
+				2401038362BE02BB04EC464F /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glfw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A783F3A2A6502FC27A17864 /* debug Native 32-bit */,
+				0B2A28CB147E731463F05674 /* debug Native 64-bit */,
+				462C623656A958074E7A7767 /* release Native 32-bit */,
+				1EF52083138844DF7D536B78 /* release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "debug Native 32-bit";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
