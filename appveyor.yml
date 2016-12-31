@@ -16,7 +16,7 @@ configuration:
   - release
 
 build:
-  project: .build/projects/$(TOOLSET)/bgfx.sln
+  project: ./projects/$(TOOLSET)/fts_console.sln
 
 notifications:
 
@@ -24,6 +24,6 @@ notifications:
   - provider: Email
     to:
       - lordcecil@gmail.com
-    subject: 'fts_remote_console Build {{status}}'                  # optional
-    message: "{{message}}, {{commitId}}, ..."    # optional
+    subject: 'fts_remote_console Build {{status}}'
+    message: "{{message}}, {{commitId}}, ..."
     on_build_status_changed: true
