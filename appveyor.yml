@@ -1,0 +1,29 @@
+shallow_clone: true
+
+os:
+  - Visual Studio 2015
+
+environment:
+  matrix:
+  - TOOLSET: vs2015
+
+platform:
+  - Win32
+  - x64
+
+configuration:
+  - debug
+  - release
+
+build:
+  project: .build/projects/$(TOOLSET)/bgfx.sln
+
+notifications:
+
+  # Email
+  - provider: Email
+    to:
+      - lordcecil@gmail.com
+    subject: 'fts_remote_console Build {{status}}'                  # optional
+    message: "{{message}}, {{commitId}}, ..."    # optional
+    on_build_status_changed: true

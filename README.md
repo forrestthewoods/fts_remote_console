@@ -6,9 +6,6 @@ A cross-platform remote logging console written in C++
 FAQ
 ===
 
-### What is fts_remote_console?
-It's a cross-platform remote logging console written in C++. 
-
 #### What license?
 All source code is embedded with the following license:
 
