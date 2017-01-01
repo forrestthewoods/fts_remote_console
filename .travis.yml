@@ -6,7 +6,7 @@ matrix:
     - compiler: clang
       os: osx
 
-before_script: cd projects/make
+before_script: ls && cd projects/make
 
 script:
   - make all
