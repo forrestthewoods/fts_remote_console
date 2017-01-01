@@ -6,9 +6,10 @@ matrix:
     - compiler: clang
       os: osx
 
+before_script: cd projects\gmake
+
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make build CXX="g++-4.8" CC="gcc-4.8"; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make build; fi
+  - make build
 
 branches:
   only:
