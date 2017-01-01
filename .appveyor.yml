@@ -17,13 +17,3 @@ configuration:
 
 build:
   project: ./projects/$(TOOLSET)/fts_console.sln
-
-notifications:
-
-  # Email
-  - provider: Email
-    to:
-      - lordcecil@gmail.com
-    subject: 'fts_remote_console Build {{status}}'
-    message: "{{message}}, {{commitId}}, ..."
-    on_build_status_changed: true
