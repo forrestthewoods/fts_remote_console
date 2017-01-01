@@ -6,7 +6,7 @@ matrix:
     - compiler: clang
       os: osx
 
-before_script: cd projects\gmake
+before_script: cd projects/gmake
 
 script:
   - make build
