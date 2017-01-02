@@ -6,10 +6,19 @@ matrix:
     - compiler: clang
       os: osx
 
-before_script: cd projects/gmake
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
 
 script:
-  - make all
+  - cd projects/gmake
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make build CXX="g++-4.8" CC="gcc-4.8"; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make build; fi
 
 branches:
   only:
