@@ -31,9 +31,9 @@ version: 1.0.{build}
 deploy:
   - provider: S3
     access_key_id:
-      secure: yCbsU/ZSm/siW4TnxDO1DC8VicUM8oqcSwibd8QG0yQ=
+      secure: FtiBYbH6yZjcLA1oJdUNITGtgT3rrSQhnjuQO3lXZVI=
     secret_access_key: 
-      secure: fEw96fpkfKkjBR3sT/ofcDLSB6mBUbDsLX4EiuzYhwXeIaH98sqPzEoxAeOqa/h7KCxBINxYcJ8YgtyRPU9ZFjb3HGA9xyEOrbN6SEF8AcA=
+      secure: FfuP2INZ8TRnh6CjJH1v/blTOrs1vVDgYjpd6NIKT+UQtWv/y/KYaRrx4MTkQMId
     region: us-east-1
     set_public: true
     bucket: forrestthewoods.binaries
