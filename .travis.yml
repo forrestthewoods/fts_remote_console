@@ -17,7 +17,7 @@ addons:
 
 script:
   - cd projects/gmake
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make all CXX="g++-4.8" CC="gcc-4.8"; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make all CXX="g++-4.9" CC="gcc-4.9"; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make all; fi
 
 branches:
