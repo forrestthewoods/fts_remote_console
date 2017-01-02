@@ -16,15 +16,13 @@ configuration:
   - release
 
 artifacts:
-  - projects\vs*\bin\**\**\*.exe
-
-build:
-  project: ./projects/$(TOOLSET)/fts_console.sln
-
-version: 1.0.{build}
+  - path: projects\vs*\bin\**\**\*.exe
 
 build:
   verbosity: minimal
+  project: ./projects/$(TOOLSET)/fts_console.sln
+
+version: 1.0.{build}
 
 deploy:
   - provider: S3
