@@ -31,6 +31,13 @@ Continuous Integration: AppVeyor, Travis
 ### What else did you learn about?
 Quite a lot! I wrote a blog post detailing my adventure. You can read it here.
 
+Binaries
+===
+
+Here are some binaries if you're lazy but want to see it in action.
+
+Windows: [Remote Console](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/projects/vs2015/bin/x64_release/fts_remote_console/fts_remote_console.exe) [Example Game](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/projects/vs2015/bin/x64_release/example_game/example_game.exe)
+
 Build Status
 ===
-[![Build status](https://ci.appveyor.com/api/projects/status/n791a0uxq3layhm3?svg=true)](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console)
+Windows ([Appveyor](https://www.appveyor.com/)): [![Build status](https://ci.appveyor.com/api/projects/status/n791a0uxq3layhm3?svg=true)](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console)
