@@ -41,3 +41,4 @@ Windows: [Remote Console](https://s3.amazonaws.com/forrestthewoods.binaries/fts_
 Build Status
 ===
 Windows ([via Appveyor](https://www.appveyor.com/)): [![Build status](https://ci.appveyor.com/api/projects/status/n791a0uxq3layhm3?svg=true)](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console)
+macOS/Linux ([via Travis](https://travis-ci.org/)):  [![Build Status](https://travis-ci.org/forrestthewoods/fts_remote_console.svg?branch=master)](https://travis-ci.org/forrestthewoods/fts_remote_console)
