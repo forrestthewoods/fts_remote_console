@@ -8,12 +8,31 @@ environment:
   - TOOLSET: vs2015
 
 platform:
-  - Win32
+  - x86
   - x64
 
 configuration:
   - debug
   - release
 
+artifacts:
+  - projects\vs*\bin\**\**\*.exe
+
 build:
   project: ./projects/$(TOOLSET)/fts_console.sln
+
+version: 1.0.{build}
+
+build:
+  verbosity: minimal
+
+deploy:
+  - provider: S3
+    access_key_id:
+      secure: yCbsU/ZSm/siW4TnxDO1DC8VicUM8oqcSwibd8QG0yQ=
+    secret_access_key: 
+      secure: fEw96fpkfKkjBR3sT/ofcDLSB6mBUbDsLX4EiuzYhwXeIaH98sqPzEoxAeOqa/h7KCxBINxYcJ8YgtyRPU9ZFjb3HGA9xyEOrbN6SEF8AcA=
+    region: us-east-1
+    bucket: forrestthewoods.binaries
+    folder: fts_remote_console
+    artifact: projects\vs*\bin\**\**\*.exe

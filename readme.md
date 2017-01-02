@@ -33,4 +33,4 @@ Quite a lot! I wrote a blog post detailing my adventure. You can read it here.
 
 Build Status
 ===
-[![Build status](https://ci.appveyor.com/api/projects/status/5kvh38aa4lrirf2m?svg=true)](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console)
+[![Build status](https://ci.appveyor.com/api/projects/status/n791a0uxq3layhm3?svg=true)](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console)
