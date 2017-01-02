@@ -16,7 +16,11 @@ configuration:
   - release
 
 artifacts:
-  - path: projects\vs*\bin\**\**\*.exe
+  - path: projects\vs*\bin\**\fts_remote_console\*.exe
+    name: to_publish
+
+  - path: projects\vs*\bin\**\example_game\*.exe
+    name: to_publish
 
 build:
   verbosity: minimal
@@ -31,6 +35,7 @@ deploy:
     secret_access_key: 
       secure: fEw96fpkfKkjBR3sT/ofcDLSB6mBUbDsLX4EiuzYhwXeIaH98sqPzEoxAeOqa/h7KCxBINxYcJ8YgtyRPU9ZFjb3HGA9xyEOrbN6SEF8AcA=
     region: us-east-1
+    set_public: true
     bucket: forrestthewoods.binaries
     folder: fts_remote_console
-    artifact: projects\vs*\bin\**\**\*.exe
+    artifact: to_publish
