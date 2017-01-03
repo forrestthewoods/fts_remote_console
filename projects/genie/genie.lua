@@ -33,11 +33,11 @@ function fts_project(project_name)
 
         configuration "linux"
             defines { "FTS_LINUX" }
-            buildoptions { "-std=c++11" }   
+            buildoptions_cpp { "-std=c++11", }
 
         configuration "osx"
             defines { "FTS_OSX" }
-            buildoptions { "-std=c++11" } 
+            buildoptions_cpp { "-std=c++11", }
 
         for i, platform in ipairs(PLATFORMS) do
             for j, build in ipairs(BUILDS) do
