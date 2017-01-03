@@ -31,6 +31,10 @@ addons:
     - g++-4.9
     - clang
 
+install:
+  - echo $TRAVIS_OS_NAME
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50; fi
+
 script:
   - cd projects/gmake
   - make all
