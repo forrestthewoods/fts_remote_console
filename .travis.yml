@@ -1,16 +1,10 @@
 language: cpp
 
+dist: trusty
+sudo: required
+
 matrix:
   include:
-    - compiler: gcc
-      os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-      env: COMPILER=g++-4.9
     - compiler: clang
       os: osx
       addons:
@@ -30,10 +24,6 @@ addons:
     - gcc-4.9
     - g++-4.9
     - clang
-
-install:
-  - echo $TRAVIS_OS_NAME
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50; fi
 
 script:
   - cd projects/gmake
