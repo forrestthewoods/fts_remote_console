@@ -43,22 +43,24 @@ endif
 MAKEFILE = protocol.make
 
 ifeq ($(config),debug32)
-  OBJDIR         = ../build/x32/debug/protocol
-  TARGETDIR      = ../bin/x32_debug/protocol
-  TARGET         = $(TARGETDIR)/libprotocol.a
-  DEFINES       += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES      += -I../../../code/thirdparty
-  INCLUDES      +=
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
-  ALL_OBJCFLAGS += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -m32
-  LDDEPS        +=
-  LIBS          += $(LDDEPS)
-  EXTERNAL_LIBS +=
-  LINKCMD        = $(AR)  -rcs $(TARGET)
+  OBJDIR              = ../build/x32/debug/protocol
+  TARGETDIR           = ../bin/x32_debug/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  INCLUDES           += -I../../../code/thirdparty
+  INCLUDES           +=
+  ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
+  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS        += $(LDFLAGS) -m32
+  LDDEPS             +=
+  LIBS               += $(LDDEPS)
+  EXTERNAL_LIBS      +=
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
 	$(OBJDIR)/code/protocol/dummy.o \
 
@@ -73,22 +75,24 @@ ifeq ($(config),debug32)
 endif
 
 ifeq ($(config),release32)
-  OBJDIR         = ../build/x32/release/protocol
-  TARGETDIR      = ../bin/x32_release/protocol
-  TARGET         = $(TARGETDIR)/libprotocol.a
-  DEFINES       += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES      += -I../../../code/thirdparty
-  INCLUDES      +=
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
-  ALL_OBJCFLAGS += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m32
-  LDDEPS        +=
-  LIBS          += $(LDDEPS)
-  EXTERNAL_LIBS +=
-  LINKCMD        = $(AR)  -rcs $(TARGET)
+  OBJDIR              = ../build/x32/release/protocol
+  TARGETDIR           = ../bin/x32_release/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  INCLUDES           += -I../../../code/thirdparty
+  INCLUDES           +=
+  ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
+  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS        += $(LDFLAGS) -s -m32
+  LDDEPS             +=
+  LIBS               += $(LDDEPS)
+  EXTERNAL_LIBS      +=
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
 	$(OBJDIR)/code/protocol/dummy.o \
 
@@ -103,22 +107,24 @@ ifeq ($(config),release32)
 endif
 
 ifeq ($(config),debug64)
-  OBJDIR         = ../build/x64/debug/protocol
-  TARGETDIR      = ../bin/x64_debug/protocol
-  TARGET         = $(TARGETDIR)/libprotocol.a
-  DEFINES       += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES      += -I../../../code/thirdparty
-  INCLUDES      +=
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_OBJCFLAGS += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -m64
-  LDDEPS        +=
-  LIBS          += $(LDDEPS)
-  EXTERNAL_LIBS +=
-  LINKCMD        = $(AR)  -rcs $(TARGET)
+  OBJDIR              = ../build/x64/debug/protocol
+  TARGETDIR           = ../bin/x64_debug/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  INCLUDES           += -I../../../code/thirdparty
+  INCLUDES           +=
+  ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
+  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS        += $(LDFLAGS) -m64
+  LDDEPS             +=
+  LIBS               += $(LDDEPS)
+  EXTERNAL_LIBS      +=
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
 	$(OBJDIR)/code/protocol/dummy.o \
 
@@ -133,22 +139,24 @@ ifeq ($(config),debug64)
 endif
 
 ifeq ($(config),release64)
-  OBJDIR         = ../build/x64/release/protocol
-  TARGETDIR      = ../bin/x64_release/protocol
-  TARGET         = $(TARGETDIR)/libprotocol.a
-  DEFINES       += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES      += -I../../../code/thirdparty
-  INCLUDES      +=
-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
-  ALL_CXXFLAGS  += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
-  ALL_OBJCFLAGS += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -s -m64
-  LDDEPS        +=
-  LIBS          += $(LDDEPS)
-  EXTERNAL_LIBS +=
-  LINKCMD        = $(AR)  -rcs $(TARGET)
+  OBJDIR              = ../build/x64/release/protocol
+  TARGETDIR           = ../bin/x64_release/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  INCLUDES           += -I../../../code/thirdparty
+  INCLUDES           +=
+  ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
+  ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS        += $(LDFLAGS) -s -m64
+  LDDEPS             +=
+  LIBS               += $(LDDEPS)
+  EXTERNAL_LIBS      +=
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
 	$(OBJDIR)/code/protocol/dummy.o \
 
@@ -175,6 +183,11 @@ all: $(OBJDIRS) prebuild prelink $(TARGET) | $(TARGETDIR)
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(EXTERNAL_LIBS) $(RESOURCES) | $(TARGETDIR) $(OBJDIRS)
 	@echo Archiving protocol
+ifeq (posix,$(SHELLTYPE))
+	$(SILENT) rm -f  $(TARGET)
+else
+	$(SILENT) if exist $(subst /,\\,$(TARGET)) del $(subst /,\\,$(TARGET))
+endif
 	$(SILENT) $(LINKCMD) $(OBJECTS)
 	$(POSTBUILDCMDS)
 
@@ -206,6 +219,10 @@ ifneq (,$(PCH))
 $(GCH): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) -x c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
+
+$(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
 $(OBJDIR)/code/protocol/dummy.o: ../../../code/protocol/dummy.cpp $(GCH) $(MAKEFILE)
@@ -215,4 +232,5 @@ $(OBJDIR)/code/protocol/dummy.o: ../../../code/protocol/dummy.cpp $(GCH) $(MAKEF
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
   -include $(OBJDIR)/$(notdir $(PCH)).d
+  -include $(OBJDIR)/$(notdir $(PCH))_objc.d
 endif

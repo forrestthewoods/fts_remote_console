@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 14
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdparty", "thirdparty", "{DFD49BAE-4B8A-14A4-D47E-0E7B40330BA8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fts_remote_console", "projects\fts_remote_console.vcxproj", "{6FC9887D-5BAD-49D3-C40D-4426B0103455}"
