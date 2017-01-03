@@ -1,37 +1,35 @@
-language: cpp
-
-dist: trusty
-sudo: required
-
-matrix:
-  include:
-    - compiler: gcc
-      os: osx
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-4.9
-      env: COMPILER=g++-4.9
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+  - if [ "$CXX" = "clang++" ] && [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+  - echo ${PATH}
 
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.7
     packages:
-    - gcc-4.9
     - g++-4.9
+    - g++-4.9
+    - clang-3.7
 
-script:
-  - cd projects/gmake
-  - make all
+os:
+  - linux
+  - osx
+
+language: cpp
+
+compiler:
+  - gcc
+  - clang
 
 branches:
   only:
     - master
 
+script:
+  - cd projects/gmake
+  - make all
+
 notifications:
   email: false
-
-osx_image: xcode7.3
