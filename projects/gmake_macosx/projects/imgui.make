@@ -40,13 +40,13 @@ ifndef RESCOMP
   endif
 endif
 
-MAKEFILE = flatbuffers.make
+MAKEFILE = imgui.make
 
 ifeq ($(config),debug32)
-  OBJDIR              = ../build/x32/debug/flatbuffers
-  TARGETDIR           = ../bin/x32_debug/flatbuffers
-  TARGET              = $(TARGETDIR)/flatc.exe
-  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x32/debug/imgui
+  TARGETDIR           = ../bin/x32_debug/imgui
+  TARGET              = $(TARGETDIR)/libimgui.a
+  DEFINES            += -DDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -60,15 +60,11 @@ ifeq ($(config),debug32)
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
 
   define PREBUILDCMDS
   endef
@@ -79,10 +75,10 @@ ifeq ($(config),debug32)
 endif
 
 ifeq ($(config),release32)
-  OBJDIR              = ../build/x32/release/flatbuffers
-  TARGETDIR           = ../bin/x32_release/flatbuffers
-  TARGET              = $(TARGETDIR)/flatc.exe
-  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x32/release/imgui
+  TARGETDIR           = ../bin/x32_release/imgui
+  TARGET              = $(TARGETDIR)/libimgui.a
+  DEFINES            += -DNDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -92,19 +88,15 @@ ifeq ($(config),release32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -s -m32
+  ALL_LDFLAGS        += $(LDFLAGS) -m32
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
 
   define PREBUILDCMDS
   endef
@@ -115,10 +107,10 @@ ifeq ($(config),release32)
 endif
 
 ifeq ($(config),debug64)
-  OBJDIR              = ../build/x64/debug/flatbuffers
-  TARGETDIR           = ../bin/x64_debug/flatbuffers
-  TARGET              = $(TARGETDIR)/flatc.exe
-  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x64/debug/imgui
+  TARGETDIR           = ../bin/x64_debug/imgui
+  TARGET              = $(TARGETDIR)/libimgui.a
+  DEFINES            += -DDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -132,15 +124,11 @@ ifeq ($(config),debug64)
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
 
   define PREBUILDCMDS
   endef
@@ -151,10 +139,10 @@ ifeq ($(config),debug64)
 endif
 
 ifeq ($(config),release64)
-  OBJDIR              = ../build/x64/release/flatbuffers
-  TARGETDIR           = ../bin/x64_release/flatbuffers
-  TARGET              = $(TARGETDIR)/flatc.exe
-  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x64/release/imgui
+  TARGETDIR           = ../bin/x64_release/imgui
+  TARGET              = $(TARGETDIR)/libimgui.a
+  DEFINES            += -DNDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -164,19 +152,15 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -s -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -m64
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
-	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
+	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
 
   define PREBUILDCMDS
   endef
@@ -188,7 +172,7 @@ endif
 
 OBJDIRS := \
 	$(OBJDIR) \
-	$(OBJDIR)/code/thirdparty/flatbuffers \
+	$(OBJDIR)/code/thirdparty/imgui \
 
 RESOURCES := \
 
@@ -198,8 +182,13 @@ all: $(OBJDIRS) prebuild prelink $(TARGET) | $(TARGETDIR)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(EXTERNAL_LIBS) $(RESOURCES) | $(TARGETDIR) $(OBJDIRS)
-	@echo Linking flatbuffers
-	$(SILENT) $(LINKCMD)
+	@echo Archiving imgui
+ifeq (posix,$(SHELLTYPE))
+	$(SILENT) rm -f  $(TARGET)
+else
+	$(SILENT) if exist $(subst /,\\,$(TARGET)) del $(subst /,\\,$(TARGET))
+endif
+	$(SILENT) $(LINKCMD) $(OBJECTS) 2>&1 > /dev/null | sed -e '/.o) has no symbols$$/d'
 	$(POSTBUILDCMDS)
 
 $(TARGETDIR):
@@ -211,7 +200,7 @@ $(OBJDIRS):
 	-$(call MKDIR,$@)
 
 clean:
-	@echo Cleaning flatbuffers
+	@echo Cleaning imgui
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -236,31 +225,15 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o: ../../../code/thirdparty/flatbuffers/flatc.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/imgui/imgui.o: ../../../code/thirdparty/imgui/imgui.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o: ../../../code/thirdparty/flatbuffers/idl_gen_cpp.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o: ../../../code/thirdparty/imgui/imgui_demo.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o: ../../../code/thirdparty/flatbuffers/idl_gen_fbs.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o: ../../../code/thirdparty/flatbuffers/idl_gen_general.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o: ../../../code/thirdparty/flatbuffers/idl_gen_text.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o: ../../../code/thirdparty/flatbuffers/idl_parser.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/flatbuffers/util.o: ../../../code/thirdparty/flatbuffers/util.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o: ../../../code/thirdparty/imgui/imgui_draw.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

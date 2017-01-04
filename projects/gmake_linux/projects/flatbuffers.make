@@ -40,19 +40,19 @@ ifndef RESCOMP
   endif
 endif
 
-MAKEFILE = protocol.make
+MAKEFILE = flatbuffers.make
 
 ifeq ($(config),debug32)
-  OBJDIR              = ../build/x32/debug/protocol
-  TARGETDIR           = ../bin/x32_debug/protocol
-  TARGET              = $(TARGETDIR)/libprotocol.a
-  DEFINES            += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x32/debug/flatbuffers
+  TARGETDIR           = ../bin/x32_debug/flatbuffers
+  TARGET              = $(TARGETDIR)/flatc
+  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -60,13 +60,17 @@ ifeq ($(config),debug32)
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(AR)  -rcs $(TARGET)
+  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
-	$(OBJDIR)/code/protocol/dummy.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
 
   define PREBUILDCMDS
-	@echo Running pre-build commands
-	$(SolutionDir)bin/x32_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -75,16 +79,16 @@ ifeq ($(config),debug32)
 endif
 
 ifeq ($(config),release32)
-  OBJDIR              = ../build/x32/release/protocol
-  TARGETDIR           = ../bin/x32_release/protocol
-  TARGET              = $(TARGETDIR)/libprotocol.a
-  DEFINES            += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x32/release/flatbuffers
+  TARGETDIR           = ../bin/x32_release/flatbuffers
+  TARGET              = $(TARGETDIR)/flatc
+  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -92,13 +96,17 @@ ifeq ($(config),release32)
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(AR)  -rcs $(TARGET)
+  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
-	$(OBJDIR)/code/protocol/dummy.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
 
   define PREBUILDCMDS
-	@echo Running pre-build commands
-	$(SolutionDir)bin/x32_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -107,16 +115,16 @@ ifeq ($(config),release32)
 endif
 
 ifeq ($(config),debug64)
-  OBJDIR              = ../build/x64/debug/protocol
-  TARGETDIR           = ../bin/x64_debug/protocol
-  TARGET              = $(TARGETDIR)/libprotocol.a
-  DEFINES            += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x64/debug/flatbuffers
+  TARGETDIR           = ../bin/x64_debug/flatbuffers
+  TARGET              = $(TARGETDIR)/flatc
+  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -124,13 +132,17 @@ ifeq ($(config),debug64)
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(AR)  -rcs $(TARGET)
+  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
-	$(OBJDIR)/code/protocol/dummy.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
 
   define PREBUILDCMDS
-	@echo Running pre-build commands
-	$(SolutionDir)bin/x64_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -139,16 +151,16 @@ ifeq ($(config),debug64)
 endif
 
 ifeq ($(config),release64)
-  OBJDIR              = ../build/x64/release/protocol
-  TARGETDIR           = ../bin/x64_release/protocol
-  TARGET              = $(TARGETDIR)/libprotocol.a
-  DEFINES            += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  OBJDIR              = ../build/x64/release/flatbuffers
+  TARGETDIR           = ../bin/x64_release/flatbuffers
+  TARGET              = $(TARGETDIR)/flatc
+  DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -156,13 +168,17 @@ ifeq ($(config),release64)
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
-  LINKCMD             = $(AR)  -rcs $(TARGET)
+  LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
-	$(OBJDIR)/code/protocol/dummy.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o \
+	$(OBJDIR)/code/thirdparty/flatbuffers/util.o \
 
   define PREBUILDCMDS
-	@echo Running pre-build commands
-	$(SolutionDir)bin/x64_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -172,7 +188,7 @@ endif
 
 OBJDIRS := \
 	$(OBJDIR) \
-	$(OBJDIR)/code/protocol \
+	$(OBJDIR)/code/thirdparty/flatbuffers \
 
 RESOURCES := \
 
@@ -182,13 +198,8 @@ all: $(OBJDIRS) prebuild prelink $(TARGET) | $(TARGETDIR)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(EXTERNAL_LIBS) $(RESOURCES) | $(TARGETDIR) $(OBJDIRS)
-	@echo Archiving protocol
-ifeq (posix,$(SHELLTYPE))
-	$(SILENT) rm -f  $(TARGET)
-else
-	$(SILENT) if exist $(subst /,\\,$(TARGET)) del $(subst /,\\,$(TARGET))
-endif
-	$(SILENT) $(LINKCMD) $(OBJECTS)
+	@echo Linking flatbuffers
+	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
 $(TARGETDIR):
@@ -200,7 +211,7 @@ $(OBJDIRS):
 	-$(call MKDIR,$@)
 
 clean:
-	@echo Cleaning protocol
+	@echo Cleaning flatbuffers
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -225,7 +236,31 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/code/protocol/dummy.o: ../../../code/protocol/dummy.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/flatbuffers/flatc.o: ../../../code/thirdparty/flatbuffers/flatc.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_cpp.o: ../../../code/thirdparty/flatbuffers/idl_gen_cpp.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_fbs.o: ../../../code/thirdparty/flatbuffers/idl_gen_fbs.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_general.o: ../../../code/thirdparty/flatbuffers/idl_gen_general.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/flatbuffers/idl_gen_text.o: ../../../code/thirdparty/flatbuffers/idl_gen_text.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/flatbuffers/idl_parser.o: ../../../code/thirdparty/flatbuffers/idl_parser.cpp $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/flatbuffers/util.o: ../../../code/thirdparty/flatbuffers/util.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

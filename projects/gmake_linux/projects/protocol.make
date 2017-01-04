@@ -40,36 +40,33 @@ ifndef RESCOMP
   endif
 endif
 
-MAKEFILE = net.make
+MAKEFILE = protocol.make
 
 ifeq ($(config),debug32)
-  OBJDIR              = ../build/x32/debug/net
-  TARGETDIR           = ../bin/x32_debug/net
-  TARGET              = $(TARGETDIR)/libnet.a
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
+  OBJDIR              = ../build/x32/debug/protocol
+  TARGETDIR           = ../bin/x32_debug/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DDEBUG -DFTS_LINUX
+  INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/protocol -m32
-  LDDEPS             += ../bin/x32_debug/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -m32
+  LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/net/net_utils.o \
-	$(OBJDIR)/code/net/protocol_message.o \
-	$(OBJDIR)/code/net/tcp_client.o \
-	$(OBJDIR)/code/net/tcp_server.o \
-	$(OBJDIR)/code/net/udp_broadcast_receiver.o \
-	$(OBJDIR)/code/net/udp_broadcaster.o \
+	$(OBJDIR)/code/protocol/dummy.o \
 
   define PREBUILDCMDS
+	@echo Running pre-build commands
+	$(SolutionDir)bin/x32_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -78,33 +75,30 @@ ifeq ($(config),debug32)
 endif
 
 ifeq ($(config),release32)
-  OBJDIR              = ../build/x32/release/net
-  TARGETDIR           = ../bin/x32_release/net
-  TARGET              = $(TARGETDIR)/libnet.a
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
+  OBJDIR              = ../build/x32/release/protocol
+  TARGETDIR           = ../bin/x32_release/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DNDEBUG -DFTS_LINUX
+  INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/protocol -s -m32
-  LDDEPS             += ../bin/x32_release/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -s -m32
+  LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/net/net_utils.o \
-	$(OBJDIR)/code/net/protocol_message.o \
-	$(OBJDIR)/code/net/tcp_client.o \
-	$(OBJDIR)/code/net/tcp_server.o \
-	$(OBJDIR)/code/net/udp_broadcast_receiver.o \
-	$(OBJDIR)/code/net/udp_broadcaster.o \
+	$(OBJDIR)/code/protocol/dummy.o \
 
   define PREBUILDCMDS
+	@echo Running pre-build commands
+	$(SolutionDir)bin/x32_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -113,33 +107,30 @@ ifeq ($(config),release32)
 endif
 
 ifeq ($(config),debug64)
-  OBJDIR              = ../build/x64/debug/net
-  TARGETDIR           = ../bin/x64_debug/net
-  TARGET              = $(TARGETDIR)/libnet.a
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
+  OBJDIR              = ../build/x64/debug/protocol
+  TARGETDIR           = ../bin/x64_debug/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DDEBUG -DFTS_LINUX
+  INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/protocol -m64
-  LDDEPS             += ../bin/x64_debug/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -m64
+  LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/net/net_utils.o \
-	$(OBJDIR)/code/net/protocol_message.o \
-	$(OBJDIR)/code/net/tcp_client.o \
-	$(OBJDIR)/code/net/tcp_server.o \
-	$(OBJDIR)/code/net/udp_broadcast_receiver.o \
-	$(OBJDIR)/code/net/udp_broadcaster.o \
+	$(OBJDIR)/code/protocol/dummy.o \
 
   define PREBUILDCMDS
+	@echo Running pre-build commands
+	$(SolutionDir)bin/x64_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -148,33 +139,30 @@ ifeq ($(config),debug64)
 endif
 
 ifeq ($(config),release64)
-  OBJDIR              = ../build/x64/release/net
-  TARGETDIR           = ../bin/x64_release/net
-  TARGET              = $(TARGETDIR)/libnet.a
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
-  INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
+  OBJDIR              = ../build/x64/release/protocol
+  TARGETDIR           = ../bin/x64_release/protocol
+  TARGET              = $(TARGETDIR)/libprotocol.a
+  DEFINES            += -DNDEBUG -DFTS_LINUX
+  INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/protocol -s -m64
-  LDDEPS             += ../bin/x64_release/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -s -m64
+  LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/net/net_utils.o \
-	$(OBJDIR)/code/net/protocol_message.o \
-	$(OBJDIR)/code/net/tcp_client.o \
-	$(OBJDIR)/code/net/tcp_server.o \
-	$(OBJDIR)/code/net/udp_broadcast_receiver.o \
-	$(OBJDIR)/code/net/udp_broadcaster.o \
+	$(OBJDIR)/code/protocol/dummy.o \
 
   define PREBUILDCMDS
+	@echo Running pre-build commands
+	$(SolutionDir)bin/x64_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -184,7 +172,7 @@ endif
 
 OBJDIRS := \
 	$(OBJDIR) \
-	$(OBJDIR)/code/net \
+	$(OBJDIR)/code/protocol \
 
 RESOURCES := \
 
@@ -194,7 +182,7 @@ all: $(OBJDIRS) prebuild prelink $(TARGET) | $(TARGETDIR)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(EXTERNAL_LIBS) $(RESOURCES) | $(TARGETDIR) $(OBJDIRS)
-	@echo Archiving net
+	@echo Archiving protocol
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 else
@@ -212,7 +200,7 @@ $(OBJDIRS):
 	-$(call MKDIR,$@)
 
 clean:
-	@echo Cleaning net
+	@echo Cleaning protocol
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -237,27 +225,7 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/code/net/net_utils.o: ../../../code/net/net_utils.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/net/protocol_message.o: ../../../code/net/protocol_message.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/net/tcp_client.o: ../../../code/net/tcp_client.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/net/tcp_server.o: ../../../code/net/tcp_server.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/net/udp_broadcast_receiver.o: ../../../code/net/udp_broadcast_receiver.cpp $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/net/udp_broadcaster.o: ../../../code/net/udp_broadcaster.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/protocol/dummy.o: ../../../code/protocol/dummy.cpp $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

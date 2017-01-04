@@ -45,8 +45,8 @@ MAKEFILE = example_game.make
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/example_game
   TARGETDIR           = ../bin/x32_debug/example_game
-  TARGET              = $(TARGETDIR)/example_game.exe
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/example_game
+  DEFINES            += -DASIO_STANDALONE -DDEBUG
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -56,9 +56,9 @@ ifeq ($(config),debug32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/net -L. -m32
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/net -m32
   LDDEPS             += ../bin/x32_debug/net/libnet.a
-  LIBS               += $(LDDEPS) -lws2_32
+  LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -75,8 +75,8 @@ endif
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/example_game
   TARGETDIR           = ../bin/x32_release/example_game
-  TARGET              = $(TARGETDIR)/example_game.exe
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/example_game
+  DEFINES            += -DASIO_STANDALONE -DNDEBUG
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -86,9 +86,9 @@ ifeq ($(config),release32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/net -L. -s -m32
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/net -m32
   LDDEPS             += ../bin/x32_release/net/libnet.a
-  LIBS               += $(LDDEPS) -lws2_32
+  LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -105,8 +105,8 @@ endif
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/example_game
   TARGETDIR           = ../bin/x64_debug/example_game
-  TARGET              = $(TARGETDIR)/example_game.exe
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/example_game
+  DEFINES            += -DASIO_STANDALONE -DDEBUG
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -116,9 +116,9 @@ ifeq ($(config),debug64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/net -L. -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/net -m64
   LDDEPS             += ../bin/x64_debug/net/libnet.a
-  LIBS               += $(LDDEPS) -lws2_32
+  LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -135,8 +135,8 @@ endif
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/example_game
   TARGETDIR           = ../bin/x64_release/example_game
-  TARGET              = $(TARGETDIR)/example_game.exe
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/example_game
+  DEFINES            += -DASIO_STANDALONE -DNDEBUG
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -146,9 +146,9 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/net -L. -s -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/net -m64
   LDDEPS             += ../bin/x64_release/net/libnet.a
-  LIBS               += $(LDDEPS) -lws2_32
+  LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \

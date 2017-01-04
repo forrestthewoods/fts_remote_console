@@ -5,11 +5,16 @@
 --   publish, and distribute this file as you see fit.
 
 
+
 ROOT_DIR = path.getabsolute("../..")
-SLN_DIR = path.join(ROOT_DIR, path.join("projects", _ACTION))
+SLN_DIR = path.join(ROOT_DIR, "projects", _ACTION)
 
 PLATFORMS = { "x32", "x64" }
 BUILDS = { "debug", "release" }
+
+if (not string.startswith(_ACTION, "vs")) then
+    SLN_DIR = SLN_DIR.."_"..os.get()
+end
 
 function fts_project(project_name)
 

@@ -40,13 +40,13 @@ ifndef RESCOMP
   endif
 endif
 
-MAKEFILE = imgui.make
+MAKEFILE = glfw.make
 
 ifeq ($(config),debug32)
-  OBJDIR              = ../build/x32/debug/imgui
+  OBJDIR              = ../build/x32/debug/glfw
   TARGETDIR           = ../bin/x32_debug/imgui
-  TARGET              = $(TARGETDIR)/libimgui.a
-  DEFINES            += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/libglfw.a
+  DEFINES            += -DDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -62,9 +62,14 @@ ifeq ($(config),debug32)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
   endef
@@ -75,10 +80,10 @@ ifeq ($(config),debug32)
 endif
 
 ifeq ($(config),release32)
-  OBJDIR              = ../build/x32/release/imgui
+  OBJDIR              = ../build/x32/release/glfw
   TARGETDIR           = ../bin/x32_release/imgui
-  TARGET              = $(TARGETDIR)/libimgui.a
-  DEFINES            += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/libglfw.a
+  DEFINES            += -DNDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -88,15 +93,20 @@ ifeq ($(config),release32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -s -m32
+  ALL_LDFLAGS        += $(LDFLAGS) -m32
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
   endef
@@ -107,10 +117,10 @@ ifeq ($(config),release32)
 endif
 
 ifeq ($(config),debug64)
-  OBJDIR              = ../build/x64/debug/imgui
+  OBJDIR              = ../build/x64/debug/glfw
   TARGETDIR           = ../bin/x64_debug/imgui
-  TARGET              = $(TARGETDIR)/libimgui.a
-  DEFINES            += -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/libglfw.a
+  DEFINES            += -DDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -126,9 +136,14 @@ ifeq ($(config),debug64)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
   endef
@@ -139,10 +154,10 @@ ifeq ($(config),debug64)
 endif
 
 ifeq ($(config),release64)
-  OBJDIR              = ../build/x64/release/imgui
+  OBJDIR              = ../build/x64/release/glfw
   TARGETDIR           = ../bin/x64_release/imgui
-  TARGET              = $(TARGETDIR)/libimgui.a
-  DEFINES            += -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/libglfw.a
+  DEFINES            += -DNDEBUG
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -152,15 +167,20 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -s -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -m64
   LDDEPS             +=
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
-	$(OBJDIR)/code/thirdparty/imgui/imgui.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o \
-	$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
   endef
@@ -172,7 +192,7 @@ endif
 
 OBJDIRS := \
 	$(OBJDIR) \
-	$(OBJDIR)/code/thirdparty/imgui \
+	$(OBJDIR)/code/thirdparty/glfw/src \
 
 RESOURCES := \
 
@@ -182,13 +202,13 @@ all: $(OBJDIRS) prebuild prelink $(TARGET) | $(TARGETDIR)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(EXTERNAL_LIBS) $(RESOURCES) | $(TARGETDIR) $(OBJDIRS)
-	@echo Archiving imgui
+	@echo Archiving glfw
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 else
 	$(SILENT) if exist $(subst /,\\,$(TARGET)) del $(subst /,\\,$(TARGET))
 endif
-	$(SILENT) $(LINKCMD) $(OBJECTS)
+	$(SILENT) $(LINKCMD) $(OBJECTS) 2>&1 > /dev/null | sed -e '/.o) has no symbols$$/d'
 	$(POSTBUILDCMDS)
 
 $(TARGETDIR):
@@ -200,7 +220,7 @@ $(OBJDIRS):
 	-$(call MKDIR,$@)
 
 clean:
-	@echo Cleaning imgui
+	@echo Cleaning glfw
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -225,17 +245,61 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/code/thirdparty/imgui/imgui.o: ../../../code/thirdparty/imgui/imgui.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/imgui/imgui_demo.o: ../../../code/thirdparty/imgui/imgui_demo.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o: ../../../code/thirdparty/glfw/src/egl_context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/imgui/imgui_draw.o: ../../../code/thirdparty/imgui/imgui_draw.cpp $(GCH) $(MAKEFILE)
+$(OBJDIR)/code/thirdparty/glfw/src/init.o: ../../../code/thirdparty/glfw/src/init.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/input.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/monitor.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o: ../../../code/thirdparty/glfw/src/vulkan.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o: ../../../code/thirdparty/glfw/src/wgl_context.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o: ../../../code/thirdparty/glfw/src/win32_init.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o: ../../../code/thirdparty/glfw/src/win32_joystick.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o: ../../../code/thirdparty/glfw/src/win32_monitor.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o: ../../../code/thirdparty/glfw/src/win32_time.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o: ../../../code/thirdparty/glfw/src/win32_tls.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o: ../../../code/thirdparty/glfw/src/win32_window.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/window.o: ../../../code/thirdparty/glfw/src/window.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))

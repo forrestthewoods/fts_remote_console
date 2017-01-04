@@ -45,20 +45,20 @@ MAKEFILE = fts_remote_console.make
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/fts_remote_console
   TARGETDIR           = ../bin/x32_debug/fts_remote_console
-  TARGET              = $(TARGETDIR)/fts_remote_console.exe
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/fts_remote_console
+  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/imgui -L../bin/x32_debug/net -L. -mwindows -m32
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/imgui -L../bin/x32_debug/net -L. -m32
   LDDEPS             += ../bin/x32_debug/imgui/libimgui.a ../bin/x32_debug/imgui/libglfw.a ../bin/x32_debug/net/libnet.a
-  LIBS               += $(LDDEPS) -lopengl32 -lws2_32 -lshcore
+  LIBS               += $(LDDEPS) -lopengl32
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -82,20 +82,20 @@ endif
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/fts_remote_console
   TARGETDIR           = ../bin/x32_release/fts_remote_console
-  TARGET              = $(TARGETDIR)/fts_remote_console.exe
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/fts_remote_console
+  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/imgui -L../bin/x32_release/net -L. -s -mwindows -m32
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/imgui -L../bin/x32_release/net -L. -s -m32
   LDDEPS             += ../bin/x32_release/imgui/libimgui.a ../bin/x32_release/imgui/libglfw.a ../bin/x32_release/net/libnet.a
-  LIBS               += $(LDDEPS) -lopengl32 -lws2_32 -lshcore
+  LIBS               += $(LDDEPS) -lopengl32
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -119,20 +119,20 @@ endif
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/fts_remote_console
   TARGETDIR           = ../bin/x64_debug/fts_remote_console
-  TARGET              = $(TARGETDIR)/fts_remote_console.exe
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/fts_remote_console
+  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/imgui -L../bin/x64_debug/net -L. -mwindows -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/imgui -L../bin/x64_debug/net -L. -m64
   LDDEPS             += ../bin/x64_debug/imgui/libimgui.a ../bin/x64_debug/imgui/libglfw.a ../bin/x64_debug/net/libnet.a
-  LIBS               += $(LDDEPS) -lopengl32 -lws2_32 -lshcore
+  LIBS               += $(LDDEPS) -lopengl32
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -156,20 +156,20 @@ endif
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/fts_remote_console
   TARGETDIR           = ../bin/x64_release/fts_remote_console
-  TARGET              = $(TARGETDIR)/fts_remote_console.exe
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  TARGET              = $(TARGETDIR)/fts_remote_console
+  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/imgui -L../bin/x64_release/net -L. -s -mwindows -m64
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/imgui -L../bin/x64_release/net -L. -s -m64
   LDDEPS             += ../bin/x64_release/imgui/libimgui.a ../bin/x64_release/imgui/libglfw.a ../bin/x64_release/net/libnet.a
-  LIBS               += $(LDDEPS) -lopengl32 -lws2_32 -lshcore
+  LIBS               += $(LDDEPS) -lopengl32
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \

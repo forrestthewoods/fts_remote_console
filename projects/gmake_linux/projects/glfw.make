@@ -46,13 +46,13 @@ ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/glfw
   TARGETDIR           = ../bin/x32_debug/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_WIN32 -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  DEFINES            += -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -69,12 +69,6 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -89,13 +83,13 @@ ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/glfw
   TARGETDIR           = ../bin/x32_release/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_WIN32 -D_CRT_SECURE_NO_WARNINGS -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  DEFINES            += -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -112,12 +106,6 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -132,13 +120,13 @@ ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/glfw
   TARGETDIR           = ../bin/x64_debug/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_WIN32 -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  DEFINES            += -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -155,12 +143,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -175,13 +157,13 @@ ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/glfw
   TARGETDIR           = ../bin/x64_release/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_WIN32 -D_CRT_SECURE_NO_WARNINGS -DNDEBUG -DFTS_WINDOWS -D_WIN32_WINNT=0x0601
+  DEFINES            += -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
   ALL_ASMFLAGS       += $(ASMFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_CFLAGS         += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
-  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
+  ALL_CXXFLAGS       += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64 -std=c++11
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -198,12 +180,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
