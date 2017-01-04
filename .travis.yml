@@ -19,6 +19,8 @@ addons:
     - g++-4.9
     - g++-4.9-multilib
     - clang-3.6
+    - linux-libc-dev:amd64
+    - linux-libc-dev:i386
 
 branches:
   only:
