@@ -15,8 +15,9 @@ addons:
     - llvm-toolchain-precise-3.6
     packages:
     - gcc-4.9
+    - gcc-4.9-multilib
     - g++-4.9
-    - g++-multilib
+    - g++-4.9-multilib
     - clang-3.6
 
 branches:
