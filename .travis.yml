@@ -9,9 +9,9 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-precise-3.7
     packages:
-    - g++-4.9
-    - g++-4.9
-    - clang-3.7
+    - gcc-6.3
+    - g++-6.3
+    - clang-3.9
 
 os:
   - linux
@@ -28,7 +28,8 @@ branches:
     - master
 
 script:
-  - cd projects/gmake
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi
   - make all
 
 notifications:
