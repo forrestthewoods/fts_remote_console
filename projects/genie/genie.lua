@@ -182,7 +182,7 @@ solution "fts_console"
                 configuration { platform, build, "vs*" }
                     prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
                 configuration "not vs*"
-                   prebuildcommands { "./build/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                   prebuildcommands { "./build/"..platform.."_"..build.."flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
             end
         end
 
