@@ -9,9 +9,9 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-precise-3.7
     packages:
-    - gcc-6.3
-    - g++-6.3
-    - clang-3.9
+    - gcc-4.9
+    - g++-4.9
+    - clang-3.6
 
 os:
   - linux
