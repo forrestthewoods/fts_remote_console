@@ -66,7 +66,7 @@ ifeq ($(config),debug32)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	$(SolutionDir)bin/x32_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	./build/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -98,7 +98,7 @@ ifeq ($(config),release32)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	$(SolutionDir)bin/x32_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	./build/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -130,7 +130,7 @@ ifeq ($(config),debug64)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	$(SolutionDir)bin/x64_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	./build/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -162,7 +162,7 @@ ifeq ($(config),release64)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	$(SolutionDir)bin/x64_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	./build/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef

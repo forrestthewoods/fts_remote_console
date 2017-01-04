@@ -12,10 +12,12 @@ SLN_DIR = path.join(ROOT_DIR, "projects", _ACTION)
 PLATFORMS = { "x32", "x64" }
 BUILDS = { "debug", "release" }
 
-if (not string.startswith(_ACTION, "vs")) then
+if (_ACTION and not string.startswith(_ACTION, "vs")) then
     SLN_DIR = SLN_DIR.."_"..os.get()
 end
 
+
+-----------------------------------
 function fts_project(project_name)
 
         configuration {}
@@ -44,12 +46,12 @@ function fts_project(project_name)
             defines { "FTS_OSX" }
             buildoptions_cpp { "-std=c++11", }
 
-        for i, platform in ipairs(PLATFORMS) do
-            for j, build in ipairs(BUILDS) do
-                configuration { platform, build }
+            for i, platform in ipairs(PLATFORMS) do
+                for j, build in ipairs(BUILDS) do
+                    configuration { platform, build }
                     targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build, project_name))
+                end
             end
-        end
 
         configuration {}
 end
@@ -174,15 +176,16 @@ solution "fts_console"
             "flatbuffers",
         }
         
-        -- $$$FTS need to figure out linux/os x version
-        configuration "vs*"
-            for i, platform in ipairs(PLATFORMS) do
-                for j, build in ipairs(BUILDS) do
-                    configuration { platform, build }
-                        prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
-                end
+        -- Execute flatc (compiled by flatbuffers project) to read .fbs files and generate C++ code
+        for i, platform in ipairs(PLATFORMS) do
+            for j, build in ipairs(BUILDS) do
+                configuration { platform, build, "vs*" }
+                    prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                configuration "not vs*"
+                   prebuildcommands { "./build/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
             end
-        
+        end
+
         fts_project("protocol")
 
 
