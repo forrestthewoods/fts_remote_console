@@ -181,8 +181,8 @@ solution "fts_console"
             for j, build in ipairs(BUILDS) do
                 configuration { platform, build, "vs*" }
                     prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
-                configuration "not vs*"
-                   prebuildcommands { "./../bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                configuration { platform, build, "not vs*" }
+                   prebuildcommands { "../bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
             end
         end
 
