@@ -96,8 +96,11 @@ int main(int, char**) {
 
                 // If this is a new game server then create a new connection
                 auto connection = std::find_if(game_connections.begin(), game_connections.end(), [&gi](std::unique_ptr<fts::GameConnection> const & conn) { return conn->gameInfo == gi; });
-                if (connection == game_connections.end())
-                    game_connections.emplace_back(std::make_unique<fts::GameConnection>(asio_service, gi));
+                if (connection == game_connections.end()) {
+                    fts::GameConnection * raw = new fts::GameConnection(asio_service, gi);
+                    std::unique_ptr<fts::GameConnection> unique(raw);
+                    game_connections.push_back(std::move(unique));
+                }
             }
         }
 

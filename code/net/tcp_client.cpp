@@ -60,9 +60,8 @@ std::unique_ptr<fts::ProtocolMessage> Client::read() {
 }
 
 void Client::send(fts::ProtocolMessage && msg) {
-    // Because we can't std::move in a lambda capture until C++17
-    std::unique_ptr<fts::ProtocolMessage> unique = std::make_unique<fts::ProtocolMessage>(std::move(msg));
-    fts::ProtocolMessage * raw = unique.release(); // raw pointer will leak if lambda is never run
+    // Because we can't std::move a unique_ptr in a lambda capture until C++17. Leaks if lambda doesn't run.
+    fts::ProtocolMessage * raw = &msg;
 
     _ioService.post([this, raw]() {
         bool in_progress = !_outMessages.empty();
@@ -79,8 +78,9 @@ void Client::receive() {
     _socket.async_receive(asio::buffer(_receiveBuf.data(), _receiveBuf.size()),
         [this](std::error_code ec, std::size_t length) {
             if (!ec) {
-                auto msg = std::make_unique<fts::ProtocolMessage>(_receiveBuf.data(), length);
-                _inMessages.push_back(std::move(msg));
+                fts::ProtocolMessage * raw = new fts::ProtocolMessage(_receiveBuf.data(), length);
+                std::unique_ptr<fts::ProtocolMessage> unique(raw);
+                _inMessages.push_back(std::move(unique));
                 receive();
             }
             else {

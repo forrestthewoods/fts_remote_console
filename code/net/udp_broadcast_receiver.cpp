@@ -44,8 +44,9 @@ void BroadcastReceiver::receive() {
     _socket.async_receive_from(asio::buffer(_receiveBuf.data(), _receiveBuf.size()), _endpoint,
         [this](std::error_code ec, std::size_t length) {
             if (!ec) {
-                auto msg = std::make_unique<fts::ProtocolMessage>(_receiveBuf.data(), length);
-                _inMessages.push_back(std::move(msg));
+                fts::ProtocolMessage * raw = new fts::ProtocolMessage(_receiveBuf.data(), length);
+                std::unique_ptr<fts::ProtocolMessage> unique(raw);
+                _inMessages.push_back(std::move(unique));
                 receive();
             }
     });

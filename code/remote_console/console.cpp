@@ -67,6 +67,7 @@ Console::Console()
 }
 
 void Console::Clear() {
+    _fuzzyFilter.Clear();
     _entries.clear();
 }
 

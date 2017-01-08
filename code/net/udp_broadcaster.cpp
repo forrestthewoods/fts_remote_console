@@ -29,16 +29,13 @@ Broadcaster::~Broadcaster() {
 }
 
 void Broadcaster::send(fts::ProtocolMessage && msg) {
+    // Because we can't std::move a unique_ptr in a lambda capture until C++17. Leaks if lambda doesn't run.
+    std::shared_ptr<fts::ProtocolMessage> shared_msg = std::make_shared<fts::ProtocolMessage>(std::move(msg));
 
-    // Because we can't std::move in a lambda capture until C++17
-    std::unique_ptr<fts::ProtocolMessage> unique = std::make_unique<fts::ProtocolMessage>(std::move(msg));
-    fts::ProtocolMessage * raw = unique.release(); // raw pointer will leak if lambda is never run
-
-    _ioService.post([this, raw]() {
+    _ioService.post([this, shared_msg]() {
         bool in_progress = !_outMessages.empty();
 
-        std::unique_ptr<fts::ProtocolMessage> unique(raw);
-        _outMessages.push_back(std::move(unique));
+        _outMessages.push_back(shared_msg);
 
         if (!in_progress)
             sendNext();

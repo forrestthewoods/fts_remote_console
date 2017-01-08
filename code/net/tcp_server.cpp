@@ -52,10 +52,11 @@ void Server::send(fts::ProtocolMessage && msg) {
 void Server::accept() {
     _acceptor.async_accept(_socket, [this](std::error_code ec) {
         if (!ec) {
-            auto new_conn = std::make_unique<ServerConnection>(_ioService, std::move(_socket));
+            ServerConnection * raw = new ServerConnection(_ioService, std::move(_socket));
+            std::unique_ptr<ServerConnection> unique(raw);
 
             std::lock_guard<std::mutex> guard(_connectionsMutex);
-            _connections.emplace_back(std::move(new_conn));
+            _connections.push_back(std::move(unique));
         }
 
         accept();
@@ -96,8 +97,9 @@ void ServerConnection::receive() {
     _socket.async_receive(asio::buffer(_receiveBuf.data(), _receiveBuf.size()),
         [this](std::error_code ec, std::size_t length) {
             if (!ec) {
-                auto msg = std::make_unique<fts::ProtocolMessage>(_receiveBuf.data(), length);
-                _inMessages.push_back(std::move(msg));
+                fts::ProtocolMessage * raw = new fts::ProtocolMessage(_receiveBuf.data(), length);
+                std::unique_ptr<fts::ProtocolMessage> unique(raw);
+                _inMessages.push_back(std::move(unique));
                 receive();
             }
     });
