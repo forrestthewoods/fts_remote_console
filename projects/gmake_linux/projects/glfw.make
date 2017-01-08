@@ -46,7 +46,7 @@ ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/glfw
   TARGETDIR           = ../bin/x32_debug/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -DDEBUG -DFTS_LINUX
+  DEFINES            += -D_GLFW_X11 -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -66,10 +66,16 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
 
   define PREBUILDCMDS
   endef
@@ -83,7 +89,7 @@ ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/glfw
   TARGETDIR           = ../bin/x32_release/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -DNDEBUG -DFTS_LINUX
+  DEFINES            += -D_GLFW_X11 -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -103,10 +109,16 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
 
   define PREBUILDCMDS
   endef
@@ -120,7 +132,7 @@ ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/glfw
   TARGETDIR           = ../bin/x64_debug/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -DDEBUG -DFTS_LINUX
+  DEFINES            += -D_GLFW_X11 -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -140,10 +152,16 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
 
   define PREBUILDCMDS
   endef
@@ -157,7 +175,7 @@ ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/glfw
   TARGETDIR           = ../bin/x64_release/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -DNDEBUG -DFTS_LINUX
+  DEFINES            += -D_GLFW_X11 -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -177,10 +195,16 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
 
   define PREBUILDCMDS
   endef
@@ -245,6 +269,10 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o: ../../../code/thirdparty/glfw/src/cocoa_time.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
@@ -261,7 +289,19 @@ $(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/in
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
+$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o: ../../../code/thirdparty/glfw/src/linux_joystick.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/monitor.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o: ../../../code/thirdparty/glfw/src/posix_time.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o: ../../../code/thirdparty/glfw/src/posix_tls.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
@@ -298,6 +338,18 @@ $(OBJDIR)/code/thirdparty/glfw/src/win32_window.o: ../../../code/thirdparty/glfw
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/window.o: ../../../code/thirdparty/glfw/src/window.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o: ../../../code/thirdparty/glfw/src/x11_init.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o: ../../../code/thirdparty/glfw/src/x11_monitor.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o: ../../../code/thirdparty/glfw/src/x11_window.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

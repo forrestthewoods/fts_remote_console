@@ -143,6 +143,11 @@ solution "fts_console"
                 "ws2_32",
             }
 
+        configuration "not windows"
+            links {
+                "pthread"
+            }
+
 
         fts_project("example_game")
 
@@ -292,6 +297,31 @@ solution "fts_console"
                 defines {
                     "_GLFW_WIN32",
                     "_CRT_SECURE_NO_WARNINGS"
+                }
+
+            configuration "linux"
+                files { 
+                    path.join(ROOT_DIR, glfw_src, "linux**.h"),
+                    path.join(ROOT_DIR, glfw_src, "linux**.c"),
+                    path.join(ROOT_DIR, glfw_src, "posix**.h"),
+                    path.join(ROOT_DIR, glfw_src, "posix**.c"),
+                    path.join(ROOT_DIR, glfw_src, "x11**.h"),
+                    path.join(ROOT_DIR, glfw_src, "x11**.c"),
+                }
+
+                defines {
+                    "_GLFW_X11"
+                }
+
+            configuration "osx"
+                files {
+                    path.join(ROOT_DIR, glfw_src, "posix**.h"),
+                    path.join(ROOT_DIR, glfw_src, "posix**.c"),
+                    path.join(ROOT_DIR, glfw_src, "cocoa**.h"),
+                    path.join(ROOT_DIR, glfw_src, "cocoa**.c"),
+                }
+                defines {
+                    "_GLFW_COCOA"
                 }
 
             fts_project("imgui")
