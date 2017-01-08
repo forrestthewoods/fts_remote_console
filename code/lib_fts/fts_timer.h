@@ -150,4 +150,4 @@ namespace fts {
 
 } // namespace fts
 
-#endif FTS_TIMER_H
+#endif // FTS_TIMER_H
