@@ -84,7 +84,7 @@ int main(int, char**) {
         // Pull TCP network messages for each game server connection
         for (auto && conn : game_connections) {
             while (auto msg = conn->tcpClient.read()) {
-                if (auto log_entry = msg->asLogEntry())
+                if (msg->asLogEntry())
                     conn->console.AddLog(std::move(*msg.release()));
             }
         }

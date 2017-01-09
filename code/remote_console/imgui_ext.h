@@ -35,13 +35,13 @@ namespace ImGui {
             bool valid() const { return score != INT_MAX; }
         };
 
-        enum class Style : int
+        enum class FilterStyle : int
         {
             Simple,     // simple pass/fail fuzzy match
             Scored      // matches are scored and sorted
         };
 
-        Style               Style;
+        FilterStyle         Style;
         bool                Sorted;
         char                FilterBuf[256];
         ImVector<Entry>     Results;

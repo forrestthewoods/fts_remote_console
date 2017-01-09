@@ -60,7 +60,7 @@ void ColumnSeparator(float cursor_pad)
 }
 
 ImGuiTextFuzzyFilter::ImGuiTextFuzzyFilter(const char* default_filter) 
-    : Style(Style::Simple)
+    : Style(FilterStyle::Simple)
     , Sorted(true)
 {
     if (default_filter) {
@@ -78,7 +78,7 @@ void ImGuiTextFuzzyFilter::Add(void* data, const char* text, const char* text_en
 }
 
 void ImGuiTextFuzzyFilter::Insert(void* data, const char* text, const char* text_end) {
-    if (Style == Style::Simple || FilterBuf[0] == 0) {
+    if (Style == FilterStyle::Simple || FilterBuf[0] == 0) {
         Add(data, text, text_end);
         return;
     }
@@ -134,7 +134,7 @@ void ImGuiTextFuzzyFilter::Sort()
 {
     if (!Sorted)
     {
-        if (Style == Style::Simple || FilterBuf == 0)
+        if (Style == FilterStyle::Simple || FilterBuf == 0)
             qsort(Results.begin(), Results.size(), sizeof(Entry), EntryCompareId);
         else
             qsort(Results.begin(), Results.size(), sizeof(Entry), EntryCompareScore);
@@ -147,9 +147,9 @@ int ImGuiTextFuzzyFilter::Score(const char* b, const char* e) const
     int score = INT_MAX;
     if (FilterBuf[0] == 0)
         score = 0;
-    else if (Style == Style::Simple && fts::fuzzy_match(FilterBuf, b, e))
+    else if (Style == FilterStyle::Simple && fts::fuzzy_match(FilterBuf, b, e))
         score = 0;
-    else if (Style == Style::Scored)
+    else if (Style == FilterStyle::Scored)
         fts::fuzzy_match(score, FilterBuf, b, e);
         
     return score;
@@ -166,7 +166,7 @@ bool ImGuiTextFuzzyFilter::DrawSearchBar()
         for (int i = 0; i < Results.size(); ++i)
             Results[i].score = Score(Results[i].b, Results[i].e);
 
-        if (Style == Style::Scored)
+        if (Style == FilterStyle::Scored)
             Sorted = false;
     }
 
@@ -177,14 +177,14 @@ bool ImGuiTextFuzzyFilter::DrawStyleRadios()
 {
     bool changed = false;
     int* style_ptr = (int*)(&Style);
-    changed |= ImGui::RadioButton("Fuzzy Simple", style_ptr, (int)Style::Simple);
-    changed |= ImGui::RadioButton("Fuzzy Scored", style_ptr, (int)Style::Scored);
+    changed |= ImGui::RadioButton("Fuzzy Simple", style_ptr, (int)FilterStyle::Simple);
+    changed |= ImGui::RadioButton("Fuzzy Scored", style_ptr, (int)FilterStyle::Scored);
     if (changed)
     {
         for (int i = 0; i < Results.size(); ++i)
             Results[i].score = Score(Results[i].b, Results[i].e);
 
-        if (Style == Style::Scored)
+        if (Style == FilterStyle::Scored)
             Sorted = false;
     }
 
