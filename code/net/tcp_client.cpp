@@ -61,13 +61,12 @@ std::unique_ptr<fts::ProtocolMessage> Client::read() {
 
 void Client::send(fts::ProtocolMessage && msg) {
     // Because we can't std::move a unique_ptr in a lambda capture until C++17. Leaks if lambda doesn't run.
-    fts::ProtocolMessage * raw = &msg;
+    std::shared_ptr<fts::ProtocolMessage> shared_msg = std::make_shared<fts::ProtocolMessage>(std::move(msg));
 
-    _ioService.post([this, raw]() {
+    _ioService.post([this, shared_msg]() {
         bool in_progress = !_outMessages.empty();
 
-        std::unique_ptr<fts::ProtocolMessage> copy(raw);
-        _outMessages.push_back(std::move(copy));
+        _outMessages.push_back(shared_msg);
 
         if (!in_progress)
             writeNext();

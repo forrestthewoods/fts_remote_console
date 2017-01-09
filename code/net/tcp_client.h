@@ -54,7 +54,7 @@ private:
     asio::ip::tcp::socket _socket;
 
     std::array<uint8_t, 4096> _receiveBuf;
-    std::deque<std::unique_ptr<fts::ProtocolMessage>> _outMessages;
+    std::deque<std::shared_ptr<fts::ProtocolMessage>> _outMessages;
     std::deque<std::unique_ptr<fts::ProtocolMessage>> _inMessages;
 };
 

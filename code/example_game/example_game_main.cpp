@@ -110,7 +110,7 @@ int main() {
             fbb.Finish(fbbMsg);
 
             // Send broadcast info
-            fts::ProtocolMessage protoMsg(fbb.GetBufferPointer(), fbb.GetSize());
+            fts::ProtocolMessage protoMsg(fbb.GetBufferPointer(), fbb.GetSize());   // this makes a copy of the FBB data
             broadcaster.send(std::move(protoMsg));
             fbb.Clear();
 
