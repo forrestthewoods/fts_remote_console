@@ -67,7 +67,6 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
@@ -110,7 +109,6 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
@@ -153,7 +151,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
@@ -196,7 +193,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
@@ -269,10 +265,6 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o: ../../../code/thirdparty/glfw/src/cocoa_time.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
 $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
@@ -293,10 +285,6 @@ $(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/in
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o: ../../../code/thirdparty/glfw/src/linux_joystick.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
 $(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/monitor.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
@@ -310,34 +298,6 @@ $(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o: ../../../code/thirdparty/glfw/sr
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/vulkan.o: ../../../code/thirdparty/glfw/src/vulkan.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o: ../../../code/thirdparty/glfw/src/wgl_context.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o: ../../../code/thirdparty/glfw/src/win32_init.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o: ../../../code/thirdparty/glfw/src/win32_joystick.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o: ../../../code/thirdparty/glfw/src/win32_monitor.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o: ../../../code/thirdparty/glfw/src/win32_time.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o: ../../../code/thirdparty/glfw/src/win32_tls.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o: ../../../code/thirdparty/glfw/src/win32_window.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

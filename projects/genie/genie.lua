@@ -272,17 +272,8 @@ solution "fts_console"
             files { 
                 path.join(ROOT_DIR, "code/thirdparty/glfw/include/**.h"),
 
-                path.join(glfw_src, "egl_context.h"),
-                path.join(glfw_src, "glfw_config.h"),
-                path.join(glfw_src, "internal.h"),
-
-                path.join(glfw_src, "context.c"),
-                path.join(glfw_src, "egl_context.c"),
-                path.join(glfw_src, "init.c"),
-                path.join(glfw_src, "input.c"),
-                path.join(glfw_src, "monitor.c"),
-                path.join(glfw_src, "vulkan.c"),
-                path.join(glfw_src, "window.c"),
+                path.join(glfw_src, "**.h"),
+                path.join(glfw_src, "**.c"),
             }
 
             includedirs { 
@@ -290,11 +281,15 @@ solution "fts_console"
             }
 
             configuration "windows"
-                files { 
-                    path.join(glfw_src, "wgl_context.h"),
-                    path.join(glfw_src, "wgl_context.c"),
-                    path.join(glfw_src, "win32**.h"),
-                    path.join(glfw_src, "win32**.c"),
+                excludes {
+                    path.join(glfw_src, "linux**"),
+                    path.join(glfw_src, "cocoa**"),
+                    path.join(glfw_src, "posix**"),
+                    path.join(glfw_src, "x11**"),
+                    path.join(glfw_src, "glx**"),
+                    path.join(glfw_src, "mir**"),
+                    path.join(glfw_src, "wl**"),
+                    path.join(glfw_src, "xkb**"),
                 }
 
                 defines {
@@ -303,15 +298,20 @@ solution "fts_console"
                 }
 
             configuration "linux"
-                files { 
-                    path.join(glfw_src, "linux**.h"),
-                    path.join(glfw_src, "linux**.c"),
-                    path.join(glfw_src, "posix**.h"),
-                    path.join(glfw_src, "posix**.c"),
-                    path.join(glfw_src, "x11**.h"),
-                    path.join(glfw_src, "x11**.c"),
-                    path.join(glfw_src, "glx_context.h"),
-                    path.join(glfw_src, "glx_context.c"),
+                excludes {
+                    path.join(glfw_src, "win32**"),
+                    path.join(glfw_src, "cocoa**"),
+                    path.join(glfw_src, "mir**"),
+                    path.join(glfw_src, "wl**"),
+                    path.join(glfw_src, "wgl**"),
+                    path.join(glfw_src, "xkb**"),
+
+                    path.join(glfw_src, "win32**"),
+                    path.join(glfw_src, "linux**"),
+                    path.join(glfw_src, "cocoa**"),
+                    path.join(glfw_src, "mir**"),
+                    path.join(glfw_src, "wl**"),
+                    path.join(glfw_src, "xkb**"),
                 }
 
                 defines {
@@ -319,12 +319,6 @@ solution "fts_console"
                 }
 
             configuration "osx"
-                files {
-                    path.join(ROOT_DIR, glfw_src, "posix**.h"),
-                    path.join(ROOT_DIR, glfw_src, "posix**.c"),
-                    path.join(ROOT_DIR, glfw_src, "cocoa**.h"),
-                    path.join(ROOT_DIR, glfw_src, "cocoa**.c"),
-                }
                 defines {
                     "_GLFW_COCOA"
                 }

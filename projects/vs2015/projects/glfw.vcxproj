@@ -206,26 +206,44 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\code\thirdparty\glfw\include\GLFW\glfw3.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\include\GLFW\glfw3native.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\cocoa_joystick.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\cocoa_platform.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\egl_context.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\glfw_config.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\glx_context.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\internal.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\linux_joystick.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\mir_platform.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\nsgl_context.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\posix_time.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\posix_tls.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\wgl_context.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\win32_joystick.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\win32_platform.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\linux_joystick.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\posix_time.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\posix_tls.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\wl_platform.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\x11_platform.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\glx_context.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\cocoa_joystick.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\cocoa_platform.h" />
+    <ClInclude Include="..\..\..\code\thirdparty\glfw\src\xkb_unicode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\cocoa_time.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\context.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\egl_context.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\glx_context.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\init.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
@@ -233,13 +251,52 @@
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\input.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\linux_joystick.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\mir_init.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\mir_monitor.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\mir_window.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\monitor.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\vulkan.c">
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\posix_time.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\window.c">
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\posix_tls.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\vulkan.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\wgl_context.c">
@@ -263,21 +320,24 @@
     <ClCompile Include="..\..\..\code\thirdparty\glfw\src\win32_window.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\linux_joystick.c">
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\window.c">
+      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\wl_init.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\posix_time.c">
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\wl_monitor.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\posix_tls.c">
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\wl_window.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -305,14 +365,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\glx_context.c">
-      <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\cocoa_time.c">
+    <ClCompile Include="..\..\..\code\thirdparty\glfw\src\xkb_unicode.c">
       <ObjectFileName>$(IntDir)code\thirdparty\glfw\src\</ObjectFileName>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
