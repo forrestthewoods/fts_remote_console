@@ -64,6 +64,7 @@ ifeq ($(config),debug32)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
@@ -71,7 +72,6 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
@@ -107,6 +107,7 @@ ifeq ($(config),release32)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
@@ -114,7 +115,6 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
@@ -150,6 +150,7 @@ ifeq ($(config),debug64)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
@@ -157,7 +158,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
@@ -193,6 +193,7 @@ ifeq ($(config),release64)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
@@ -200,7 +201,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
@@ -278,6 +278,10 @@ $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/egl_context.o: ../../../code/thirdparty/glfw/src/egl_context.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o: ../../../code/thirdparty/glfw/src/glx_context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

@@ -68,7 +68,6 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -105,7 +104,6 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -142,7 +140,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -179,7 +176,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
   define PREBUILDCMDS
@@ -245,11 +241,19 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o: ../../../code/thirdparty/glfw/src/cocoa_time.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/egl_context.o: ../../../code/thirdparty/glfw/src/egl_context.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o: ../../../code/thirdparty/glfw/src/glx_context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
@@ -261,7 +265,19 @@ $(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/in
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
+$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o: ../../../code/thirdparty/glfw/src/linux_joystick.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
 $(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/monitor.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o: ../../../code/thirdparty/glfw/src/posix_time.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o: ../../../code/thirdparty/glfw/src/posix_tls.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
@@ -298,6 +314,18 @@ $(OBJDIR)/code/thirdparty/glfw/src/win32_window.o: ../../../code/thirdparty/glfw
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/window.o: ../../../code/thirdparty/glfw/src/window.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o: ../../../code/thirdparty/glfw/src/x11_init.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o: ../../../code/thirdparty/glfw/src/x11_monitor.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o: ../../../code/thirdparty/glfw/src/x11_window.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

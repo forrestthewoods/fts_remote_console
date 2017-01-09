@@ -81,6 +81,7 @@ solution "fts_console"
 
         includedirs {
             path.join(ROOT_DIR, "code/thirdparty"),
+            path.join(ROOT_DIR, "code/thirdparty/asio"),
             path.join(ROOT_DIR, "code/thirdparty/imgui"),
             path.join(ROOT_DIR, "code/thirdparty/glfw/include"),
             path.join(ROOT_DIR, "code") 
@@ -92,9 +93,6 @@ solution "fts_console"
             "glfw",
             "flatbuffers",
             "net",
-
-            -- external
-            "opengl32"
         }
 
         defines {
@@ -104,7 +102,12 @@ solution "fts_console"
         configuration "windows"
             links {
                 "ws2_32",
-                "shcore"
+                "shcore",
+                "opengl32"
+            }
+
+        configuration "not windows"
+            links {
             }
 
         fts_project("fts_remote_console")
@@ -272,7 +275,6 @@ solution "fts_console"
                 path.join(glfw_src, "egl_context.h"),
                 path.join(glfw_src, "glfw_config.h"),
                 path.join(glfw_src, "internal.h"),
-                path.join(glfw_src, "wgl_context.h"),
 
                 path.join(glfw_src, "context.c"),
                 path.join(glfw_src, "egl_context.c"),
@@ -280,7 +282,6 @@ solution "fts_console"
                 path.join(glfw_src, "input.c"),
                 path.join(glfw_src, "monitor.c"),
                 path.join(glfw_src, "vulkan.c"),
-                path.join(glfw_src, "wgl_context.c"),
                 path.join(glfw_src, "window.c"),
             }
 
@@ -290,8 +291,10 @@ solution "fts_console"
 
             configuration "windows"
                 files { 
-                    path.join(ROOT_DIR, glfw_src, "win32**.h"),
-                    path.join(ROOT_DIR, glfw_src, "win32**.c"),
+                    path.join(glfw_src, "wgl_context.h"),
+                    path.join(glfw_src, "wgl_context.c"),
+                    path.join(glfw_src, "win32**.h"),
+                    path.join(glfw_src, "win32**.c"),
                 }
 
                 defines {
@@ -301,12 +304,14 @@ solution "fts_console"
 
             configuration "linux"
                 files { 
-                    path.join(ROOT_DIR, glfw_src, "linux**.h"),
-                    path.join(ROOT_DIR, glfw_src, "linux**.c"),
-                    path.join(ROOT_DIR, glfw_src, "posix**.h"),
-                    path.join(ROOT_DIR, glfw_src, "posix**.c"),
-                    path.join(ROOT_DIR, glfw_src, "x11**.h"),
-                    path.join(ROOT_DIR, glfw_src, "x11**.c"),
+                    path.join(glfw_src, "linux**.h"),
+                    path.join(glfw_src, "linux**.c"),
+                    path.join(glfw_src, "posix**.h"),
+                    path.join(glfw_src, "posix**.c"),
+                    path.join(glfw_src, "x11**.h"),
+                    path.join(glfw_src, "x11**.c"),
+                    path.join(glfw_src, "glx_context.h"),
+                    path.join(glfw_src, "glx_context.c"),
                 }
 
                 defines {
