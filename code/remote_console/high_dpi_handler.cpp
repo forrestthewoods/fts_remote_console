@@ -35,6 +35,12 @@ namespace fts {
 		ImGui::GetIO().FontGlobalScale = scale;
     }
 
-#endif // FTS_WINDOWS
+#else
+
+    void InitDPI() {
+    	// $$$FTS - Figure out high dpi configuration for Linux/OSX
+    }
+
+#endif 
 
 } // namespace fts

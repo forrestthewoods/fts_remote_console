@@ -106,8 +106,13 @@ solution "fts_console"
                 "opengl32"
             }
 
-        configuration "not windows"
+        configuration "linux"
             links {
+                "GL",
+                "glut",
+                "Xrandr",
+                "Xinerama",
+                "Xcursor",
             }
 
         fts_project("fts_remote_console")
@@ -146,7 +151,7 @@ solution "fts_console"
                 "ws2_32",
             }
 
-        configuration "not windows"
+        configuration "linux"
             links {
                 "pthread"
             }
@@ -304,14 +309,6 @@ solution "fts_console"
                     path.join(glfw_src, "mir**"),
                     path.join(glfw_src, "wl**"),
                     path.join(glfw_src, "wgl**"),
-                    path.join(glfw_src, "xkb**"),
-
-                    path.join(glfw_src, "win32**"),
-                    path.join(glfw_src, "linux**"),
-                    path.join(glfw_src, "cocoa**"),
-                    path.join(glfw_src, "mir**"),
-                    path.join(glfw_src, "wl**"),
-                    path.join(glfw_src, "xkb**"),
                 }
 
                 defines {
