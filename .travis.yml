@@ -15,28 +15,18 @@ addons:
     - llvm-toolchain-precise-3.6
     packages:
     - gcc-4.9
-    - gcc-4.9-multilib
     - g++-4.9
-    - g++-4.9-multilib
     - clang-3.6
-    - linux-libc-dev:amd64
-    - linux-libc-dev:i386
+    - linux-libc-dev
     - libx11-dev
-    - libx11-dev:i386
     - libxcursor-dev
-    - libxcursor-dev:i386
     - libxi-dev
     - libxi-dev:i386
     - libxinerama-dev
-    - libxinerama-dev:i386
     - libxrandr-dev
-    - libxrandr-dev:i386
     - mesa-common-dev
-    - mesa-common-dev:i386
     - libglu1-mesa-dev
-    - libglu1-mesa-dev:i386
     - freeglut3-dev
-    - freeglut3-dev:i386
 
 branches:
   only:
@@ -49,11 +39,9 @@ before_script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ln -s -v -f $(which gcc-4.9) /usr/bin/gcc; fi
 
 script:
-  #- gcc --version
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then dpkg --get-selections | grep -v deinstall; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi
-  - make all
+  - make config=release64
 
 notifications:
   email: false
