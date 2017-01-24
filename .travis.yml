@@ -22,13 +22,21 @@ addons:
     - linux-libc-dev:amd64
     - linux-libc-dev:i386
     - libx11-dev
+    - libx11-dev:i386
     - libxcursor-dev
+    - libxcursor-dev:i386
     - libxi-dev
+    - libxi-dev:i386
     - libxinerama-dev
+    - libxinerama-dev:i386
     - libxrandr-dev
+    - libxrandr-dev:i386
     - mesa-common-dev
+    - mesa-common-dev:i386
     - libglu1-mesa-dev
+    - libglu1-mesa-dev:i386
     - freeglut3-dev
+    - freeglut3-dev:i386
 
 branches:
   only:
