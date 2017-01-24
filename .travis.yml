@@ -19,6 +19,8 @@ addons:
     - g++-4.9
     - g++-4.9-multilib
     - clang-3.6
+    - linux-libc-dev:amd64
+    - linux-libc-dev:i386
     - libx11-dev
     - libxcursor-dev
     - libxi-dev
@@ -27,8 +29,6 @@ addons:
     - mesa-common-dev
     - libglu1-mesa-dev
     - freeglut3-dev
-    #- linux-libc-dev:amd64
-    #- linux-libc-dev:i386
 
 branches:
   only:
