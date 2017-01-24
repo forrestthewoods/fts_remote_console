@@ -29,7 +29,6 @@ addons:
     - mesa-common-dev
     - libglu1-mesa-dev
     - freeglut3-dev
-    - libglfw3-dev
 
 branches:
   only:
@@ -43,6 +42,7 @@ before_script:
 
 script:
   #- gcc --version
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then dpkg --get-selections | grep -v deinstall; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi
   - make all
