@@ -39,6 +39,7 @@ before_script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ln -s -v -f $(which gcc-4.9) /usr/bin/gcc; fi
 
 script:
+  - gcc --version
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi
   - make config=release64
