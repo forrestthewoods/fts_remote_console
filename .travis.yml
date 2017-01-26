@@ -1,12 +1,22 @@
 language: cpp
 
-compiler:
-  - gcc
-  - clang
+matrix:
+  include:
+      - os: linux
+        compiler: gcc
+        env: CXX_COMPILER='g++-4.9' C_COMPILER='gcc-4.9'
+      
+      - os: linux
+        compiler: clang
+        env: CXX_COMPILER='clang++-3.6' C_COMPILER='clang-3.6'
 
-os:
-  - linux
-  - osx
+      - os: osx
+        compiler: gcc
+        env: CXX_COMPILER='g++-4.9' C_COMPILER='gcc-4.9'
+
+      - os: osx
+        compiler: clang
+        env: CXX_COMPILER='clang++-3.6' C_COMPILER='clang-3.6'
 
 addons:
   apt:
@@ -17,6 +27,7 @@ addons:
     - gcc-4.9
     - g++-4.9
     - clang-3.6
+    - clang++-3.6
     - linux-libc-dev
     - libx11-dev
     - libxcursor-dev
