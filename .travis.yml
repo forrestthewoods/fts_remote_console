@@ -26,6 +26,10 @@ addons:
     - mesa-common-dev
     - libglu1-mesa-dev
     - freeglut3-dev
+  artifacts:
+    paths:
+      - projects\gmake_linux\bin\**\fts_remote_console\
+      - projects\gmake_linux\bin\**\example_game\
 
 branches:
   only:
@@ -44,3 +48,12 @@ script:
 
 notifications:
   email: false
+
+deploy:
+  provider: s3
+  access_key_id: AKIAJHCSHBXX3TPZMHIA
+  secret_access_key:
+    secure: UkdI9pPtmG95vTebGSajc6bBKwulFft0wQheiCsoKdlLY/mb4CHYs5cFWI4zkSNpBo9vGCk/lfYK5Hs7Vpi7fEGgfPEC1kseRQ3JTJdpI0I7vACkzrqWYkCP50pnY3OcaTmzjs238e1kc2Dr8acXjNyaDMsTYjaYWFcvuCtNUxv3TpO73v+nVPe391KpTv/vjSnWxX7vWoTr3ZaPzBhy7a/hQ/6tSvbePm7WXy7zlQehFfC5oTa/zaoeU5GUHLpLtTD8LP4iCjCaMruhLd4kk5VGG/951glXhx+2jHD+NMnK7N6bvLzOciyKu7kX3biJhD7lq4UloT0E2eh1BbQqIB8vSfYQ87XnxaRX977CT3zT0L03vGOrdsvhcd2BoCZSpBS9iboMsvLsXJDHvbbk1+6uOBk0hR0Z4i3g6qg7SiJu17Tz6wnWueZpC7kU3B176osEZyoDJNA9cNBo4+9lWWCzT/WBbWnab4X0BVqYxCZHgLbeYeTOoW+N4y9sKtsdsXa3pKxGoaVZWqZN095Q9Ahkh7pZGM6FSffuHMeu6w+OIJaX+kV2xbfWOkh+KvPjc25j1st7XeSwid/N5G6YsA1HRKbm7xJ+qlK+ePYobf3rvbWMN18ykL09EAewk94PeqJxQJPDx/J7OKdUzVWFxFia2VH5MUATTQ2ZrUXSfjY=
+  bucket: forrestthewoods.binaries
+  skip_cleanup: true
+  acl: public_read
