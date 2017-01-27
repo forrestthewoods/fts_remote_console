@@ -4,19 +4,19 @@ matrix:
   include:
       - os: linux
         compiler: gcc
-        env: CXX_COMPILER='g++-4.9' C_COMPILER='gcc-4.9'
+        env: cxx=g++-4.9 cc=gcc-4.9
       
       - os: linux
         compiler: clang
-        env: CXX_COMPILER='clang++-3.6' C_COMPILER='clang-3.6'
+        env: cxx=clang++-3.6 cc=clang-3.6
 
       - os: osx
         compiler: gcc
-        env: CXX_COMPILER='g++-4.9' C_COMPILER='gcc-4.9'
+        env: cxx=g++-4.9 cc=gcc-4.9
 
       - os: osx
         compiler: clang
-        env: CXX_COMPILER='clang++-3.6' C_COMPILER='clang-3.6'
+        env: cxx=clang++-3.6 cc=clang-3.6
 
 addons:
   apt:
@@ -37,7 +37,6 @@ addons:
     - mesa-common-dev
     - libglu1-mesa-dev
     - freeglut3-dev
-
 
 branches:
   only:
