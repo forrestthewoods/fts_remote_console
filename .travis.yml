@@ -16,8 +16,7 @@ addons:
     packages:
     - gcc-4.9
     - g++-4.9
-    - clang-3.6
-    - clang++-3.6
+    - clang
     - linux-libc-dev
     - libx11-dev
     - libxcursor-dev
@@ -34,10 +33,9 @@ branches:
 
 script:
   - gcc --version
+  - clang --version
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; make config=release64 CXX="g++-4.9" CC="gcc-4.9"; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; make config=release64; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; make config=release64; CXX="clang++" CC=clang"; fi
 
 notifications:
   email: false
-
-osx_image: xcode7.3
