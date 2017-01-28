@@ -204,8 +204,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\include\GLFW\glfw3.h" />
-    <ClInclude Include="..\..\..\code\thirdparty\glfw\include\GLFW\glfw3native.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\cocoa_joystick.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\cocoa_platform.h" />
     <ClInclude Include="..\..\..\code\thirdparty\glfw\src\egl_context.h" />

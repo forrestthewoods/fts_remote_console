@@ -279,10 +279,11 @@ solution "fts_console"
             location (path.join(SLN_DIR, "projects"))
             flags { "NoEditAndContinue" }
 
+            glfw_include = path.join(ROOT_DIR, "code/thirdparty/glfw/include")
             glfw_src = path.join(ROOT_DIR, "code/thirdparty/glfw/src")
 
             files { 
-                path.join(ROOT_DIR, "code/thirdparty/glfw/include/**.h"),
+                path.join(glfw_include, "code/thirdparty/glfw/include/**.h"),
 
                 path.join(glfw_src, "**.h"),
                 path.join(glfw_src, "**.c"),
@@ -338,6 +339,7 @@ solution "fts_console"
                     path.join(glfw_src, "xkb**"),
                     path.join(glfw_src, "wgl**"),
                     path.join(glfw_src, "osmesa**"),
+                    path.join(glfw_src, "posix_time.h"),
                 }
 
                 defines {
