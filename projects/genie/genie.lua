@@ -42,16 +42,16 @@ function fts_project(project_name)
             defines { "FTS_LINUX" }
             buildoptions_cpp { "-std=c++11", }
 
-        configuration "osx"
+        configuration "macosx"
             defines { "FTS_OSX" }
             buildoptions_cpp { "-std=c++11", }
 
-            for i, platform in ipairs(PLATFORMS) do
-                for j, build in ipairs(BUILDS) do
-                    configuration { platform, build }
-                    targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build, project_name))
-                end
+        for i, platform in ipairs(PLATFORMS) do
+            for j, build in ipairs(BUILDS) do
+                configuration { platform, build }
+                targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build, project_name))
             end
+        end
 
         configuration {}
 end
@@ -315,7 +315,7 @@ solution "fts_console"
                     "_GLFW_X11"
                 }
 
-            configuration "osx"
+            configuration "macosx"
                 defines {
                     "_GLFW_COCOA"
                 }
