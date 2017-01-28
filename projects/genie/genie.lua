@@ -116,9 +116,6 @@ solution "fts_console"
             }
 
         configuration "macosx"
-            links {
-                "glut",
-            }
             linkoptions {
                 "-framework Cocoa",
                 "-framework IOKit",
