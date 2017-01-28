@@ -156,6 +156,12 @@ solution "fts_console"
                 "pthread"
             }
 
+        configuration "macosx"
+            buildoptions { 
+                "-Wmissing-braces",
+                "-Wunused-local-typedef"
+            }
+
 
         fts_project("example_game")
 
@@ -231,6 +237,11 @@ solution "fts_console"
         defines {
             "ASIO_STANDALONE"
         }
+
+        configuration "macosx"
+            buildoptions {
+                "-Wdeprecated-declarations"
+            }
         
         fts_project("net")
 
@@ -264,8 +275,6 @@ solution "fts_console"
             configuration "macosx"
                 buildoptions { 
                     "-Wdeprecated-declarations", 
-                    "-Wmissing-braces",
-                    "-Wunused-local-typedef"
                 }
 
             fts_project("flatbuffers")
@@ -323,6 +332,18 @@ solution "fts_console"
                 }
 
             configuration "macosx"
+                excludes {
+                    path.join(glfw_src, "win32**"),
+                    path.join(glfw_src, "linux**"),
+                    path.join(glfw_src, "x11**"),
+                    path.join(glfw_src, "glx**"),
+                    path.join(glfw_src, "mir**"),
+                    path.join(glfw_src, "wl**"),
+                    path.join(glfw_src, "xkb**"),
+                    path.join(glfw_src, "wgl**"),
+                    path.join(glfw_src, "egl**"),
+                }
+
                 defines {
                     "_GLFW_COCOA"
                 }

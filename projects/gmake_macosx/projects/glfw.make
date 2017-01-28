@@ -64,33 +64,13 @@ ifeq ($(config),debug32)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/xkb_unicode.o \
 
   define PREBUILDCMDS
   endef
@@ -122,33 +102,13 @@ ifeq ($(config),release32)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/xkb_unicode.o \
 
   define PREBUILDCMDS
   endef
@@ -180,33 +140,13 @@ ifeq ($(config),debug64)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/xkb_unicode.o \
 
   define PREBUILDCMDS
   endef
@@ -238,33 +178,13 @@ ifeq ($(config),release64)
   OBJECTS := \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/mir_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/wl_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/xkb_unicode.o \
 
   define PREBUILDCMDS
   endef
@@ -337,35 +257,11 @@ $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o: ../../../code/thirdparty/glfw/src/egl_context.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/glx_context.o: ../../../code/thirdparty/glfw/src/glx_context.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
 $(OBJDIR)/code/thirdparty/glfw/src/init.o: ../../../code/thirdparty/glfw/src/init.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/input.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/linux_joystick.o: ../../../code/thirdparty/glfw/src/linux_joystick.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/mir_init.o: ../../../code/thirdparty/glfw/src/mir_init.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/mir_monitor.o: ../../../code/thirdparty/glfw/src/mir_monitor.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/mir_window.o: ../../../code/thirdparty/glfw/src/mir_window.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
@@ -385,63 +281,7 @@ $(OBJDIR)/code/thirdparty/glfw/src/vulkan.o: ../../../code/thirdparty/glfw/src/v
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
-$(OBJDIR)/code/thirdparty/glfw/src/wgl_context.o: ../../../code/thirdparty/glfw/src/wgl_context.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_init.o: ../../../code/thirdparty/glfw/src/win32_init.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_joystick.o: ../../../code/thirdparty/glfw/src/win32_joystick.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_monitor.o: ../../../code/thirdparty/glfw/src/win32_monitor.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_time.o: ../../../code/thirdparty/glfw/src/win32_time.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_tls.o: ../../../code/thirdparty/glfw/src/win32_tls.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/win32_window.o: ../../../code/thirdparty/glfw/src/win32_window.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
 $(OBJDIR)/code/thirdparty/glfw/src/window.o: ../../../code/thirdparty/glfw/src/window.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/wl_init.o: ../../../code/thirdparty/glfw/src/wl_init.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/wl_monitor.o: ../../../code/thirdparty/glfw/src/wl_monitor.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/wl_window.o: ../../../code/thirdparty/glfw/src/wl_window.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/x11_init.o: ../../../code/thirdparty/glfw/src/x11_init.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/x11_monitor.o: ../../../code/thirdparty/glfw/src/x11_monitor.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/x11_window.o: ../../../code/thirdparty/glfw/src/x11_window.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/xkb_unicode.o: ../../../code/thirdparty/glfw/src/xkb_unicode.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
