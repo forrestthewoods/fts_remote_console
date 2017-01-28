@@ -44,7 +44,7 @@ MAKEFILE = protocol.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/protocol
-  TARGETDIR           = ../bin/x32_debug/protocol
+  TARGETDIR           = ../bin/x32_debug_gmake/protocol
   TARGET              = $(TARGETDIR)/libprotocol.a
   DEFINES            += -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -66,7 +66,7 @@ ifeq ($(config),debug32)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	../bin/x32_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	../bin/x32_debug_gmake/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -76,7 +76,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/protocol
-  TARGETDIR           = ../bin/x32_release/protocol
+  TARGETDIR           = ../bin/x32_release_gmake/protocol
   TARGET              = $(TARGETDIR)/libprotocol.a
   DEFINES            += -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -98,7 +98,7 @@ ifeq ($(config),release32)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	../bin/x32_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	../bin/x32_release_gmake/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -108,7 +108,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/protocol
-  TARGETDIR           = ../bin/x64_debug/protocol
+  TARGETDIR           = ../bin/x64_debug_gmake/protocol
   TARGET              = $(TARGETDIR)/libprotocol.a
   DEFINES            += -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -130,7 +130,7 @@ ifeq ($(config),debug64)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	../bin/x64_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	../bin/x64_debug_gmake/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef
@@ -140,7 +140,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/protocol
-  TARGETDIR           = ../bin/x64_release/protocol
+  TARGETDIR           = ../bin/x64_release_gmake/protocol
   TARGET              = $(TARGETDIR)/libprotocol.a
   DEFINES            += -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -162,7 +162,7 @@ ifeq ($(config),release64)
 
   define PREBUILDCMDS
 	@echo Running pre-build commands
-	../bin/x64_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
+	../bin/x64_release_gmake/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs
   endef
   define PRELINKCMDS
   endef

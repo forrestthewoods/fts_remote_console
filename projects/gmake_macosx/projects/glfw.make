@@ -44,9 +44,9 @@ MAKEFILE = glfw.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/glfw
-  TARGETDIR           = ../bin/x32_debug/imgui
+  TARGETDIR           = ../bin/x32_debug_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_COCOA -DDEBUG -DFTS_OSX
+  DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -67,8 +67,6 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -82,9 +80,9 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/glfw
-  TARGETDIR           = ../bin/x32_release/imgui
+  TARGETDIR           = ../bin/x32_release_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_COCOA -DNDEBUG -DFTS_OSX
+  DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -105,8 +103,6 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -120,9 +116,9 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/glfw
-  TARGETDIR           = ../bin/x64_debug/imgui
+  TARGETDIR           = ../bin/x64_debug_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_COCOA -DDEBUG -DFTS_OSX
+  DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -143,8 +139,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -158,9 +152,9 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/glfw
-  TARGETDIR           = ../bin/x64_release/imgui
+  TARGETDIR           = ../bin/x64_release_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
-  DEFINES            += -D_GLFW_COCOA -DNDEBUG -DFTS_OSX
+  DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -181,8 +175,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -266,14 +258,6 @@ $(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/in
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/monitor.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o: ../../../code/thirdparty/glfw/src/posix_time.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o: ../../../code/thirdparty/glfw/src/posix_tls.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 

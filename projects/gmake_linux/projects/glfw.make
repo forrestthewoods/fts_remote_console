@@ -44,7 +44,7 @@ MAKEFILE = glfw.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/glfw
-  TARGETDIR           = ../bin/x32_debug/imgui
+  TARGETDIR           = ../bin/x32_debug_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_X11 -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
@@ -88,7 +88,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/glfw
-  TARGETDIR           = ../bin/x32_release/imgui
+  TARGETDIR           = ../bin/x32_release_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_X11 -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
@@ -132,7 +132,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/glfw
-  TARGETDIR           = ../bin/x64_debug/imgui
+  TARGETDIR           = ../bin/x64_debug_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_X11 -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
@@ -176,7 +176,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/glfw
-  TARGETDIR           = ../bin/x64_release/imgui
+  TARGETDIR           = ../bin/x64_release_gmake/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_X11 -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty

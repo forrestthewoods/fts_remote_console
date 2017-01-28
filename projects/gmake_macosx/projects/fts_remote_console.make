@@ -44,7 +44,7 @@ MAKEFILE = fts_remote_console.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/fts_remote_console
-  TARGETDIR           = ../bin/x32_debug/fts_remote_console/fts_remote_console.app/Contents/MacOS
+  TARGETDIR           = ../bin/x32_debug_gmake/fts_remote_console/fts_remote_console.app/Contents/MacOS
   TARGET              = $(TARGETDIR)/fts_remote_console
   DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
@@ -56,8 +56,8 @@ ifeq ($(config),debug32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/imgui -L../bin/x32_debug/net -m32
-  LDDEPS             += ../bin/x32_debug/imgui/libimgui.a ../bin/x32_debug/imgui/libglfw.a ../bin/x32_debug/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug_gmake/imgui -L../bin/x32_debug_gmake/net -m32
+  LDDEPS             += ../bin/x32_debug_gmake/imgui/libimgui.a ../bin/x32_debug_gmake/imgui/libglfw.a ../bin/x32_debug_gmake/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -81,7 +81,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/fts_remote_console
-  TARGETDIR           = ../bin/x32_release/fts_remote_console/fts_remote_console.app/Contents/MacOS
+  TARGETDIR           = ../bin/x32_release_gmake/fts_remote_console/fts_remote_console.app/Contents/MacOS
   TARGET              = $(TARGETDIR)/fts_remote_console
   DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
@@ -93,8 +93,8 @@ ifeq ($(config),release32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/imgui -L../bin/x32_release/net -m32
-  LDDEPS             += ../bin/x32_release/imgui/libimgui.a ../bin/x32_release/imgui/libglfw.a ../bin/x32_release/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release_gmake/imgui -L../bin/x32_release_gmake/net -m32
+  LDDEPS             += ../bin/x32_release_gmake/imgui/libimgui.a ../bin/x32_release_gmake/imgui/libglfw.a ../bin/x32_release_gmake/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -118,7 +118,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/fts_remote_console
-  TARGETDIR           = ../bin/x64_debug/fts_remote_console/fts_remote_console.app/Contents/MacOS
+  TARGETDIR           = ../bin/x64_debug_gmake/fts_remote_console/fts_remote_console.app/Contents/MacOS
   TARGET              = $(TARGETDIR)/fts_remote_console
   DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
@@ -130,8 +130,8 @@ ifeq ($(config),debug64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/imgui -L../bin/x64_debug/net -m64
-  LDDEPS             += ../bin/x64_debug/imgui/libimgui.a ../bin/x64_debug/imgui/libglfw.a ../bin/x64_debug/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug_gmake/imgui -L../bin/x64_debug_gmake/net -m64
+  LDDEPS             += ../bin/x64_debug_gmake/imgui/libimgui.a ../bin/x64_debug_gmake/imgui/libglfw.a ../bin/x64_debug_gmake/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -155,7 +155,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/fts_remote_console
-  TARGETDIR           = ../bin/x64_release/fts_remote_console/fts_remote_console.app/Contents/MacOS
+  TARGETDIR           = ../bin/x64_release_gmake/fts_remote_console/fts_remote_console.app/Contents/MacOS
   TARGET              = $(TARGETDIR)/fts_remote_console
   DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
@@ -167,8 +167,8 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/imgui -L../bin/x64_release/net -m64
-  LDDEPS             += ../bin/x64_release/imgui/libimgui.a ../bin/x64_release/imgui/libglfw.a ../bin/x64_release/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release_gmake/imgui -L../bin/x64_release_gmake/net -m64
+  LDDEPS             += ../bin/x64_release_gmake/imgui/libimgui.a ../bin/x64_release_gmake/imgui/libglfw.a ../bin/x64_release_gmake/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)

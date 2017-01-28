@@ -49,7 +49,7 @@ function fts_project(project_name)
         for i, platform in ipairs(PLATFORMS) do
             for j, build in ipairs(BUILDS) do
                 configuration { platform, build }
-                targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build, project_name))
+                targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build .. "_" .. _ACTION, project_name))
             end
         end
 
@@ -156,13 +156,6 @@ solution "fts_console"
                 "pthread"
             }
 
-        configuration "macosx"
-            buildoptions { 
-                "-Wmissing-braces",
-                "-Wunused-local-typedef"
-            }
-
-
         fts_project("example_game")
 
 
@@ -199,9 +192,9 @@ solution "fts_console"
         for i, platform in ipairs(PLATFORMS) do
             for j, build in ipairs(BUILDS) do
                 configuration { platform, build, "vs*" }
-                    prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                    prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."_".._ACTION.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
                 configuration { platform, build, "not vs*" }
-                   prebuildcommands { "../bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                   prebuildcommands { "../bin/"..platform.."_"..build.."_".._ACTION.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
             end
         end
 
@@ -238,11 +231,6 @@ solution "fts_console"
             "ASIO_STANDALONE"
         }
 
-        configuration "macosx"
-            buildoptions {
-                "-Wdeprecated-declarations"
-            }
-        
         fts_project("net")
 
 
@@ -271,11 +259,6 @@ solution "fts_console"
             defines {
                 "FLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE"
             }
-
-            configuration "macosx"
-                buildoptions { 
-                    "-Wdeprecated-declarations", 
-                }
 
             fts_project("flatbuffers")
 
@@ -334,6 +317,7 @@ solution "fts_console"
             configuration "macosx"
                 excludes {
                     path.join(glfw_src, "win32**"),
+                    path.join(glfw_src, "posix**"),
                     path.join(glfw_src, "linux**"),
                     path.join(glfw_src, "x11**"),
                     path.join(glfw_src, "glx**"),
@@ -345,7 +329,8 @@ solution "fts_console"
                 }
 
                 defines {
-                    "_GLFW_COCOA"
+                    "_GLFW_COCOA",
+                    "GLFW_USE_RETINA"
                 }
 
             fts_project("imgui")

@@ -62,25 +62,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
-    <OutDir>..\bin\x32_debug\imgui\</OutDir>
+    <OutDir>..\bin\x32_debug_vs2015\imgui\</OutDir>
     <IntDir>..\build\x32\debug\imgui\</IntDir>
     <TargetName>imgui</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
-    <OutDir>..\bin\x64_debug\imgui\</OutDir>
+    <OutDir>..\bin\x64_debug_vs2015\imgui\</OutDir>
     <IntDir>..\build\x64\debug\imgui\</IntDir>
     <TargetName>imgui</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-    <OutDir>..\bin\x32_release\imgui\</OutDir>
+    <OutDir>..\bin\x32_release_vs2015\imgui\</OutDir>
     <IntDir>..\build\x32\release\imgui\</IntDir>
     <TargetName>imgui</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
-    <OutDir>..\bin\x64_release\imgui\</OutDir>
+    <OutDir>..\bin\x64_release_vs2015\imgui\</OutDir>
     <IntDir>..\build\x64\release\imgui\</IntDir>
     <TargetName>imgui</TargetName>
     <TargetExt>.lib</TargetExt>
