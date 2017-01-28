@@ -261,6 +261,13 @@ solution "fts_console"
                 "FLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE"
             }
 
+            configuration "macosx"
+                buildoptions { 
+                    "-Wdeprecated-declarations", 
+                    "-Wmissing-braces",
+                    "-Wunused-local-typedef"
+                }
+
             fts_project("flatbuffers")
 
 
