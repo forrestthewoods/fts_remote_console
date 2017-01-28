@@ -62,25 +62,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
-    <OutDir>..\bin\x32_debug_vs2015\protocol\</OutDir>
+    <OutDir>..\bin\x32_debug\protocol\</OutDir>
     <IntDir>..\build\x32\debug\protocol\</IntDir>
     <TargetName>protocol</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
-    <OutDir>..\bin\x64_debug_vs2015\protocol\</OutDir>
+    <OutDir>..\bin\x64_debug\protocol\</OutDir>
     <IntDir>..\build\x64\debug\protocol\</IntDir>
     <TargetName>protocol</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-    <OutDir>..\bin\x32_release_vs2015\protocol\</OutDir>
+    <OutDir>..\bin\x32_release\protocol\</OutDir>
     <IntDir>..\build\x32\release\protocol\</IntDir>
     <TargetName>protocol</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
-    <OutDir>..\bin\x64_release_vs2015\protocol\</OutDir>
+    <OutDir>..\bin\x64_release\protocol\</OutDir>
     <IntDir>..\build\x64\release\protocol\</IntDir>
     <TargetName>protocol</TargetName>
     <TargetExt>.lib</TargetExt>
@@ -114,7 +114,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>$(SolutionDir)bin/x32_debug_vs2015/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
+      <Command>$(SolutionDir)bin/x32_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
@@ -146,7 +146,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>$(SolutionDir)bin/x64_debug_vs2015/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
+      <Command>$(SolutionDir)bin/x64_debug/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
@@ -179,7 +179,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>$(SolutionDir)bin/x32_release_vs2015/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
+      <Command>$(SolutionDir)bin/x32_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
@@ -212,7 +212,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>$(SolutionDir)bin/x64_release_vs2015/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
+      <Command>$(SolutionDir)bin/x64_release/flatbuffers/flatc --cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

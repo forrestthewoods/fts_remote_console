@@ -44,7 +44,7 @@ MAKEFILE = flatbuffers.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/flatbuffers
-  TARGETDIR           = ../bin/x32_debug_gmake/flatbuffers
+  TARGETDIR           = ../bin/x32_debug/flatbuffers
   TARGET              = $(TARGETDIR)/flatc
   DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -80,7 +80,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/flatbuffers
-  TARGETDIR           = ../bin/x32_release_gmake/flatbuffers
+  TARGETDIR           = ../bin/x32_release/flatbuffers
   TARGET              = $(TARGETDIR)/flatc
   DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -116,7 +116,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/flatbuffers
-  TARGETDIR           = ../bin/x64_debug_gmake/flatbuffers
+  TARGETDIR           = ../bin/x64_debug/flatbuffers
   TARGET              = $(TARGETDIR)/flatc
   DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -152,7 +152,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/flatbuffers
-  TARGETDIR           = ../bin/x64_release_gmake/flatbuffers
+  TARGETDIR           = ../bin/x64_release/flatbuffers
   TARGET              = $(TARGETDIR)/flatc
   DEFINES            += -DFLATBUFFERS_TRACK_VERIFIER_BUFFER_SIZE -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty

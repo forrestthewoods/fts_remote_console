@@ -44,7 +44,7 @@ MAKEFILE = glfw.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/glfw
-  TARGETDIR           = ../bin/x32_debug_gmake/imgui
+  TARGETDIR           = ../bin/x32_debug/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -80,7 +80,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/glfw
-  TARGETDIR           = ../bin/x32_release_gmake/imgui
+  TARGETDIR           = ../bin/x32_release/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -116,7 +116,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/glfw
-  TARGETDIR           = ../bin/x64_debug_gmake/imgui
+  TARGETDIR           = ../bin/x64_debug/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty
@@ -152,7 +152,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/glfw
-  TARGETDIR           = ../bin/x64_release_gmake/imgui
+  TARGETDIR           = ../bin/x64_release/imgui
   TARGET              = $(TARGETDIR)/libglfw.a
   DEFINES            += -D_GLFW_COCOA -DGLFW_USE_RETINA -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty

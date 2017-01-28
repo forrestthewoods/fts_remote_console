@@ -44,7 +44,7 @@ MAKEFILE = imgui.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/imgui
-  TARGETDIR           = ../bin/x32_debug_gmake/imgui
+  TARGETDIR           = ../bin/x32_debug/imgui
   TARGET              = $(TARGETDIR)/libimgui.a
   DEFINES            += -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
@@ -76,7 +76,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/imgui
-  TARGETDIR           = ../bin/x32_release_gmake/imgui
+  TARGETDIR           = ../bin/x32_release/imgui
   TARGET              = $(TARGETDIR)/libimgui.a
   DEFINES            += -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
@@ -108,7 +108,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/imgui
-  TARGETDIR           = ../bin/x64_debug_gmake/imgui
+  TARGETDIR           = ../bin/x64_debug/imgui
   TARGET              = $(TARGETDIR)/libimgui.a
   DEFINES            += -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty
@@ -140,7 +140,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/imgui
-  TARGETDIR           = ../bin/x64_release_gmake/imgui
+  TARGETDIR           = ../bin/x64_release/imgui
   TARGET              = $(TARGETDIR)/libimgui.a
   DEFINES            += -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty

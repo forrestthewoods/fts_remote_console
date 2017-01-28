@@ -44,7 +44,7 @@ MAKEFILE = net.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/net
-  TARGETDIR           = ../bin/x32_debug_gmake/net
+  TARGETDIR           = ../bin/x32_debug/net
   TARGET              = $(TARGETDIR)/libnet.a
   DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -56,8 +56,8 @@ ifeq ($(config),debug32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug_gmake/protocol -m32
-  LDDEPS             += ../bin/x32_debug_gmake/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/protocol -m32
+  LDDEPS             += ../bin/x32_debug/protocol/libprotocol.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
@@ -79,7 +79,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/net
-  TARGETDIR           = ../bin/x32_release_gmake/net
+  TARGETDIR           = ../bin/x32_release/net
   TARGET              = $(TARGETDIR)/libnet.a
   DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -91,8 +91,8 @@ ifeq ($(config),release32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release_gmake/protocol -s -m32
-  LDDEPS             += ../bin/x32_release_gmake/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/protocol -s -m32
+  LDDEPS             += ../bin/x32_release/protocol/libprotocol.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
@@ -114,7 +114,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/net
-  TARGETDIR           = ../bin/x64_debug_gmake/net
+  TARGETDIR           = ../bin/x64_debug/net
   TARGET              = $(TARGETDIR)/libnet.a
   DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -126,8 +126,8 @@ ifeq ($(config),debug64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug_gmake/protocol -m64
-  LDDEPS             += ../bin/x64_debug_gmake/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/protocol -m64
+  LDDEPS             += ../bin/x64_debug/protocol/libprotocol.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
@@ -149,7 +149,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/net
-  TARGETDIR           = ../bin/x64_release_gmake/net
+  TARGETDIR           = ../bin/x64_release/net
   TARGET              = $(TARGETDIR)/libnet.a
   DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -161,8 +161,8 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release_gmake/protocol -s -m64
-  LDDEPS             += ../bin/x64_release_gmake/protocol/libprotocol.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/protocol -s -m64
+  LDDEPS             += ../bin/x64_release/protocol/libprotocol.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)

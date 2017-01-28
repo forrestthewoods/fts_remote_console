@@ -44,7 +44,7 @@ MAKEFILE = example_game.make
 
 ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/example_game
-  TARGETDIR           = ../bin/x32_debug_gmake/example_game
+  TARGETDIR           = ../bin/x32_debug/example_game
   TARGET              = $(TARGETDIR)/example_game
   DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -56,8 +56,8 @@ ifeq ($(config),debug32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug_gmake/net -m32
-  LDDEPS             += ../bin/x32_debug_gmake/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/net -m32
+  LDDEPS             += ../bin/x32_debug/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -74,7 +74,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/example_game
-  TARGETDIR           = ../bin/x32_release_gmake/example_game
+  TARGETDIR           = ../bin/x32_release/example_game
   TARGET              = $(TARGETDIR)/example_game
   DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -86,8 +86,8 @@ ifeq ($(config),release32)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m32
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release_gmake/net -m32
-  LDDEPS             += ../bin/x32_release_gmake/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/net -m32
+  LDDEPS             += ../bin/x32_release/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -104,7 +104,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/example_game
-  TARGETDIR           = ../bin/x64_debug_gmake/example_game
+  TARGETDIR           = ../bin/x64_debug/example_game
   TARGET              = $(TARGETDIR)/example_game
   DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -116,8 +116,8 @@ ifeq ($(config),debug64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug_gmake/net -m64
-  LDDEPS             += ../bin/x64_debug_gmake/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/net -m64
+  LDDEPS             += ../bin/x64_debug/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -134,7 +134,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/example_game
-  TARGETDIR           = ../bin/x64_release_gmake/example_game
+  TARGETDIR           = ../bin/x64_release/example_game
   TARGET              = $(TARGETDIR)/example_game
   DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_OSX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code
@@ -146,8 +146,8 @@ ifeq ($(config),release64)
   ALL_OBJCFLAGS      += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_OBJCPPFLAGS    += $(CXXFLAGS) $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -O2 -m64
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release_gmake/net -m64
-  LDDEPS             += ../bin/x64_release_gmake/net/libnet.a
+  ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/net -m64
+  LDDEPS             += ../bin/x64_release/net/libnet.a
   LIBS               += $(LDDEPS)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)

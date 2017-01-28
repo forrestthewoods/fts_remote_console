@@ -62,25 +62,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
-    <OutDir>..\bin\x32_debug_vs2015\net\</OutDir>
+    <OutDir>..\bin\x32_debug\net\</OutDir>
     <IntDir>..\build\x32\debug\net\</IntDir>
     <TargetName>net</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
-    <OutDir>..\bin\x64_debug_vs2015\net\</OutDir>
+    <OutDir>..\bin\x64_debug\net\</OutDir>
     <IntDir>..\build\x64\debug\net\</IntDir>
     <TargetName>net</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-    <OutDir>..\bin\x32_release_vs2015\net\</OutDir>
+    <OutDir>..\bin\x32_release\net\</OutDir>
     <IntDir>..\build\x32\release\net\</IntDir>
     <TargetName>net</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
-    <OutDir>..\bin\x64_release_vs2015\net\</OutDir>
+    <OutDir>..\bin\x64_release\net\</OutDir>
     <IntDir>..\build\x64\release\net\</IntDir>
     <TargetName>net</TargetName>
     <TargetExt>.lib</TargetExt>

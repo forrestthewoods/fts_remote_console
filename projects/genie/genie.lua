@@ -49,7 +49,7 @@ function fts_project(project_name)
         for i, platform in ipairs(PLATFORMS) do
             for j, build in ipairs(BUILDS) do
                 configuration { platform, build }
-                targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build .. "_" .. _ACTION, project_name))
+                targetdir (path.join(SLN_DIR, "bin", platform .. "_" .. build, project_name))
             end
         end
 
@@ -113,6 +113,14 @@ solution "fts_console"
                 "Xrandr",
                 "Xinerama",
                 "Xcursor",
+            }
+
+        configuration "macosx"
+            linkoptions {
+                "-framework Cocoa",
+                "-framework OpenGL",
+                "-framework IOKit",
+                "-framework CoreVideo",
             }
 
         fts_project("fts_remote_console")
@@ -192,9 +200,9 @@ solution "fts_console"
         for i, platform in ipairs(PLATFORMS) do
             for j, build in ipairs(BUILDS) do
                 configuration { platform, build, "vs*" }
-                    prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."_".._ACTION.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                    prebuildcommands { "$(SolutionDir)bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
                 configuration { platform, build, "not vs*" }
-                   prebuildcommands { "../bin/"..platform.."_"..build.."_".._ACTION.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
+                   prebuildcommands { "../bin/"..platform.."_"..build.."/flatbuffers/flatc ".."--cpp --scoped-enums -o ../../../code/protocol/ ../../../code/protocol/protocol.fbs" }
             end
         end
 
