@@ -286,6 +286,7 @@ solution "fts_console"
 
                 path.join(glfw_src, "**.h"),
                 path.join(glfw_src, "**.c"),
+                path.join(glfw_src, "**.m"),
             }
 
             includedirs { 
@@ -302,6 +303,8 @@ solution "fts_console"
                     path.join(glfw_src, "mir**"),
                     path.join(glfw_src, "wl**"),
                     path.join(glfw_src, "xkb**"),
+                    path.join(glfw_src, "osmesa**"),
+                    path.join(glfw_src, "nsgl**"),
                 }
 
                 defines {
@@ -316,6 +319,8 @@ solution "fts_console"
                     path.join(glfw_src, "mir**"),
                     path.join(glfw_src, "wl**"),
                     path.join(glfw_src, "wgl**"),
+                    path.join(glfw_src, "osmesa**"),
+                    path.join(glfw_src, "nsgl**"),
                 }
 
                 defines {
@@ -334,6 +339,7 @@ solution "fts_console"
                     path.join(glfw_src, "xkb**"),
                     path.join(glfw_src, "wgl**"),
                     path.join(glfw_src, "egl**"),
+                    path.join(glfw_src, "osmesa**"),
                 }
 
                 defines {

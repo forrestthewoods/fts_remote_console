@@ -1,8 +1,8 @@
-//========================================================================
-// GLFW 3.2 Win32 - www.glfw.org
+﻿//========================================================================
+// GLFW 3.3 Win32 - www.glfw.org
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
-// Copyright (c) 2006-2016 Camilla Berglund <elmindreda@glfw.org>
+// Copyright (c) 2006-2016 Camilla Löwy <elmindreda@glfw.org>
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -47,11 +47,7 @@ static _GLFWmonitor* createMonitor(DISPLAY_DEVICEW* adapter,
     else
         name = _glfwCreateUTF8FromWideStringWin32(adapter->DeviceString);
     if (!name)
-    {
-        _glfwInputError(GLFW_PLATFORM_ERROR,
-                        "Win32: Failed to convert string to UTF-8");
         return NULL;
-    }
 
     dc = CreateDCW(L"DISPLAY", adapter->DeviceName, NULL, NULL);
 
@@ -90,71 +86,21 @@ static _GLFWmonitor* createMonitor(DISPLAY_DEVICEW* adapter,
 //////                       GLFW internal API                      //////
 //////////////////////////////////////////////////////////////////////////
 
-// Change the current video mode
+// Poll for changes in the set of connected monitors
 //
-GLFWbool _glfwSetVideoModeWin32(_GLFWmonitor* monitor, const GLFWvidmode* desired)
+void _glfwPollMonitorsWin32(void)
 {
-    GLFWvidmode current;
-    const GLFWvidmode* best;
-    DEVMODEW dm;
-
-    best = _glfwChooseVideoMode(monitor, desired);
-    _glfwPlatformGetVideoMode(monitor, &current);
-    if (_glfwCompareVideoModes(&current, best) == 0)
-        return GLFW_TRUE;
-
-    ZeroMemory(&dm, sizeof(dm));
-    dm.dmSize = sizeof(DEVMODEW);
-    dm.dmFields           = DM_PELSWIDTH | DM_PELSHEIGHT | DM_BITSPERPEL |
-                            DM_DISPLAYFREQUENCY;
-    dm.dmPelsWidth        = best->width;
-    dm.dmPelsHeight       = best->height;
-    dm.dmBitsPerPel       = best->redBits + best->greenBits + best->blueBits;
-    dm.dmDisplayFrequency = best->refreshRate;
-
-    if (dm.dmBitsPerPel < 15 || dm.dmBitsPerPel >= 24)
-        dm.dmBitsPerPel = 32;
-
-    if (ChangeDisplaySettingsExW(monitor->win32.adapterName,
-                                 &dm,
-                                 NULL,
-                                 CDS_FULLSCREEN,
-                                 NULL) != DISP_CHANGE_SUCCESSFUL)
-    {
-        _glfwInputError(GLFW_PLATFORM_ERROR, "Win32: Failed to set video mode");
-        return GLFW_FALSE;
-    }
-
-    monitor->win32.modeChanged = GLFW_TRUE;
-    return GLFW_TRUE;
-}
-
-// Restore the previously saved (original) video mode
-//
-void _glfwRestoreVideoModeWin32(_GLFWmonitor* monitor)
-{
-    if (monitor->win32.modeChanged)
-    {
-        ChangeDisplaySettingsExW(monitor->win32.adapterName,
-                                 NULL, NULL, CDS_FULLSCREEN, NULL);
-        monitor->win32.modeChanged = GLFW_FALSE;
-    }
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-//////                       GLFW platform API                      //////
-//////////////////////////////////////////////////////////////////////////
-
-_GLFWmonitor** _glfwPlatformGetMonitors(int* count)
-{
-    int found = 0;
-    DWORD adapterIndex, displayIndex, primaryIndex = 0;
+    int i, disconnectedCount;
+    _GLFWmonitor** disconnected;
+    DWORD adapterIndex, displayIndex;
     DISPLAY_DEVICEW adapter, display;
     GLFWbool hasDisplays = GLFW_FALSE;
-    _GLFWmonitor** monitors = NULL;
 
-    *count = 0;
+    disconnectedCount = _glfw.monitorCount;
+    disconnected = calloc(_glfw.monitorCount, sizeof(_GLFWmonitor*));
+    memcpy(disconnected,
+           _glfw.monitors,
+           _glfw.monitorCount * sizeof(_GLFWmonitor*));
 
     // HACK: Check if any active adapters have connected displays
     //       If not, this is a headless system or a VMware guest
@@ -182,6 +128,8 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
 
     for (adapterIndex = 0;  ;  adapterIndex++)
     {
+        int type = _GLFW_INSERT_LAST;
+
         ZeroMemory(&adapter, sizeof(DISPLAY_DEVICEW));
         adapter.cb = sizeof(DISPLAY_DEVICEW);
 
@@ -192,7 +140,7 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
             continue;
 
         if (adapter.StateFlags & DISPLAY_DEVICE_PRIMARY_DEVICE)
-            primaryIndex = found;
+            type = _GLFW_INSERT_FIRST;
 
         if (hasDisplays)
         {
@@ -204,32 +152,133 @@ _GLFWmonitor** _glfwPlatformGetMonitors(int* count)
                 if (!EnumDisplayDevicesW(adapter.DeviceName, displayIndex, &display, 0))
                     break;
 
-                found++;
-                monitors = realloc(monitors, sizeof(_GLFWmonitor*) * found);
-                monitors[found - 1] = createMonitor(&adapter, &display);
+                for (i = 0;  i < disconnectedCount;  i++)
+                {
+                    if (disconnected[i] &&
+                        wcscmp(disconnected[i]->win32.displayName,
+                               display.DeviceName) == 0)
+                    {
+                        disconnected[i] = NULL;
+                        break;
+                    }
+                }
+
+                if (i < disconnectedCount)
+                    continue;
+
+                _glfwInputMonitor(createMonitor(&adapter, &display),
+                                  GLFW_CONNECTED, type);
+
+                type = _GLFW_INSERT_LAST;
             }
         }
         else
         {
-            found++;
-            monitors = realloc(monitors, sizeof(_GLFWmonitor*) * found);
-            monitors[found - 1] = createMonitor(&adapter, NULL);
+            for (i = 0;  i < disconnectedCount;  i++)
+            {
+                if (disconnected[i] &&
+                    wcscmp(disconnected[i]->win32.adapterName,
+                           adapter.DeviceName) == 0)
+                {
+                    disconnected[i] = NULL;
+                    break;
+                }
+            }
+
+            if (i < disconnectedCount)
+                continue;
+
+            _glfwInputMonitor(createMonitor(&adapter, NULL),
+                              GLFW_CONNECTED, type);
         }
     }
 
-    _GLFW_SWAP_POINTERS(monitors[0], monitors[primaryIndex]);
+    for (i = 0;  i < disconnectedCount;  i++)
+    {
+        if (disconnected[i])
+            _glfwInputMonitor(disconnected[i], GLFW_DISCONNECTED, 0);
+    }
 
-    *count = found;
-    return monitors;
+    free(disconnected);
 }
 
-GLFWbool _glfwPlatformIsSameMonitor(_GLFWmonitor* first, _GLFWmonitor* second)
+// Change the current video mode
+//
+GLFWbool _glfwSetVideoModeWin32(_GLFWmonitor* monitor, const GLFWvidmode* desired)
 {
-    if (wcslen(first->win32.displayName))
-        return wcscmp(first->win32.displayName, second->win32.displayName) == 0;
-    else
-        return wcscmp(first->win32.adapterName, second->win32.adapterName) == 0;
+    GLFWvidmode current;
+    const GLFWvidmode* best;
+    DEVMODEW dm;
+    LONG result;
+
+    best = _glfwChooseVideoMode(monitor, desired);
+    _glfwPlatformGetVideoMode(monitor, &current);
+    if (_glfwCompareVideoModes(&current, best) == 0)
+        return GLFW_TRUE;
+
+    ZeroMemory(&dm, sizeof(dm));
+    dm.dmSize = sizeof(DEVMODEW);
+    dm.dmFields           = DM_PELSWIDTH | DM_PELSHEIGHT | DM_BITSPERPEL |
+                            DM_DISPLAYFREQUENCY;
+    dm.dmPelsWidth        = best->width;
+    dm.dmPelsHeight       = best->height;
+    dm.dmBitsPerPel       = best->redBits + best->greenBits + best->blueBits;
+    dm.dmDisplayFrequency = best->refreshRate;
+
+    if (dm.dmBitsPerPel < 15 || dm.dmBitsPerPel >= 24)
+        dm.dmBitsPerPel = 32;
+
+    result = ChangeDisplaySettingsExW(monitor->win32.adapterName,
+                                      &dm,
+                                      NULL,
+                                      CDS_FULLSCREEN,
+                                      NULL);
+    if (result != DISP_CHANGE_SUCCESSFUL)
+    {
+        const char* description = "Unknown error";
+
+        if (result == DISP_CHANGE_BADDUALVIEW)
+            description = "The system uses DualView";
+        else if (result == DISP_CHANGE_BADFLAGS)
+            description = "Invalid flags";
+        else if (result == DISP_CHANGE_BADMODE)
+            description = "Graphics mode not supported";
+        else if (result == DISP_CHANGE_BADPARAM)
+            description = "Invalid parameter";
+        else if (result == DISP_CHANGE_FAILED)
+            description = "Graphics mode failed";
+        else if (result == DISP_CHANGE_NOTUPDATED)
+            description = "Failed to write to registry";
+        else if (result == DISP_CHANGE_RESTART)
+            description = "Computer restart required";
+
+        _glfwInputError(GLFW_PLATFORM_ERROR,
+                        "Win32: Failed to set video mode: %s",
+                        description);
+
+        return GLFW_FALSE;
+    }
+
+    monitor->win32.modeChanged = GLFW_TRUE;
+    return GLFW_TRUE;
 }
+
+// Restore the previously saved (original) video mode
+//
+void _glfwRestoreVideoModeWin32(_GLFWmonitor* monitor)
+{
+    if (monitor->win32.modeChanged)
+    {
+        ChangeDisplaySettingsExW(monitor->win32.adapterName,
+                                 NULL, NULL, CDS_FULLSCREEN, NULL);
+        monitor->win32.modeChanged = GLFW_FALSE;
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+//////                       GLFW platform API                      //////
+//////////////////////////////////////////////////////////////////////////
 
 void _glfwPlatformGetMonitorPos(_GLFWmonitor* monitor, int* xpos, int* ypos)
 {

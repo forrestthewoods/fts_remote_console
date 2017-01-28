@@ -62,11 +62,16 @@ ifeq ($(config),debug32)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_joystick.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -98,11 +103,16 @@ ifeq ($(config),release32)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_joystick.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -134,11 +144,16 @@ ifeq ($(config),debug64)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_joystick.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -170,11 +185,16 @@ ifeq ($(config),release64)
   EXTERNAL_LIBS      +=
   LINKCMD             = $(AR)  -rcs $(TARGET)
   OBJECTS := \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_init.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_joystick.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
 
@@ -241,9 +261,25 @@ $(GCH_OBJC): $(PCH) $(MAKEFILE) | $(OBJDIR)
 	$(SILENT) $(CXX) $(ALL_OBJCPPFLAGS) -x objective-c++-header $(DEFINES) $(INCLUDES) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/code/thirdparty/glfw/src/cocoa_init.o: ../../../code/thirdparty/glfw/src/cocoa_init.m $(GCH_OBJC) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/cocoa_joystick.o: ../../../code/thirdparty/glfw/src/cocoa_joystick.m $(GCH_OBJC) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/cocoa_monitor.o: ../../../code/thirdparty/glfw/src/cocoa_monitor.m $(GCH_OBJC) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
+
 $(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o: ../../../code/thirdparty/glfw/src/cocoa_time.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o: ../../../code/thirdparty/glfw/src/cocoa_window.m $(GCH_OBJC) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
@@ -260,6 +296,10 @@ $(OBJDIR)/code/thirdparty/glfw/src/input.o: ../../../code/thirdparty/glfw/src/in
 $(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/monitor.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o: ../../../code/thirdparty/glfw/src/nsgl_context.m $(GCH_OBJC) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/vulkan.o: ../../../code/thirdparty/glfw/src/vulkan.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)

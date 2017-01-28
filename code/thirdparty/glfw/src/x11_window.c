@@ -1,8 +1,8 @@
-//========================================================================
-// GLFW 3.2 X11 - www.glfw.org
+﻿//========================================================================
+// GLFW 3.3 X11 - www.glfw.org
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
-// Copyright (c) 2006-2016 Camilla Berglund <elmindreda@glfw.org>
+// Copyright (c) 2006-2016 Camilla Löwy <elmindreda@glfw.org>
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -49,15 +49,15 @@
 #define Button7            7
 
 
-// Wait for data to arrive
+// Wait for data to arrive using select
+// This avoids blocking other threads via the per-display Xlib lock that also
+// covers GLX functions
 //
-void selectDisplayConnection(struct timeval* timeout)
+static GLFWbool waitForEvent(double* timeout)
 {
     fd_set fds;
-    int result, count;
     const int fd = ConnectionNumber(_glfw.x11.display);
-
-    count = fd + 1;
+    int count = fd + 1;
 
     FD_ZERO(&fds);
     FD_SET(fd, &fds);
@@ -67,18 +67,49 @@ void selectDisplayConnection(struct timeval* timeout)
     if (fd < _glfw.linux_js.inotify)
         count = _glfw.linux_js.inotify + 1;
 #endif
-
-    // NOTE: We use select instead of an X function like XNextEvent, as the
-    //       wait inside those are guarded by the mutex protecting the display
-    //       struct, locking out other threads from using X (including GLX)
-    // NOTE: Only retry on EINTR if there is no timeout, as select is not
-    //       required to update it for the time elapsed
-    // TODO: Update timeout value manually
-    do
+    for (;;)
     {
-        result = select(count, &fds, NULL, NULL, timeout);
+        if (timeout)
+        {
+            const long seconds = (long) *timeout;
+            const long microseconds = (long) ((*timeout - seconds) * 1e6);
+            struct timeval tv = { seconds, microseconds };
+            const uint64_t base = _glfwPlatformGetTimerValue();
+
+            const int result = select(count, &fds, NULL, NULL, &tv);
+            const int error = errno;
+
+            *timeout -= (_glfwPlatformGetTimerValue() - base) /
+                (double) _glfwPlatformGetTimerFrequency();
+
+            if (result > 0)
+                return GLFW_TRUE;
+            if ((result == -1 && error == EINTR) || *timeout <= 0.0)
+                return GLFW_FALSE;
+        }
+        else if (select(count, &fds, NULL, NULL, NULL) != -1 || errno != EINTR)
+            return GLFW_TRUE;
     }
-    while (result == -1 && errno == EINTR && timeout == NULL);
+}
+
+// Waits until a VisibilityNotify event arrives for the specified window or the
+// timeout period elapses (ICCCM section 4.2.2)
+//
+static GLFWbool waitForVisibilityNotify(_GLFWwindow* window)
+{
+    XEvent dummy;
+    double timeout = 0.1;
+
+    while (!XCheckTypedWindowEvent(_glfw.x11.display,
+                                   window->x11.handle,
+                                   VisibilityNotify,
+                                   &dummy))
+    {
+        if (!waitForEvent(&timeout))
+            return GLFW_FALSE;
+    }
+
+    return GLFW_TRUE;
 }
 
 // Returns whether the window is iconified
@@ -99,11 +130,25 @@ static int getWindowState(_GLFWwindow* window)
         result = state->state;
     }
 
-    XFree(state);
+    if (state)
+        XFree(state);
+
     return result;
 }
 
 // Returns whether the event is a selection event
+//
+static Bool isSelectionEvent(Display* display, XEvent* event, XPointer pointer)
+{
+    if (event->xany.window != _glfw.x11.helperWindowHandle)
+        return False;
+
+    return event->type == SelectionRequest ||
+           event->type == SelectionNotify ||
+           event->type == SelectionClear;
+}
+
+// Returns whether it is a _NET_FRAME_EXTENTS event for the specified window
 //
 static Bool isFrameExtentsEvent(Display* display, XEvent* event, XPointer pointer)
 {
@@ -163,7 +208,7 @@ static int translateKey(int scancode)
     if (scancode < 0 || scancode > 255)
         return GLFW_KEY_UNKNOWN;
 
-    return _glfw.x11.publicKeys[scancode];
+    return _glfw.x11.keycodes[scancode];
 }
 
 // Return the GLFW window corresponding to the specified X11 window
@@ -218,14 +263,18 @@ static void updateNormalHints(_GLFWwindow* window, int width, int height)
         if (window->resizable)
         {
             if (window->minwidth != GLFW_DONT_CARE &&
-                window->minheight != GLFW_DONT_CARE &&
-                window->maxwidth != GLFW_DONT_CARE &&
+                window->minheight != GLFW_DONT_CARE)
+            {
+                hints->flags |= PMinSize;
+                hints->min_width = window->minwidth;
+                hints->min_height = window->minheight;
+            }
+
+            if (window->maxwidth != GLFW_DONT_CARE &&
                 window->maxheight != GLFW_DONT_CARE)
             {
-                hints->flags |= (PMinSize | PMaxSize);
-                hints->min_width  = window->minwidth;
-                hints->min_height = window->minheight;
-                hints->max_width  = window->maxwidth;
+                hints->flags |= PMaxSize;
+                hints->max_width = window->maxwidth;
                 hints->max_height = window->maxheight;
             }
 
@@ -244,6 +293,9 @@ static void updateNormalHints(_GLFWwindow* window, int width, int height)
             hints->min_height = hints->max_height = height;
         }
     }
+
+    hints->flags |= PWinGravity;
+    hints->win_gravity = StaticGravity;
 
     XSetWMNormalHints(_glfw.x11.display, window->x11.handle, hints);
     XFree(hints);
@@ -411,14 +463,17 @@ static void updateCursorImage(_GLFWwindow* window)
             XUndefineCursor(_glfw.x11.display, window->x11.handle);
     }
     else
-        XDefineCursor(_glfw.x11.display, window->x11.handle, _glfw.x11.cursor);
+    {
+        XDefineCursor(_glfw.x11.display, window->x11.handle,
+                      _glfw.x11.hiddenCursorHandle);
+    }
 }
 
 // Create the X11 window (and its colormap)
 //
-static GLFWbool createWindow(_GLFWwindow* window,
-                             const _GLFWwndconfig* wndconfig,
-                             Visual* visual, int depth)
+static GLFWbool createNativeWindow(_GLFWwindow* window,
+                                   const _GLFWwndconfig* wndconfig,
+                                   Visual* visual, int depth)
 {
     // Create a colormap based on the visual used by the current context
     window->x11.colormap = XCreateColormap(_glfw.x11.display,
@@ -467,26 +522,7 @@ static GLFWbool createWindow(_GLFWwindow* window,
     }
 
     if (!wndconfig->decorated)
-    {
-        struct
-        {
-            unsigned long flags;
-            unsigned long functions;
-            unsigned long decorations;
-            long input_mode;
-            unsigned long status;
-        } hints;
-
-        hints.flags = 2;       // Set decorations
-        hints.decorations = 0; // No decorations
-
-        XChangeProperty(_glfw.x11.display, window->x11.handle,
-                        _glfw.x11.MOTIF_WM_HINTS,
-                        _glfw.x11.MOTIF_WM_HINTS, 32,
-                        PropModeReplace,
-                        (unsigned char*) &hints,
-                        sizeof(hints) / sizeof(long));
-    }
+        _glfwPlatformSetWindowDecorated(window, GLFW_FALSE);
 
     if (_glfw.x11.NET_WM_STATE && !window->monitor)
     {
@@ -506,6 +542,7 @@ static GLFWbool createWindow(_GLFWwindow* window,
             {
                 states[count++] = _glfw.x11.NET_WM_STATE_MAXIMIZED_VERT;
                 states[count++] = _glfw.x11.NET_WM_STATE_MAXIMIZED_HORZ;
+                window->x11.maximized = GLFW_TRUE;
             }
         }
 
@@ -606,15 +643,6 @@ static GLFWbool createWindow(_GLFWwindow* window,
     _glfwPlatformGetWindowSize(window, &window->x11.width, &window->x11.height);
 
     return GLFW_TRUE;
-}
-
-// Returns whether the event is a selection event
-//
-static Bool isSelectionEvent(Display* display, XEvent* event, XPointer pointer)
-{
-    return event->type == SelectionRequest ||
-           event->type == SelectionNotify ||
-           event->type == SelectionClear;
 }
 
 // Set the specified property to the selection converted to the requested target
@@ -774,51 +802,6 @@ static void handleSelectionRequest(XEvent* event)
     XSendEvent(_glfw.x11.display, request->requestor, False, 0, &reply);
 }
 
-static void pushSelectionToManager(_GLFWwindow* window)
-{
-    XConvertSelection(_glfw.x11.display,
-                      _glfw.x11.CLIPBOARD_MANAGER,
-                      _glfw.x11.SAVE_TARGETS,
-                      None,
-                      window->x11.handle,
-                      CurrentTime);
-
-    for (;;)
-    {
-        XEvent event;
-
-        while (XCheckIfEvent(_glfw.x11.display, &event, isSelectionEvent, NULL))
-        {
-            switch (event.type)
-            {
-                case SelectionRequest:
-                    handleSelectionRequest(&event);
-                    break;
-
-                case SelectionClear:
-                    handleSelectionClear(&event);
-                    break;
-
-                case SelectionNotify:
-                {
-                    if (event.xselection.target == _glfw.x11.SAVE_TARGETS)
-                    {
-                        // This means one of two things; either the selection was
-                        // not owned, which means there is no clipboard manager, or
-                        // the transfer to the clipboard manager has completed
-                        // In either case, it means we are done here
-                        return;
-                    }
-
-                    break;
-                }
-            }
-        }
-
-        selectDisplayConnection(NULL);
-    }
-}
-
 // Make the specified window and its video mode active on its monitor
 //
 static GLFWbool acquireMonitor(_GLFWwindow* window)
@@ -857,7 +840,7 @@ static GLFWbool acquireMonitor(_GLFWwindow* window)
                           xpos, ypos, mode.width, mode.height);
     }
 
-    _glfwInputMonitorWindowChange(window->monitor, window);
+    _glfwInputMonitorWindow(window->monitor, window);
     return status;
 }
 
@@ -868,7 +851,7 @@ static void releaseMonitor(_GLFWwindow* window)
     if (window->monitor->window != window)
         return;
 
-    _glfwInputMonitorWindowChange(window->monitor, NULL);
+    _glfwInputMonitorWindow(window->monitor, NULL);
     _glfwRestoreVideoModeX11(window->monitor);
 
     _glfw.x11.saver.count--;
@@ -929,7 +912,7 @@ static void processEvent(XEvent *event)
         if (event->type == _glfw.x11.randr.eventBase + RRNotify)
         {
             XRRUpdateConfiguration(event);
-            _glfwInputMonitorChange();
+            _glfwPollMonitorsX11();
             return;
         }
     }
@@ -957,15 +940,15 @@ static void processEvent(XEvent *event)
                 // HACK: Ignore duplicate key press events generated by ibus
                 //       Corresponding release events are filtered out by the
                 //       GLFW key repeat logic
-                if (window->x11.last.keycode != keycode ||
-                    window->x11.last.time != event->xkey.time)
+                if (window->x11.lastKeyCode != keycode ||
+                    window->x11.lastKeyTime != event->xkey.time)
                 {
                     if (keycode)
                         _glfwInputKey(window, key, keycode, GLFW_PRESS, mods);
                 }
 
-                window->x11.last.keycode = keycode;
-                window->x11.last.time = event->xkey.time;
+                window->x11.lastKeyCode = keycode;
+                window->x11.lastKeyTime = event->xkey.time;
 
                 if (!filtered)
                 {
@@ -1343,7 +1326,8 @@ static void processEvent(XEvent *event)
                     free(paths);
                 }
 
-                XFree(data);
+                if (data)
+                    XFree(data);
 
                 XEvent reply;
                 memset(&reply, 0, sizeof(reply));
@@ -1416,23 +1400,37 @@ static void processEvent(XEvent *event)
 
         case PropertyNotify:
         {
-            if (event->xproperty.atom == _glfw.x11.WM_STATE &&
-                event->xproperty.state == PropertyNewValue)
+            if (event->xproperty.state != PropertyNewValue)
+                return;
+
+            if (event->xproperty.atom == _glfw.x11.WM_STATE)
             {
                 const int state = getWindowState(window);
-                if (state == IconicState)
+                if (state != IconicState && state != NormalState)
+                    return;
+
+                const GLFWbool iconified = (state == IconicState);
+                if (window->x11.iconified != iconified)
                 {
                     if (window->monitor)
-                        releaseMonitor(window);
+                    {
+                        if (iconified)
+                            releaseMonitor(window);
+                        else
+                            acquireMonitor(window);
+                    }
 
-                    _glfwInputWindowIconify(window, GLFW_TRUE);
+                    window->x11.iconified = iconified;
+                    _glfwInputWindowIconify(window, iconified);
                 }
-                else if (state == NormalState)
+            }
+            else if (event->xproperty.atom == _glfw.x11.NET_WM_STATE)
+            {
+                const GLFWbool maximized = _glfwPlatformWindowMaximized(window);
+                if (window->x11.maximized != maximized)
                 {
-                    if (window->monitor)
-                        acquireMonitor(window);
-
-                    _glfwInputWindowIconify(window, GLFW_FALSE);
+                    window->x11.maximized = maximized;
+                    _glfwInputWindowMaximize(window, maximized);
                 }
             }
 
@@ -1486,10 +1484,54 @@ unsigned long _glfwGetWindowPropertyX11(Window window,
                        &bytesAfter,
                        value);
 
-    if (type != AnyPropertyType && actualType != type)
-        return 0;
-
     return itemCount;
+}
+
+// Push contents of our selection to clipboard manager
+//
+void _glfwPushSelectionToManagerX11(void)
+{
+    XConvertSelection(_glfw.x11.display,
+                      _glfw.x11.CLIPBOARD_MANAGER,
+                      _glfw.x11.SAVE_TARGETS,
+                      None,
+                      _glfw.x11.helperWindowHandle,
+                      CurrentTime);
+
+    for (;;)
+    {
+        XEvent event;
+
+        while (XCheckIfEvent(_glfw.x11.display, &event, isSelectionEvent, NULL))
+        {
+            switch (event.type)
+            {
+                case SelectionRequest:
+                    handleSelectionRequest(&event);
+                    break;
+
+                case SelectionClear:
+                    handleSelectionClear(&event);
+                    break;
+
+                case SelectionNotify:
+                {
+                    if (event.xselection.target == _glfw.x11.SAVE_TARGETS)
+                    {
+                        // This means one of two things; either the selection was
+                        // not owned, which means there is no clipboard manager, or
+                        // the transfer to the clipboard manager has completed
+                        // In either case, it means we are done here
+                        return;
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        waitForEvent(NULL);
+    }
 }
 
 
@@ -1528,7 +1570,7 @@ int _glfwPlatformCreateWindow(_GLFWwindow* window,
         }
     }
 
-    if (!createWindow(window, wndconfig, visual, depth))
+    if (!createNativeWindow(window, wndconfig, visual, depth))
         return GLFW_FALSE;
 
     if (ctxconfig->client != GLFW_NO_API)
@@ -1573,17 +1615,11 @@ void _glfwPlatformDestroyWindow(_GLFWwindow* window)
         window->x11.ic = NULL;
     }
 
-    if (window->context.client != GLFW_NO_API)
+    if (window->context.destroy)
         window->context.destroy(window);
 
     if (window->x11.handle)
     {
-        if (XGetSelectionOwner(_glfw.x11.display, _glfw.x11.CLIPBOARD) ==
-            window->x11.handle)
-        {
-            pushSelectionToManager(window);
-        }
-
         XDeleteContext(_glfw.x11.display, window->x11.handle, _glfw.x11.context);
         XUnmapWindow(_glfw.x11.display, window->x11.handle);
         XDestroyWindow(_glfw.x11.display, window->x11.handle);
@@ -1677,21 +1713,11 @@ void _glfwPlatformSetWindowIcon(_GLFWwindow* window,
 
 void _glfwPlatformGetWindowPos(_GLFWwindow* window, int* xpos, int* ypos)
 {
-    Window child;
+    Window dummy;
     int x, y;
 
     XTranslateCoordinates(_glfw.x11.display, window->x11.handle, _glfw.x11.root,
-                          0, 0, &x, &y, &child);
-
-    if (child)
-    {
-        int left, top;
-        XTranslateCoordinates(_glfw.x11.display, window->x11.handle, child,
-                              0, 0, &left, &top, &child);
-
-        x -= left;
-        y -= top;
-    }
+                          0, 0, &x, &y, &dummy);
 
     if (xpos)
         *xpos = x;
@@ -1790,19 +1816,16 @@ void _glfwPlatformGetWindowFrameSize(_GLFWwindow* window,
     if (!_glfwPlatformWindowVisible(window) &&
         _glfw.x11.NET_REQUEST_FRAME_EXTENTS)
     {
-        uint64_t base;
         XEvent event;
+        double timeout = 0.5;
 
         // Ensure _NET_FRAME_EXTENTS is set, allowing glfwGetWindowFrameSize to
         // function before the window is mapped
         sendEventToWM(window, _glfw.x11.NET_REQUEST_FRAME_EXTENTS,
                       0, 0, 0, 0, 0);
 
-        base = _glfwPlatformGetTimerValue();
-
-        // HACK: Poll with timeout for the required reply instead of blocking
-        //       This is done because some window managers (at least Unity,
-        //       Fluxbox and Xfwm) failed to send the required reply
+        // HACK: Use a timeout because earlier versions of some window managers
+        //       (at least Unity, Fluxbox and Xfwm) failed to send the reply
         //       They have been fixed but broken versions are still in the wild
         //       If you are affected by this and your window manager is NOT
         //       listed above, PLEASE report it to their and our issue trackers
@@ -1811,21 +1834,12 @@ void _glfwPlatformGetWindowFrameSize(_GLFWwindow* window,
                               isFrameExtentsEvent,
                               (XPointer) window))
         {
-            double remaining;
-            struct timeval timeout;
-
-            remaining = 0.5 - (_glfwPlatformGetTimerValue() - base) /
-                (double) _glfwPlatformGetTimerFrequency();
-            if (remaining <= 0.0)
+            if (!waitForEvent(&timeout))
             {
                 _glfwInputError(GLFW_PLATFORM_ERROR,
                                 "X11: The window manager has a broken _NET_REQUEST_FRAME_EXTENTS implementation; please report this issue");
                 return;
             }
-
-            timeout.tv_sec = 0;
-            timeout.tv_usec = (long) (remaining * 1e6);
-            selectDisplayConnection(&timeout);
         }
     }
 
@@ -1875,8 +1889,11 @@ void _glfwPlatformRestoreWindow(_GLFWwindow* window)
     }
 
     if (_glfwPlatformWindowIconified(window))
+    {
         XMapWindow(_glfw.x11.display, window->x11.handle);
-    else
+        waitForVisibilityNotify(window);
+    }
+    else if (_glfwPlatformWindowVisible(window))
     {
         if (_glfw.x11.NET_WM_STATE &&
             _glfw.x11.NET_WM_STATE_MAXIMIZED_VERT &&
@@ -1912,8 +1929,11 @@ void _glfwPlatformMaximizeWindow(_GLFWwindow* window)
 
 void _glfwPlatformShowWindow(_GLFWwindow* window)
 {
+    if (_glfwPlatformWindowVisible(window))
+        return;
+
     XMapWindow(_glfw.x11.display, window->x11.handle);
-    XFlush(_glfw.x11.display);
+    waitForVisibilityNotify(window);
 }
 
 void _glfwPlatformHideWindow(_GLFWwindow* window)
@@ -1968,7 +1988,8 @@ void _glfwPlatformSetWindowMonitor(_GLFWwindow* window,
     if (window->monitor)
     {
         XMapRaised(_glfw.x11.display, window->x11.handle);
-        acquireMonitor(window);
+        if (waitForVisibilityNotify(window))
+            acquireMonitor(window);
     }
     else
     {
@@ -2021,8 +2042,113 @@ int _glfwPlatformWindowMaximized(_GLFWwindow* window)
         }
     }
 
-    XFree(states);
+    if (states)
+        XFree(states);
+
     return maximized;
+}
+
+void _glfwPlatformSetWindowResizable(_GLFWwindow* window, GLFWbool enabled)
+{
+    int width, height;
+    _glfwPlatformGetWindowSize(window, &width, &height);
+    updateNormalHints(window, width, height);
+}
+
+void _glfwPlatformSetWindowDecorated(_GLFWwindow* window, GLFWbool enabled)
+{
+    if (enabled)
+    {
+        XDeleteProperty(_glfw.x11.display,
+                        window->x11.handle,
+                        _glfw.x11.MOTIF_WM_HINTS);
+    }
+    else
+    {
+        struct
+        {
+            unsigned long flags;
+            unsigned long functions;
+            unsigned long decorations;
+            long input_mode;
+            unsigned long status;
+        } hints;
+
+        hints.flags = 2;       // Set decorations
+        hints.decorations = 0; // No decorations
+
+        XChangeProperty(_glfw.x11.display, window->x11.handle,
+                        _glfw.x11.MOTIF_WM_HINTS,
+                        _glfw.x11.MOTIF_WM_HINTS, 32,
+                        PropModeReplace,
+                        (unsigned char*) &hints,
+                        sizeof(hints) / sizeof(long));
+    }
+}
+
+void _glfwPlatformSetWindowFloating(_GLFWwindow* window, GLFWbool enabled)
+{
+    if (!_glfw.x11.NET_WM_STATE || !_glfw.x11.NET_WM_STATE_ABOVE)
+        return;
+
+    if (_glfwPlatformWindowVisible(window))
+    {
+        const Atom action = enabled ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE;
+        sendEventToWM(window,
+                      _glfw.x11.NET_WM_STATE,
+                      action,
+                      _glfw.x11.NET_WM_STATE_ABOVE,
+                      0, 1, 0);
+    }
+    else
+    {
+        Atom* states;
+        unsigned long i, count;
+
+        count = _glfwGetWindowPropertyX11(window->x11.handle,
+                                          _glfw.x11.NET_WM_STATE,
+                                          XA_ATOM,
+                                          (unsigned char**) &states);
+        if (!states)
+            return;
+
+        if (enabled)
+        {
+            for (i = 0;  i < count;  i++)
+            {
+                if (states[i] == _glfw.x11.NET_WM_STATE_ABOVE)
+                    break;
+            }
+
+            if (i == count)
+            {
+                XChangeProperty(_glfw.x11.display, window->x11.handle,
+                                _glfw.x11.NET_WM_STATE, XA_ATOM, 32,
+                                PropModeAppend,
+                                (unsigned char*) &_glfw.x11.NET_WM_STATE_ABOVE,
+                                1);
+            }
+        }
+        else
+        {
+            for (i = 0;  i < count;  i++)
+            {
+                if (states[i] == _glfw.x11.NET_WM_STATE_ABOVE)
+                {
+                    states[i] = states[count - 1];
+                    count--;
+                }
+            }
+
+            XChangeProperty(_glfw.x11.display, window->x11.handle,
+                            _glfw.x11.NET_WM_STATE, XA_ATOM, 32,
+                            PropModeReplace, (unsigned char*) &states, count);
+        }
+
+        XFree(states);
+    }
+
+    XFlush(_glfw.x11.display);
 }
 
 void _glfwPlatformPollEvents(void)
@@ -2046,28 +2172,17 @@ void _glfwPlatformPollEvents(void)
 void _glfwPlatformWaitEvents(void)
 {
     while (!XPending(_glfw.x11.display))
-        selectDisplayConnection(NULL);
+        waitForEvent(NULL);
 
     _glfwPlatformPollEvents();
 }
 
 void _glfwPlatformWaitEventsTimeout(double timeout)
 {
-    const double deadline = timeout + _glfwPlatformGetTimerValue() /
-        (double) _glfwPlatformGetTimerFrequency();
-
     while (!XPending(_glfw.x11.display))
     {
-        const double remaining = deadline - _glfwPlatformGetTimerValue() /
-            (double) _glfwPlatformGetTimerFrequency();
-        if (remaining <= 0.0)
-            return;
-
-        const long seconds = (long) remaining;
-        const long microseconds = (long) ((remaining - seconds) * 1e6);
-        struct timeval tv = { seconds, microseconds };
-
-        selectDisplayConnection(&tv);
+        if (!waitForEvent(&timeout))
+            break;
     }
 
     _glfwPlatformPollEvents();
@@ -2076,15 +2191,14 @@ void _glfwPlatformWaitEventsTimeout(double timeout)
 void _glfwPlatformPostEmptyEvent(void)
 {
     XEvent event;
-    _GLFWwindow* window = _glfw.windowListHead;
 
     memset(&event, 0, sizeof(event));
     event.type = ClientMessage;
-    event.xclient.window = window->x11.handle;
+    event.xclient.window = _glfw.x11.helperWindowHandle;
     event.xclient.format = 32; // Data is 32-bit longs
     event.xclient.message_type = _glfw.x11.NULL_;
 
-    XSendEvent(_glfw.x11.display, window->x11.handle, False, 0, &event);
+    XSendEvent(_glfw.x11.display, _glfw.x11.helperWindowHandle, False, 0, &event);
     XFlush(_glfw.x11.display);
 }
 
@@ -2128,7 +2242,9 @@ void _glfwPlatformSetCursorMode(_GLFWwindow* window, int mode)
         XGrabPointer(_glfw.x11.display, window->x11.handle, True,
                      ButtonPressMask | ButtonReleaseMask | PointerMotionMask,
                      GrabModeAsync, GrabModeAsync,
-                     window->x11.handle, _glfw.x11.cursor, CurrentTime);
+                     window->x11.handle,
+                     _glfw.x11.hiddenCursorHandle,
+                     CurrentTime);
     }
     else if (_glfw.x11.disabledCursorWindow == window)
     {
@@ -2152,9 +2268,9 @@ const char* _glfwPlatformGetKeyName(int key, int scancode)
         return NULL;
 
     if (key != GLFW_KEY_UNKNOWN)
-        scancode = _glfw.x11.nativeKeys[key];
+        scancode = _glfw.x11.scancodes[key];
 
-    if (!_glfwIsPrintable(_glfw.x11.publicKeys[scancode]))
+    if (!_glfwIsPrintable(_glfw.x11.keycodes[scancode]))
         return NULL;
 
     keysym = XkbKeycodeToKeysym(_glfw.x11.display, scancode, 0, 0);
@@ -2169,6 +2285,11 @@ const char* _glfwPlatformGetKeyName(int key, int scancode)
         return NULL;
 
     return _glfw.x11.keyName;
+}
+
+int _glfwPlatformGetKeyScancode(int key)
+{
+    return _glfw.x11.scancodes[key];
 }
 
 int _glfwPlatformCreateCursor(_GLFWcursor* cursor,
@@ -2218,10 +2339,11 @@ void _glfwPlatformSetClipboardString(_GLFWwindow* window, const char* string)
 
     XSetSelectionOwner(_glfw.x11.display,
                        _glfw.x11.CLIPBOARD,
-                       window->x11.handle, CurrentTime);
+                       _glfw.x11.helperWindowHandle,
+                       CurrentTime);
 
     if (XGetSelectionOwner(_glfw.x11.display, _glfw.x11.CLIPBOARD) !=
-        window->x11.handle)
+        _glfw.x11.helperWindowHandle)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,
                         "X11: Failed to become owner of clipboard selection");
@@ -2236,8 +2358,8 @@ const char* _glfwPlatformGetClipboardString(_GLFWwindow* window)
                              XA_STRING };
     const size_t formatCount = sizeof(formats) / sizeof(formats[0]);
 
-    if (findWindowByHandle(XGetSelectionOwner(_glfw.x11.display,
-                                              _glfw.x11.CLIPBOARD)))
+    if (XGetSelectionOwner(_glfw.x11.display, _glfw.x11.CLIPBOARD) ==
+        _glfw.x11.helperWindowHandle)
     {
         // Instead of doing a large number of X round-trips just to put this
         // string into a window property and then read it back, just return it
@@ -2256,12 +2378,16 @@ const char* _glfwPlatformGetClipboardString(_GLFWwindow* window)
                           _glfw.x11.CLIPBOARD,
                           formats[i],
                           _glfw.x11.GLFW_SELECTION,
-                          window->x11.handle, CurrentTime);
+                          _glfw.x11.helperWindowHandle,
+                          CurrentTime);
 
-        // XCheckTypedEvent is used instead of XIfEvent in order not to lock
-        // other threads out from the display during the entire wait period
-        while (!XCheckTypedEvent(_glfw.x11.display, SelectionNotify, &event))
-            selectDisplayConnection(NULL);
+        while (!XCheckTypedWindowEvent(_glfw.x11.display,
+                                       _glfw.x11.helperWindowHandle,
+                                       SelectionNotify,
+                                       &event))
+        {
+            waitForEvent(NULL);
+        }
 
         if (event.xselection.property == None)
             continue;
@@ -2274,7 +2400,8 @@ const char* _glfwPlatformGetClipboardString(_GLFWwindow* window)
             _glfw.x11.clipboardString = strdup(data);
         }
 
-        XFree(data);
+        if (data)
+            XFree(data);
 
         XDeleteProperty(_glfw.x11.display,
                         event.xselection.requestor,
@@ -2293,28 +2420,25 @@ const char* _glfwPlatformGetClipboardString(_GLFWwindow* window)
     return _glfw.x11.clipboardString;
 }
 
-char** _glfwPlatformGetRequiredInstanceExtensions(uint32_t* count)
+void _glfwPlatformGetRequiredInstanceExtensions(char** extensions)
 {
-    char** extensions;
-
-    *count = 0;
+    if (!_glfw.vk.KHR_surface)
+        return;
 
     if (!_glfw.vk.KHR_xcb_surface || !_glfw.x11.x11xcb.handle)
     {
         if (!_glfw.vk.KHR_xlib_surface)
-            return NULL;
+            return;
     }
 
-    extensions = calloc(2, sizeof(char*));
-    extensions[0] = strdup("VK_KHR_surface");
+    extensions[0] = "VK_KHR_surface";
 
+    // NOTE: VK_KHR_xcb_surface is preferred due to some early ICDs exposing but
+    //       not correctly implementing VK_KHR_xlib_surface
     if (_glfw.vk.KHR_xcb_surface && _glfw.x11.x11xcb.handle)
-        extensions[1] = strdup("VK_KHR_xcb_surface");
+        extensions[1] = "VK_KHR_xcb_surface";
     else
-        extensions[1] = strdup("VK_KHR_xlib_surface");
-
-    *count = 2;
-    return extensions;
+        extensions[1] = "VK_KHR_xlib_surface";
 }
 
 int _glfwPlatformGetPhysicalDevicePresentationSupport(VkInstance instance,

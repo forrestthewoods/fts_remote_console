@@ -1,7 +1,7 @@
 ﻿//========================================================================
-// GLFW 3.3 POSIX - www.glfw.org
+// GLFW 3.3 OSMesa - www.glfw.org
 //------------------------------------------------------------------------
-// Copyright (c) 2002-2006 Marcus Geelnard
+// Copyright (c) 2016 Google Inc.
 // Copyright (c) 2006-2016 Camilla Löwy <elmindreda@glfw.org>
 //
 // This software is provided 'as-is', without any express or implied
@@ -25,25 +25,41 @@
 //
 //========================================================================
 
-#ifndef _glfw3_posix_tls_h_
-#define _glfw3_posix_tls_h_
+#ifndef _glfw3_osmesa_platform_h_
+#define _glfw3_osmesa_platform_h_
 
-#include <pthread.h>
+#include <dlfcn.h>
 
-#define _GLFW_PLATFORM_LIBRARY_TLS_STATE _GLFWtlsPOSIX posix_tls
+#define _GLFW_PLATFORM_WINDOW_STATE _GLFWwindowOSMesa osmesa
 
+#define _GLFW_PLATFORM_MONITOR_STATE
+#define _GLFW_PLATFORM_CURSOR_STATE
+#define _GLFW_PLATFORM_LIBRARY_WINDOW_STATE
+#define _GLFW_PLATFORM_LIBRARY_JOYSTICK_STATE
+#define _GLFW_EGL_CONTEXT_STATE
+#define _GLFW_EGL_LIBRARY_CONTEXT_STATE
 
-// POSIX-specific global TLS data
+#include "osmesa_context.h"
+#include "posix_time.h"
+#include "posix_tls.h"
+
+#if defined(_GLFW_WIN32)
+ #define _glfw_dlopen(name) LoadLibraryA(name)
+ #define _glfw_dlclose(handle) FreeLibrary((HMODULE) handle)
+ #define _glfw_dlsym(handle, name) GetProcAddress((HMODULE) handle, name)
+#else
+ #define _glfw_dlopen(name) dlopen(name, RTLD_LAZY | RTLD_LOCAL)
+ #define _glfw_dlclose(handle) dlclose(handle)
+ #define _glfw_dlsym(handle, name) dlsym(handle, name)
+#endif
+
+// OSMesa-specific per-window data
 //
-typedef struct _GLFWtlsPOSIX
+typedef struct _GLFWwindowOSMesa
 {
-    GLFWbool        allocated;
-    pthread_key_t   context;
+    int width;
+    int height;
+} _GLFWwindowOSMesa;
 
-} _GLFWtlsPOSIX;
 
-
-GLFWbool _glfwInitThreadLocalStoragePOSIX(void);
-void _glfwTerminateThreadLocalStoragePOSIX(void);
-
-#endif // _glfw3_posix_tls_h_
+#endif // _glfw3_osmesa_platform_h_
