@@ -330,7 +330,6 @@ solution "fts_console"
             configuration "macosx"
                 excludes {
                     path.join(glfw_src, "win32**"),
-                    path.join(glfw_src, "posix**"),
                     path.join(glfw_src, "linux**"),
                     path.join(glfw_src, "x11**"),
                     path.join(glfw_src, "glx**"),
