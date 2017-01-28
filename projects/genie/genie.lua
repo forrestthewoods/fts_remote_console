@@ -339,7 +339,7 @@ solution "fts_console"
                     path.join(glfw_src, "xkb**"),
                     path.join(glfw_src, "wgl**"),
                     path.join(glfw_src, "osmesa**"),
-                    path.join(glfw_src, "posix_time.h"),
+                    path.join(glfw_src, "posix_time**"),
                 }
 
                 defines {

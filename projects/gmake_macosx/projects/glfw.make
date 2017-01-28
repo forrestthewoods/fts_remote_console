@@ -73,7 +73,6 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
@@ -117,7 +116,6 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
@@ -161,7 +159,6 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
@@ -205,7 +202,6 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o \
-	$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/vulkan.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/window.o \
@@ -316,10 +312,6 @@ $(OBJDIR)/code/thirdparty/glfw/src/monitor.o: ../../../code/thirdparty/glfw/src/
 $(OBJDIR)/code/thirdparty/glfw/src/nsgl_context.o: ../../../code/thirdparty/glfw/src/nsgl_context.m $(GCH_OBJC) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
-
-$(OBJDIR)/code/thirdparty/glfw/src/posix_time.o: ../../../code/thirdparty/glfw/src/posix_time.c $(GCH) $(MAKEFILE)
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/posix_tls.o: ../../../code/thirdparty/glfw/src/posix_tls.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
