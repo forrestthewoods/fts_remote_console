@@ -117,7 +117,6 @@ solution "fts_console"
 
         configuration "macosx"
             links {
-                "GL",
                 "glut",
             }
             linkoptions {

@@ -58,7 +58,7 @@ ifeq ($(config),debug32)
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_debug/imgui -L../bin/x32_debug/net -L. -m32 -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo -framework OpenGL
   LDDEPS             += ../bin/x32_debug/imgui/libimgui.a ../bin/x32_debug/imgui/libglfw.a ../bin/x32_debug/net/libnet.a
-  LIBS               += $(LDDEPS) -lGL -lglut
+  LIBS               += $(LDDEPS) -lglut
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -95,7 +95,7 @@ ifeq ($(config),release32)
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x32_release/imgui -L../bin/x32_release/net -L. -m32 -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo -framework OpenGL
   LDDEPS             += ../bin/x32_release/imgui/libimgui.a ../bin/x32_release/imgui/libglfw.a ../bin/x32_release/net/libnet.a
-  LIBS               += $(LDDEPS) -lGL -lglut
+  LIBS               += $(LDDEPS) -lglut
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -132,7 +132,7 @@ ifeq ($(config),debug64)
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_debug/imgui -L../bin/x64_debug/net -L. -m64 -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo -framework OpenGL
   LDDEPS             += ../bin/x64_debug/imgui/libimgui.a ../bin/x64_debug/imgui/libglfw.a ../bin/x64_debug/net/libnet.a
-  LIBS               += $(LDDEPS) -lGL -lglut
+  LIBS               += $(LDDEPS) -lglut
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
@@ -169,7 +169,7 @@ ifeq ($(config),release64)
   ALL_RESFLAGS       += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS        += $(LDFLAGS) -L../bin/x64_release/imgui -L../bin/x64_release/net -L. -m64 -framework Cocoa -framework IOKit -framework CoreFoundation -framework CoreVideo -framework OpenGL
   LDDEPS             += ../bin/x64_release/imgui/libimgui.a ../bin/x64_release/imgui/libglfw.a ../bin/x64_release/net/libnet.a
-  LIBS               += $(LDDEPS) -lGL -lglut
+  LIBS               += $(LDDEPS) -lglut
   EXTERNAL_LIBS      +=
   LINKCMD             = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   OBJECTS := \
