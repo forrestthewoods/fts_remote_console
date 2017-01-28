@@ -68,6 +68,7 @@ ifeq ($(config),debug32)
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
@@ -109,6 +110,7 @@ ifeq ($(config),release32)
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
@@ -150,6 +152,7 @@ ifeq ($(config),debug64)
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
@@ -191,6 +194,7 @@ ifeq ($(config),release64)
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_time.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/context.o \
+	$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/init.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/input.o \
 	$(OBJDIR)/code/thirdparty/glfw/src/monitor.o \
@@ -282,6 +286,10 @@ $(OBJDIR)/code/thirdparty/glfw/src/cocoa_window.o: ../../../code/thirdparty/glfw
 	$(SILENT) $(CXX) $(ALL_OBJCFLAGS) $(FORCE_INCLUDE_OBJC) -o "$@" -c "$<"
 
 $(OBJDIR)/code/thirdparty/glfw/src/context.o: ../../../code/thirdparty/glfw/src/context.c $(GCH) $(MAKEFILE)
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
+
+$(OBJDIR)/code/thirdparty/glfw/src/egl_context.o: ../../../code/thirdparty/glfw/src/egl_context.c $(GCH) $(MAKEFILE)
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -c "$<"
 
