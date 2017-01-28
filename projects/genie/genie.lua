@@ -118,8 +118,8 @@ solution "fts_console"
         configuration "macosx"
             linkoptions {
                 "-framework Cocoa",
-                "-framework OpenGL",
                 "-framework IOKit",
+                "-framework CoreFoundation",
                 "-framework CoreVideo",
             }
 
@@ -338,7 +338,9 @@ solution "fts_console"
 
                 defines {
                     "_GLFW_COCOA",
-                    "GLFW_USE_RETINA"
+                    "GLFW_USE_RETINA",
+                    "GLFW_USE_CHDIR",
+                    "GLFW_USE_MENUBAR",
                 }
 
             fts_project("imgui")
