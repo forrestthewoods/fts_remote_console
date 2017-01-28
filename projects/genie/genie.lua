@@ -125,6 +125,7 @@ solution "fts_console"
                 "-framework IOKit",
                 "-framework CoreFoundation",
                 "-framework CoreVideo",
+                "-framework OpenGL",
             }
 
         fts_project("fts_remote_console")
