@@ -4,11 +4,11 @@ matrix:
   include:
       - os: linux
         compiler: gcc
-        env: CXX="g++-4.9" CC="gcc-4.9"
+        env: CXX_COMPILER="g++-4.9" CC_COMPILER="gcc-4.9"
       
       - os: osx
         compiler: clang
-        env: CXX="clang++" CC="clang"
+        env: CXX_COMPILER="clang++" CC_COMPILER="clang"
         osx_image: xcode8.2
         
 addons:
@@ -36,10 +36,10 @@ branches:
 
 script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi 
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make config=release64 CXX=${CXX} CC={CC}; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make config=release64 CXX=${CXX_COMPILER} CC={CC_COMPILER}; fi
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi 
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make config=release64 CXX=${CXX} CC=${CC}; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}; fi
 
 notifications:
   email: false
