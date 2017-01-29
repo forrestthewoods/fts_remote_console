@@ -2,15 +2,28 @@ language: cpp
 
 matrix:
   include:
-      - os: linux
-        compiler: gcc
-        env: CXX_COMPILER="g++-4.9" CC_COMPILER="gcc-4.9"
 
-      - os: osx
-        compiler: clang
-        env: CXX_COMPILER="clang++" CC_COMPILER="clang"
-        osx_image: xcode8.2
-        
+    - os: linux
+      compiler: gcc
+      env: CXX_COMPILER="g++-4.9" CC_COMPILER="gcc-4.9"
+
+      deploy:
+        provider: s3
+        access_key_id: AKIAJWIQHHHXQOKABKBQ
+        secret_access_key:
+          secure: hL592Ly39V1Tju069gM57/Pmr5kMgErO33W6+brNQei2mhL8tStA/QZYD/h4I7g01IbS8QxMDAlZ3NPfVc1LRs64fbvJSlvosLade00nhMzarlX257P3oQLCSWeMCZVdQmrpca9XMRT8AOmgxnklu1nEqHNFxQ32Ctk0WtXPOS6PAfTbicwhX1w7T/4NCAtwF5WFgjCSw8KXnuIU/BIeuZiKvnmXKaOar4WNMv22eIBOXosKpCpq8aPmD5K+baryOsqGJNUUyhlDijXq2mbngCqQaXaTxHpFV744E8RugnQAUHos9Y8qP9c0sIFVyw0pt94CL5PbmVbs2MXxIXkrmutSoBrgsX7tu4q+1HlpHNv9/9S+Cldt5Lwe56AJr3U5LW1Ox5w35uwUDUtAXiJXLHHIkhY/ShbKeTsAlBviLXXZvSR+pdBOCz8GVs1iyp5KSfI/ByhNkhwObqP+F5xotn44w7eo2ymjMPFMxiUX5c9L/GrXJO+4jOwgSNhucXl0yfYJsbdhPo8EvskigFwaYcRbPelOYAWM4oB5AbY1RXn8gqx8h3OFWsKFe/Fy1DVJwSJjqSNW9dANEAoyjymV1WPMe8EFNh6aBv7hq5JU0Vd9eXTVyX8re6QppEr/7jFCi8k88xcdQyzvH9F+cXffKyrqP6xK22rXRJO2sngqkN8=
+        bucket: forrestthewoods.binaries
+        local-dir: projects/gmake_linux/bin
+        upload-dir: fts_remote_console
+        acl: public_read
+        on:
+          repo: forrestthewoods/fts_remote_console
+
+    - os: osx
+      compiler: clang
+      env: CXX_COMPILER="clang++" CC_COMPILER="clang"
+      osx_image: xcode8.2
+
 addons:
   apt:
     sources:
@@ -36,12 +49,12 @@ branches:
     - master
 
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi 
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}; fi
-
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi 
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi
+  
+  - make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}
 
 notifications:
   email: false
+
 
