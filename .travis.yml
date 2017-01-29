@@ -36,7 +36,7 @@ branches:
 
 script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd projects/gmake_linux; fi 
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make config=release64 CXX=${CXX_COMPILER} CC={CC_COMPILER}; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}; fi
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}; fi
