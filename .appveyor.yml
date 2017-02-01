@@ -5,7 +5,7 @@ os:
 
 environment:
   matrix:
-  - TOOLSET: vs2015
+  - toolset: vs2015
 
 platform:
   - Win32
@@ -16,15 +16,15 @@ configuration:
   - release
 
 artifacts:
-  - path: projects\vs*\bin\**\fts_remote_console\*.exe
-    name: to_publish
-
-  - path: projects\vs*\bin\**\example_game\*.exe
+  - path: fts_remote_console_windows.zip
     name: to_publish
 
 build:
   verbosity: minimal
-  project: ./projects/$(TOOLSET)/fts_console.sln
+  project: ./projects/$(toolset)/fts_console.sln
+
+after_build:
+  - 7z a fts_remote_console_windows.zip %APPVEYOR_BUILD_FOLDER%\projects\vs2015\bin\x64_release\example_game\ %APPVEYOR_BUILD_FOLDER%\projects\vs2015\bin\x64_release\fts_remote_console\
 
 version: 1.0.{build}
 
