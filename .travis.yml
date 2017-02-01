@@ -70,10 +70,11 @@ script:
 
 
 before_deploy:
-  - mkdir deploy
+  - gcc --version
+  #- mkdir deploy
   #- cp -r bin/x64_release/example_game/ deploy
   #- cp -r bin/x64_release/fts_remote_console/ deploy
-  - cd deploy
+  #- cd deploy
 
   #- if [ "$TRAVIS_OS_NAME" == "linux" ]; then zip -r fts_remote_console_linux.zip example_game fts_remote_console; fi
   #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then zip -r fts_remote_console_macosx.zip example_game fts_remote_console.app; fi
