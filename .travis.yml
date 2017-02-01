@@ -13,8 +13,8 @@ matrix:
         secret_access_key:
           secure: hL592Ly39V1Tju069gM57/Pmr5kMgErO33W6+brNQei2mhL8tStA/QZYD/h4I7g01IbS8QxMDAlZ3NPfVc1LRs64fbvJSlvosLade00nhMzarlX257P3oQLCSWeMCZVdQmrpca9XMRT8AOmgxnklu1nEqHNFxQ32Ctk0WtXPOS6PAfTbicwhX1w7T/4NCAtwF5WFgjCSw8KXnuIU/BIeuZiKvnmXKaOar4WNMv22eIBOXosKpCpq8aPmD5K+baryOsqGJNUUyhlDijXq2mbngCqQaXaTxHpFV744E8RugnQAUHos9Y8qP9c0sIFVyw0pt94CL5PbmVbs2MXxIXkrmutSoBrgsX7tu4q+1HlpHNv9/9S+Cldt5Lwe56AJr3U5LW1Ox5w35uwUDUtAXiJXLHHIkhY/ShbKeTsAlBviLXXZvSR+pdBOCz8GVs1iyp5KSfI/ByhNkhwObqP+F5xotn44w7eo2ymjMPFMxiUX5c9L/GrXJO+4jOwgSNhucXl0yfYJsbdhPo8EvskigFwaYcRbPelOYAWM4oB5AbY1RXn8gqx8h3OFWsKFe/Fy1DVJwSJjqSNW9dANEAoyjymV1WPMe8EFNh6aBv7hq5JU0Vd9eXTVyX8re6QppEr/7jFCi8k88xcdQyzvH9F+cXffKyrqP6xK22rXRJO2sngqkN8=
         bucket: forrestthewoods.binaries
-        local-dir: bin
-        upload-dir: fts_remote_console/projects/gmake_linux/bin
+        file: fts_remote_console_linux.zip
+        upload-dir: fts_remote_console
         acl: public_read
         skip_cleanup: true
         on:
@@ -31,8 +31,8 @@ matrix:
         secret_access_key:
           secure: hL592Ly39V1Tju069gM57/Pmr5kMgErO33W6+brNQei2mhL8tStA/QZYD/h4I7g01IbS8QxMDAlZ3NPfVc1LRs64fbvJSlvosLade00nhMzarlX257P3oQLCSWeMCZVdQmrpca9XMRT8AOmgxnklu1nEqHNFxQ32Ctk0WtXPOS6PAfTbicwhX1w7T/4NCAtwF5WFgjCSw8KXnuIU/BIeuZiKvnmXKaOar4WNMv22eIBOXosKpCpq8aPmD5K+baryOsqGJNUUyhlDijXq2mbngCqQaXaTxHpFV744E8RugnQAUHos9Y8qP9c0sIFVyw0pt94CL5PbmVbs2MXxIXkrmutSoBrgsX7tu4q+1HlpHNv9/9S+Cldt5Lwe56AJr3U5LW1Ox5w35uwUDUtAXiJXLHHIkhY/ShbKeTsAlBviLXXZvSR+pdBOCz8GVs1iyp5KSfI/ByhNkhwObqP+F5xotn44w7eo2ymjMPFMxiUX5c9L/GrXJO+4jOwgSNhucXl0yfYJsbdhPo8EvskigFwaYcRbPelOYAWM4oB5AbY1RXn8gqx8h3OFWsKFe/Fy1DVJwSJjqSNW9dANEAoyjymV1WPMe8EFNh6aBv7hq5JU0Vd9eXTVyX8re6QppEr/7jFCi8k88xcdQyzvH9F+cXffKyrqP6xK22rXRJO2sngqkN8=
         bucket: forrestthewoods.binaries
-        local-dir: bin
-        upload-dir: fts_remote_console/projects/gmake_macosx/bin
+        file: fts_remote_console_osx.zip
+        upload-dir: fts_remote_console
         acl: public_read
         skip_cleanup: true
         on:
@@ -67,6 +67,17 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cd projects/gmake_macosx; fi
   
   - make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}
+
+
+before_deploy:
+  - mkdir deploy
+  - cp -r bin/x64_release/example_game/example_game deploy
+  - cp -r bin/x64_release/fts_remote_console/fts_remote_console deploy
+  - cd deploy
+
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; zip -r fts_remote_console_linux.zip example_game fts_remote_console; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; zip -r fts_remote_console_osx.zip example_game fts_remote_console; fi
+
 
 notifications:
   email: false
