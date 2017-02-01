@@ -76,7 +76,7 @@ before_deploy:
   - cd deploy
 
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then zip -r fts_remote_console_linux.zip example_game fts_remote_console; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then zip -r fts_remote_console_macosx.zip example_game fts_remote_console.app; fi
+  #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then zip -r fts_remote_console_macosx.zip example_game fts_remote_console.app; fi
 
 
 notifications:
