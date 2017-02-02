@@ -39,3 +39,8 @@ deploy:
     bucket: forrestthewoods.binaries
     folder: fts_remote_console
     artifact: to_publish
+    on:
+      branch: master
+      platform: x64
+      toolset: vs2015
+      configuration: release
