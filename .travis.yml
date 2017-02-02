@@ -68,9 +68,12 @@ script:
   
   - make config=release64 CXX=${CXX_COMPILER} CC=${CC_COMPILER}
 
-
-before_deploy:
   - gcc --version
+  - mkdir deploy
+  - cd deploy
+
+#before_deploy:
+  #- gcc --version
   #- mkdir deploy
   #- cp -r bin/x64_release/example_game/ deploy
   #- cp -r bin/x64_release/fts_remote_console/ deploy
