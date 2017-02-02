@@ -26,7 +26,7 @@ build:
   project: ./projects/$(toolset)/fts_console.sln
 
 deploy_script:
-  - 7z a fts_remote_console_windows.zip %APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\example_game\ %APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\fts_remote_console\
+  - 7z a fts_remote_console_windows.zip "%APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\example_game\" "%APPVEYOR_BUILD_FOLDER%\projects\$(toolset)\bin\($platform)_$(configuration)\fts_remote_console\"
 
 deploy:
   - provider: S3
