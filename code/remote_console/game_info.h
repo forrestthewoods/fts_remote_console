@@ -27,8 +27,8 @@ namespace fts {
 
     struct GameServerInfo {
         GameServerInfo(fts::GameInfoBroadcast const & gib);
-        GameServerInfo(GameServerInfo const &) = default;
-        GameServerInfo(GameServerInfo && other) = default;
+        GameServerInfo(GameServerInfo const & other);
+        GameServerInfo(GameServerInfo && other);
 
         bool operator==(GameServerInfo const & other) const;
 

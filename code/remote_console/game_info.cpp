@@ -24,6 +24,22 @@ namespace fts {
     {
     }
 
+    GameServerInfo::GameServerInfo(GameServerInfo const & other) 
+        : ipaddr(other.ipaddr)
+        , hostname(other.hostname)
+        , port(other.port)
+        , processId(other.processId)
+    {
+    }
+    
+    GameServerInfo::GameServerInfo(GameServerInfo && other) 
+        : ipaddr(std::move(other.ipaddr))
+        , hostname(std::move(other.hostname))
+        , port(other.port)
+        , processId(other.processId)
+    {
+    }
+
     bool GameServerInfo::operator==(GameServerInfo const & other) const {
         return ipaddr == other.ipaddr && hostname == other.hostname && port == other.port && processId == other.processId;
     }
