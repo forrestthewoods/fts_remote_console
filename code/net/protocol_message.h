@@ -26,9 +26,6 @@ typedef std::vector<uint8_t> ProtocolMessageBuffer;
 class ProtocolMessage {
 public:
 
-    ProtocolMessage() = delete;
-    ProtocolMessage(ProtocolMessage const &) = delete;
-
     ProtocolMessage(uint8_t const * data, size_t size);
     ProtocolMessage(ProtocolMessage && msg);
 
@@ -43,6 +40,9 @@ public:
 
 
 private:
+    ProtocolMessage() /* = delete */;
+    ProtocolMessage(ProtocolMessage const &) /* = delete */;
+
     ProtocolMessageBuffer _buffer;
     fts::Message const * _msg;
 };
