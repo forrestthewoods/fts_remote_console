@@ -40,6 +40,16 @@ namespace fts {
     {
     }
 
+    GameServerInfo & GameServerInfo::operator= (GameServerInfo const & other) {
+        if (this != &other)  {
+            ipaddr = other.ipaddr;
+            hostname = other.hostname;
+            port = other.port;
+            processId = other.processId;
+        }
+        return *this;
+    }
+
     bool GameServerInfo::operator==(GameServerInfo const & other) const {
         return ipaddr == other.ipaddr && hostname == other.hostname && port == other.port && processId == other.processId;
     }

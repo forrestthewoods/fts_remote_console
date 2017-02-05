@@ -29,13 +29,14 @@ namespace fts {
         GameServerInfo(fts::GameInfoBroadcast const & gib);
         GameServerInfo(GameServerInfo const & other);
         GameServerInfo(GameServerInfo && other);
-
+        GameServerInfo & operator= (GameServerInfo const & other);
+        
         bool operator==(GameServerInfo const & other) const;
 
-        const std::string ipaddr;
-        const std::string hostname;
-        const int32_t port;
-        const int32_t processId;
+        std::string ipaddr;
+        std::string hostname;
+        int32_t port;
+        int32_t processId;
     };
 
     struct GameConnection {
