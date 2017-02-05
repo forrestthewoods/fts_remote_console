@@ -37,7 +37,7 @@ void TabBar::Draw(fts::GameConnections & connections, ImVec2 pos, ImVec2 size) {
 
         for (auto && connection : connections) {
             if (connection->tcpClient.connected()) {
-                int len = std::snprintf(_buf.data(), _buf.size(), "%s:%d", connection->gameInfo.hostname.c_str(), connection->gameInfo.processId);
+                int len = std::sprintf(_buf.data(), "%s:%d", connection->gameInfo.hostname.c_str(), connection->gameInfo.processId);
                 
                 ImGui::SameLine();
                 if (ImGui::Button(_buf.data(), ImVec2((float)(10 + 8*len), TAB_BTN_HEIGHT)))

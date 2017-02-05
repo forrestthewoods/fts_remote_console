@@ -46,7 +46,7 @@ ifeq ($(config),debug32)
   OBJDIR              = ../build/x32/debug/fts_remote_console
   TARGETDIR           = ../bin/x32_debug/fts_remote_console
   TARGET              = $(TARGETDIR)/fts_remote_console
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_LINUX
+  DEFINES            += -DASIO_STANDALONE -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -83,7 +83,7 @@ ifeq ($(config),release32)
   OBJDIR              = ../build/x32/release/fts_remote_console
   TARGETDIR           = ../bin/x32_release/fts_remote_console
   TARGET              = $(TARGETDIR)/fts_remote_console
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_LINUX
+  DEFINES            += -DASIO_STANDALONE -D_CRT_SECURE_NO_WARNINGS -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -120,7 +120,7 @@ ifeq ($(config),debug64)
   OBJDIR              = ../build/x64/debug/fts_remote_console
   TARGETDIR           = ../bin/x64_debug/fts_remote_console
   TARGET              = $(TARGETDIR)/fts_remote_console
-  DEFINES            += -DASIO_STANDALONE -DDEBUG -DFTS_LINUX
+  DEFINES            += -DASIO_STANDALONE -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)
@@ -157,7 +157,7 @@ ifeq ($(config),release64)
   OBJDIR              = ../build/x64/release/fts_remote_console
   TARGETDIR           = ../bin/x64_release/fts_remote_console
   TARGET              = $(TARGETDIR)/fts_remote_console
-  DEFINES            += -DASIO_STANDALONE -DNDEBUG -DFTS_LINUX
+  DEFINES            += -DASIO_STANDALONE -D_CRT_SECURE_NO_WARNINGS -DNDEBUG -DFTS_LINUX
   INCLUDES           += -I../../../code/thirdparty -I../../../code/thirdparty/asio -I../../../code/thirdparty/imgui -I../../../code/thirdparty/glfw/include -I../../../code
   INCLUDES           +=
   ALL_CPPFLAGS       += $(CPPFLAGS) -MMD -MP -MP $(DEFINES) $(INCLUDES)

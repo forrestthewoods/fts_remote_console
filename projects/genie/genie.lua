@@ -96,7 +96,8 @@ solution "fts_console"
         }
 
         defines {
-            "ASIO_STANDALONE"
+            "ASIO_STANDALONE",
+            "_CRT_SECURE_NO_WARNINGS",
         }
 
         configuration "windows"

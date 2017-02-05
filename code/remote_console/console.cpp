@@ -29,7 +29,7 @@ ConsoleEntry::ConsoleEntry(ProtocolMessage && protoMsg)
 {
     float milliseconds = _logEntry->time();
     float seconds = milliseconds / 1000;
-    std::snprintf(_timeStr.data(), _timeStr.size(), "%.2f", seconds);
+    std::sprintf(_timeStr.data(), "%.2f", seconds);
 }
 
 ConsoleEntry::ConsoleEntry(ConsoleEntry && other) 

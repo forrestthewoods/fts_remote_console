@@ -50,7 +50,7 @@ private:
     ProtocolMessage _protoMsg;
     fts::LogEntry const * _logEntry;
     size_t _category;
-    std::array<char, 8> _timeStr;
+    std::array<char, 16> _timeStr;
 };
 
 class Console

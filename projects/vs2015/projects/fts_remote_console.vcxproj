@@ -94,7 +94,7 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>ASIO_STANDALONE;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -106,7 +106,7 @@
       <ProgramDataBaseFileName>$(OutDir)fts_remote_console.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>ASIO_STANDALONE;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -123,7 +123,7 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>ASIO_STANDALONE;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -135,7 +135,7 @@
       <ProgramDataBaseFileName>$(OutDir)fts_remote_console.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>ASIO_STANDALONE;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;DEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -152,7 +152,7 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>ASIO_STANDALONE;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -163,7 +163,7 @@
       <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>ASIO_STANDALONE;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -182,7 +182,7 @@
       <AdditionalOptions>  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>ASIO_STANDALONE;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -193,7 +193,7 @@
       <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>ASIO_STANDALONE;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASIO_STANDALONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;FTS_WINDOWS;_WIN32_WINNT=0x0601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\code\thirdparty;..\..\..\code\thirdparty\asio;..\..\..\code\thirdparty\imgui;..\..\..\code\thirdparty\glfw\include;..\..\..\code;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
