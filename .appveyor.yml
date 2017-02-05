@@ -8,6 +8,7 @@ os:
 environment:
   matrix:
   - toolset: vs2015
+  - toolset: vs2013
 
 platform:
   - Win32
