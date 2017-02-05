@@ -9,6 +9,7 @@ environment:
   matrix:
   - toolset: vs2015
   - toolset: vs2013
+  - toolset: vs2012
 
 platform:
   - Win32
