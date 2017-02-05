@@ -27,7 +27,8 @@ Client::~Client() {
 }
 
 void Client::connect(std::string const & ipaddr, uint16_t port) {
-    auto endpoints = _resolver.resolve({ ipaddr, std::to_string(port) });
+    asio::ip::basic_resolver_query<asio::ip::tcp> query(ipaddr, std::to_string(port));
+    auto endpoints = _resolver.resolve(query);
     asio::async_connect(_socket, endpoints,
         [this](std::error_code ec, asio::ip::tcp::resolver::iterator) {
         if (!ec) {
