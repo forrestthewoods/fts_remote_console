@@ -20,7 +20,7 @@ configuration:
   - release
 
 artifacts:
-  - path: fts_remote_console_windows.zip
+  - path: fts_remote_console_windows*.zip
     name: to_publish
 
 build:
