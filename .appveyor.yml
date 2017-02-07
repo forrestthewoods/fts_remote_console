@@ -29,7 +29,7 @@ build:
 
 after_build:
   - ps: IF ($env:platform -eq "Win32") {$env:makeplatform = "x32"} ELSE {$env:makeplatform = $env:platform}
-  - 7z a fts_remote_console_windows.zip "projects\%toolset%\bin\%makeplatform%_%configuration%\example_game" "projects\%toolset%\bin\%makeplatform%_%configuration%\fts_remote_console"
+  - 7z a fts_remote_console_windows_%toolset%.zip "projects\%toolset%\bin\%makeplatform%_%configuration%\example_game" "projects\%toolset%\bin\%makeplatform%_%configuration%\fts_remote_console"
 
 deploy:
   - provider: S3
@@ -45,5 +45,4 @@ deploy:
     on:
       branch: master
       platform: x64
-      toolset: vs2015
       configuration: release
