@@ -3,6 +3,8 @@ fts_remote_console
 
 A cross-platform remote logging console written in C++
 
+![Example screenshot](https://cdn-images-1.medium.com/max/800/1*-nVVEQ9gRQei1SSAwPeyGA.png)
+
 FAQ
 ===
 
