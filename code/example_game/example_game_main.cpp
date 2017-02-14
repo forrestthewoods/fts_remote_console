@@ -52,7 +52,7 @@ int main() {
     std::string local_ipaddr;
     {
         asio::ip::udp::resolver resolver(asio_service);
-        asio::ip::udp::resolver::query query(asio::ip::udp::v4(), "google.com", "");
+        asio::ip::udp::resolver::query query(asio::ip::udp::v4(), "google.com", "daytime");
         asio::ip::udp::resolver::iterator endpoints = resolver.resolve(query);
         asio::ip::udp::endpoint ep = *endpoints;
         asio::ip::udp::socket socket(asio_service);
