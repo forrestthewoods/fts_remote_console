@@ -18,14 +18,14 @@ My source code is embedded with the following license:
 
 ### What did you learn?
 
-Quite a few things. I wrote a lengthy [blog post](https://blog.forrestthewoods.com/writing-a-cross-platform-remote-logging-console-in-c-f2e22d3fee5e) with details. Here's a summary of used technologies.
+Quite a few things. I wrote a lengthy [blog post](https://blog.forrestthewoods.com/writing-a-cross-platform-remote-logging-console-in-c-f2e22d3fee5e) with details. Here's a brief summary:
 
-[ASIO](http://think-async.com/) — networking
-[Flatbuffers](https://github.com/google/flatbuffers) — network protocol
-[ImGui](https://github.com/ocornut/imgui) — user interface
-[GENie](https://github.com/bkaradzic/GENie) — project generation
-[Travis](https://travis-ci.org/forrestthewoods/fts_remote_console) / [Appveyor](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console) — continuous integration
-[VMPlayer](http://www.vmware.com/products/player/playerpro-evaluation.html) — Linux virtual machine
+* [ASIO](http://think-async.com/) — networking
+* [Flatbuffers](https://github.com/google/flatbuffers) — network protocol
+* [ImGui](https://github.com/ocornut/imgui) — user interface
+* [GENie](https://github.com/bkaradzic/GENie) — project generation
+* [Travis](https://travis-ci.org/forrestthewoods/fts_remote_console) / [Appveyor](https://ci.appveyor.com/project/forrestthewoods/fts-remote-console) — continuous integration
+* [VMPlayer](http://www.vmware.com/products/player/playerpro-evaluation.html) — Linux virtual machine
 
 
 Binaries
@@ -33,9 +33,9 @@ Binaries
 
 Here are some pre-compiled binaries if you're lazy but want to see it in action.
 
-[Windows](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_windows_vs2015.zip)
-Mac ([Pending](https://github.com/forrestthewoods/fts_remote_console/issues/10))
-[Linux](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_windows_linux.zip)
+* [Windows](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_windows_vs2015.zip)
+* [Mac](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_macosx.zip)
+* [Linux](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_windows_linux.zip)
 
 Build Status
 ===
