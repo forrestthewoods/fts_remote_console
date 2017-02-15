@@ -71,12 +71,10 @@ script:
   - mkdir deploy
   - cp -r bin/x64_release/example_game/ deploy
   - cp -r bin/x64_release/fts_remote_console/ deploy
-  - pushd deploy
+  - cd deploy
 
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then zip -r fts_remote_console_linux.zip example_game fts_remote_console; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then zip -r fts_remote_console_macosx.zip example_game fts_remote_console.app; fi
-  
-  - popd
 
 
 notifications:
