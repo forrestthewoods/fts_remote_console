@@ -1,3 +1,4 @@
+genie_win.exe --os=windows vs2017
 genie_win.exe --os=windows vs2015
 genie_win.exe --os=windows vs2013
 genie_win.exe --os=windows vs2012

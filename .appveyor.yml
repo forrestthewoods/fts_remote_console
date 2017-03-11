@@ -3,10 +3,11 @@ shallow_clone: true
 version: 1.0.{build}
 
 os:
-  - Visual Studio 2015
+  - Visual Studio 2017
 
 environment:
   matrix:
+  - toolset: vs2017
   - toolset: vs2015
   - toolset: vs2013
   - toolset: vs2012
