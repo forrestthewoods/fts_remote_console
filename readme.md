@@ -35,7 +35,7 @@ Here are some pre-compiled binaries if you're lazy but want to see it in action.
 
 * [Windows](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_windows_vs2015.zip)
 * [Mac](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_macosx.zip)
-* [Linux](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_windows_linux.zip)
+* [Linux](https://s3.amazonaws.com/forrestthewoods.binaries/fts_remote_console/fts_remote_console_linux.zip)
 
 Build Status
 ===
